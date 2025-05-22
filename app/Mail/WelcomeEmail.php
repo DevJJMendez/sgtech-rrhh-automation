@@ -15,9 +15,11 @@ class WelcomeEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
     public $invitationLink;
-    public function __construct($invitationLink)
+    public $signedURL;
+    public function __construct($invitationLink, $signedURL)
     {
         $this->invitationLink = $invitationLink;
+        $this->signedURL = $signedURL;
     }
 
     public function envelope(): Envelope
@@ -36,7 +38,9 @@ class WelcomeEmail extends Mailable implements ShouldQueue
         };
         return new Content(
             view: $roleView,
-            with: ['invitation' => $this->invitationLink]
+            with: [
+                'url' => $this->signedURL
+            ]
         );
     }
     public function attachments(): array

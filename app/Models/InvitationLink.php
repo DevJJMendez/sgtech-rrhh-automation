@@ -14,4 +14,5 @@ class InvitationLink extends Model
     {
         return $this->belongsTo(CollaboratorRole::class, 'fk_collaborator_role_id');
     }
+    protected $casts = ['expires_at' => 'datetime'];
 }

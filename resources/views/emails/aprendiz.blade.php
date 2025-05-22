@@ -9,6 +9,7 @@
 
 <body>
     aprendiz
+    {{ $url }}
 </body>
 
 </html>

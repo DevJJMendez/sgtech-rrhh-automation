@@ -8,6 +8,7 @@ use App\Models\CollaboratorRole;
 use App\Models\InvitationLink;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 
 class SendWelcomeEmailController extends Controller
@@ -22,21 +23,26 @@ class SendWelcomeEmailController extends Controller
         $uuid = Str::uuid()->toString();
         $email = $sendWelcomeEmailRequest->email;
         $role = $sendWelcomeEmailRequest->role;
-        // $expiresAt = now()->addDays(3);
+        $expiresAt = now()->addDays(3);
 
         try {
             $invitationLink = InvitationLink::create([
                 'uuid' => $uuid,
                 'email' => $email,
-                'fk_collaborator_role_id' => $role
-                // 'expires_at' => $expiresAt
+                'fk_collaborator_role_id' => $role,
+                'expires_at' => $expiresAt
             ]);
-            Mail::to($email)->queue(new WelcomeEmail($invitationLink->fk_collaborator_role_id));
+            $signedURL = URL::temporarySignedRoute(
+                'register.form',
+                now()->addDays(1),
+                ['invitation' => $uuid]
+            );
+            Mail::to($email)->queue(new WelcomeEmail($invitationLink->fk_collaborator_role_id, $signedURL));
             notify()->success('El correo fue enviado correctamente.', 'Éxito');
             return redirect()->back();
         } catch (\Throwable $exception) {
             Log::error("Error al enviar correo de bienvenida: {$exception->getMessage()}");
-            notify()->error('Ocurrió un error al enviar el correo.', 'Error');
+            notify()->error("Ocurrió un error al enviar el correo. {$exception->getMessage()}", 'Error');
             return redirect()->back()->withInput();
 
         }

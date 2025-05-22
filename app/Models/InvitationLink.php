@@ -10,4 +10,8 @@ class InvitationLink extends Model
     use HasFactory;
     protected $primaryKey = 'uuid';
     protected $guarded = [];
+    public function collaboratorRole()
+    {
+        return $this->belongsTo(CollaboratorRole::class, 'fk_collaborator_role_id');
+    }
 }

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/base.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components/sidebar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components/form.css') }}">
+    @notifyCss
 </head>
 
 <body>
@@ -19,6 +20,8 @@
             @yield('content')
         </main>
     </div>
+    <x-notify::notify />
+    @notifyJs
 </body>
 
 </html>

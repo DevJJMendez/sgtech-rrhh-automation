@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="form-container">
-        <form class="form" method="POST" action="welcome-email">
+        <form class="form" method="POST" action="{{ route('welcome-email') }}">
             @csrf
             <div class="title">Hola,<br><span>Aquí inicia el proceso de contratación</span></div>
             <input type="email" placeholder="Email" name="email" class="input">

@@ -1,18 +1,21 @@
 <?php
 
+use App\Http\Controllers\SendWelcomeEmailController;
+use App\Models\CollaboratorRole;
+use App\Models\InvitationLink;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::post('welcome-email', [SendWelcomeEmailController::class, 'sendWelcomeEmail'])->name('welcome-email');
 
 Route::get('/', function () {
-    return view('welcome');
+    $collaboratorRoles = CollaboratorRole::select(['collaborator_role_id', 'name'])->get();
+    return view('layouts.app', compact('collaboratorRoles'));
+});
+
+// Database test
+Route::get('invitation-links', function () {
+    $invitationLink = InvitationLink::with('collaboratorRole')->get();
+    return response()->json([
+        $invitationLink
+    ]);
 });

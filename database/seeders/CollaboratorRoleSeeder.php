@@ -14,13 +14,13 @@ class CollaboratorRoleSeeder extends Seeder
     public function run(): void
     {
         CollaboratorRole::create([
-            'name' => 'Collaborador'
+            'name' => 'Colaborador'
         ]);
         CollaboratorRole::create([
-            'name' => 'aprendiz'
+            'name' => 'Aprendiz'
         ]);
         CollaboratorRole::create([
-            'name' => 'freelancer'
+            'name' => 'Freelancer'
         ]);
     }
 }

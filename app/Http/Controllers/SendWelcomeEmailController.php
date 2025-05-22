@@ -14,7 +14,8 @@ class SendWelcomeEmailController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        $collaboratorRoles = CollaboratorRole::select(['collaborator_role_id', 'name'])->get();
+        return view('emails.form', compact('collaboratorRoles'));
     }
     public function sendWelcomeEmail(SendWelcomeEmailRequest $sendWelcomeEmailRequest)
     {
@@ -39,12 +40,5 @@ class SendWelcomeEmailController extends Controller
                 'error' => $e->getMessage()
             ], status: 500);
         }
-    }
-    public function getRoles()
-    {
-        $collaboratorRoles = CollaboratorRole::get();
-        return response()->json([
-            $collaboratorRoles
-        ]);
     }
 }

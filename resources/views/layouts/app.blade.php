@@ -7,26 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components/form.css') }}">
 </head>
 
 <body>
-    <div class="form-container">
-        <form class="form" method="POST" action="welcome-email">
-            @csrf
-            <div class="title">Hola,<br><span>Aquí inicia el proceso de contratación</span></div>
-            <input type="email" placeholder="Email" name="email" class="input">
-            <select name="role" class="input">
-                @forelse ($collaboratorRoles as $roles)
-                    <option value="{{ $roles->collaborator_role_id }}">
-                        {{ $roles->name }}
-                    </option>
-                @empty
-                    <p>theres nothing</p>
-                @endforelse
-            </select>
-
-            <button class="button-confirm" type="submit">Enviar →</button>
-        </form>
+    <div class="layout">
+        @include('components.sidebar')
+        <main class="content-area">
+            @yield('content')
+        </main>
     </div>
 </body>
 

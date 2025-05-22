@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('welcome-email', [SendWelcomeEmailController::class, 'sendWelcomeEmail'])->name('welcome-email');
 
 Route::get('/', function () {
-    $collaboratorRoles = CollaboratorRole::select(['collaborator_role_id', 'name'])->get();
-    return view('layouts.app', compact('collaboratorRoles'));
+    return view('layouts.app');
 });
 
 // Database test
@@ -19,3 +18,9 @@ Route::get('invitation-links', function () {
         $invitationLink
     ]);
 });
+Route::group(
+    ['prefix' => 'views'],
+    function () {
+        Route::get('/enviar-email', [SendWelcomeEmailController::class, 'index'])->name('send');
+    }
+);

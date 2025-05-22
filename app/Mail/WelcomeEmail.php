@@ -28,11 +28,10 @@ class WelcomeEmail extends Mailable implements ShouldQueue
     }
     public function content(): Content
     {
-
         $roleView = match ($this->invitationLink) {
-            'aprendiz' => 'emails.aprendiz',
-            'colaborador' => 'emails.colaborador',
-            'freelancer' => 'emails.freelancer',
+            '1' => 'emails.colaborador',
+            '2' => 'emails.aprendiz',
+            '3' => 'emails.freelancer',
             default => 'emails.default',
         };
         return new Content(

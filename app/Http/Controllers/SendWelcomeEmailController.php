@@ -32,13 +32,13 @@ class SendWelcomeEmailController extends Controller
                 // 'expires_at' => $expiresAt
             ]);
             Mail::to($email)->queue(new WelcomeEmail($invitationLink->fk_collaborator_role_id));
-            return response()->json(['message' => 'Correo enviado y enlace registrado correctamente.'], 200);
-        } catch (\Throwable $e) {
-            Log::error("Error al enviar correo de bienvenida: {$e->getMessage()}");
-            return response()->json([
-                'message' => 'Ocurrió un error al enviar el correo. Intenta nuevamente.',
-                'error' => $e->getMessage()
-            ], status: 500);
+            return redirect()->back()->with('success', 'El correo fue enviado correctamente.');
+        } catch (\Throwable $exception) {
+            Log::error("Error al enviar correo de bienvenida: {$exception->getMessage()}");
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors(['error' => 'Ocurrió un error al enviar el correo. Intenta nuevamente.']);
         }
     }
 }

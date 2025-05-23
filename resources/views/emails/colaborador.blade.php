@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bienvenido</title>
 </head>
 
 <body>
-    colaborador
+    <p>Hola 👋</p>
+
+    <p>Bienvenido al proceso de contratación.</p>
+
+    <p>Para continuar, por favor haz clic en el siguiente enlace:</p>
+
+    <p><a href="{{ $url }}" target="_blank">Completa tu información aquí</a></p>
+
+    <p>Este enlace estará activo durante 3 días.</p>
+
+    <p>Saludos,<br>SGTech</p>
 </body>
 
 </html>

@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->string('email');
             $table->unsignedTinyInteger('fk_collaborator_role_id');
             $table->foreign('fk_collaborator_role_id')->references('collaborator_role_id')->on('collaborator_roles');
+            // $table->enum('status', ['pending', 'completed', 'expired'])->default('pending');
             $table->timestamp('used_at')->nullable();
             $table->timestamp('expires_at');
             $table->timestamps();

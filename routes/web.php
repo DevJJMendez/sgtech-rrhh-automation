@@ -6,12 +6,20 @@ use App\Models\CollaboratorRole;
 use App\Models\InvitationLink;
 use Illuminate\Support\Facades\Route;
 
-Route::post('welcome-email', [SendWelcomeEmailController::class, 'sendWelcomeEmail'])->name('welcome-email');
-
 Route::get('/', function () {
     return view('layouts.app');
 });
+
 Route::get('/register/{invitation}', [HiringFormController::class, 'showForm'])->name('register.form')->middleware('signed');
+
+Route::get('invitation-links', function () {
+    $invitationLink = InvitationLink::with('collaboratorRole')->get();
+    return response()->json([
+        $invitationLink
+    ]);
+});
+
+Route::post('welcome-email', [SendWelcomeEmailController::class, 'sendWelcomeEmail'])->name('welcome-email');
 
 Route::group(
     ['prefix' => 'views'],
@@ -20,10 +28,16 @@ Route::group(
     }
 );
 
-// Database test
-Route::get('invitation-links', function () {
-    $invitationLink = InvitationLink::with('collaboratorRole')->get();
-    return response()->json([
-        $invitationLink
-    ]);
+Route::prefix('hiring')->group(function () {
+    Route::get('step/personal-data', [HiringFormController::class, 'index'])->name('step.personal');
+    Route::post('step/personal-data', [HiringFormController::class, 'storePersonalData'])->name('step.personal.store');
+
+    Route::get('step/family-data', [HiringFormController::class, 'showFamilyData'])->name('step.family');
+    Route::post('step/family-data', [HiringFormController::class, 'storeFamilyData'])->name('step.family.store');
+
+    Route::get('step/academic-data', [HiringFormController::class, 'showAcademicData'])->name('step.academic');
+    Route::post('step/academic-data', [HiringFormController::class, 'storeAcademicData'])->name('step.academic.store');
+
+    Route::get('step/health-data', [HiringFormController::class, 'showHealthData'])->name('step.health');
+    Route::post('step/health-data', [HiringFormController::class, 'storeHealthData'])->name('step.health.store');
 });

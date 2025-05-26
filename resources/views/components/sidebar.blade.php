@@ -5,6 +5,7 @@
             <li><a href="{{ route('send') }}" style="color:white;">Enviar Email</a></li>
             <li><a href="#" style="color:white;">Empleados</a></li>
             <li><a href="#" style="color:white;">Documentos</a></li>
+            <li><a href="{{ route('step.personal') }}" style="color:white;">Formulario de contratacion</a></li>
         </ul>
     </nav>
 </aside>

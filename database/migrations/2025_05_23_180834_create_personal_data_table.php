@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->string('second_last_name');
             $table->string('gender');
             $table->string('marital_status');
-            $table->string('birthdate');
+            $table->date('birthdate');
             $table->string('place_of_birth');
             $table->string('blood_group');
             $table->string('dni');

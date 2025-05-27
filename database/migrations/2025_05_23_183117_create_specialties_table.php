@@ -13,8 +13,8 @@ return new class extends Migration {
         Schema::create('specialties', function (Blueprint $table) {
             $table->id();
             $table->string('course');
-            $table->string('start_date');
-            $table->string('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->string('academic_institution');
             $table->string('level'); // basico - intermedio - avanzado
             $table->timestamps();

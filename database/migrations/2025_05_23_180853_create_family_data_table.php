@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('last_name');
             $table->string('gender');
             $table->string('age');
-            $table->string('birthdate');
+            $table->date('birthdate');
             $table->string('dni');
             $table->timestamps();
         });

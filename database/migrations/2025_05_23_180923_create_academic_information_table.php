@@ -13,8 +13,8 @@ return new class extends Migration {
         Schema::create('academic_information', function (Blueprint $table) {
             $table->id();
             $table->string('academic_institution');
-            $table->string('start_date');
-            $table->string('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->string('university_career');
             $table->string('degree');
             $table->string('professional_card');// si / no

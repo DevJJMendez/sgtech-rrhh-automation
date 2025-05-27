@@ -12,12 +12,13 @@ return new class extends Migration {
     {
         Schema::create('personal_data', function (Blueprint $table) {
             $table->id('id');
+            $table->date('hiring_date');
+            $table->string('job_position');
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name');
             $table->string('second_last_name');
             $table->string('gender');
-            $table->string('age');
             $table->string('marital_status');
             $table->string('birthdate');
             $table->string('place_of_birth');
@@ -30,7 +31,8 @@ return new class extends Migration {
             $table->string('phone_number');
             $table->string('cellphone_number');
             $table->string('email');
-            $table->string('bank_name');
+            $table->string('banking_entity');
+            $table->string('account_number');
             $table->string('account_type');
             $table->string('eps');
             $table->string('pension_fund');

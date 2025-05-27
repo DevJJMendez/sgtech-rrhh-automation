@@ -15,23 +15,25 @@
                     </div>
                     <div class="input-group input-medium">
                         <label for="last_name">Fecha de inicio</label>
-                        <input type="text" id="last_name" name="last_name">
+                        <input type="date" id="last_name" name="last_name">
                     </div>
                     <div class="input-group input-medium">
                         <label for="last_name">Fecha fin</label>
-                        <input type="text" id="last_name" name="last_name">
+                        <input type="date" id="last_name" name="last_name">
                     </div>
                     <div class="input-group input-medium">
-                        <label for="last_name">Carrea</label>
+                        <label for="last_name">Carrera</label>
                         <input type="text" id="last_name" name="last_name">
                     </div>
                     <div class="input-group input-medium">
                         <label for="last_name">Grado</label>
                         <input type="text" id="last_name" name="last_name">
                     </div>
+                </div>
+                <div class="input-row">
                     <div class="input-group input-medium">
                         <label for="last_name">Tarjeta profesional</label>
-                        <input type="text" id="last_name" name="last_name">
+                        <select name="" id=""></select>
                     </div>
                     <div class="input-group input-medium">
                         <label for="last_name">Numero de Tarjeta profesional</label>
@@ -47,11 +49,11 @@
                         </div>
                         <div class="input-group input-medium">
                             <label for="last_name">Fecha de inicio</label>
-                            <input type="text" id="last_name" name="last_name">
+                            <input type="date" id="last_name" name="last_name">
                         </div>
                         <div class="input-group input-medium">
                             <label for="last_name">Fecha fin</label>
-                            <input type="text" id="last_name" name="last_name">
+                            <input type="date" id="last_name" name="last_name">
                         </div>
                         <div class="input-group input-medium">
                             <label for="last_name">Institución</label>

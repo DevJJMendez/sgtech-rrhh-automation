@@ -7,11 +7,13 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     /**
      * Run the migrations.
+     $table->unsignedBigInteger('fk_personal_data_id');
+     $table->foreign('fk_personal_data_id')->references('personal_data_id')->on('personal_data');
      */
     public function up(): void
     {
         Schema::create('personal_data', function (Blueprint $table) {
-            $table->id('id');
+            $table->unsignedBigInteger('personal_data_id', true);
             $table->date('hiring_date');
             $table->string('job_position');
             $table->string('first_name');

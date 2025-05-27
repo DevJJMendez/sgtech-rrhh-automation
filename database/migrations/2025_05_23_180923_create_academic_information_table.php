@@ -11,7 +11,9 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('academic_information', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('academic_information_id', true);
+            $table->unsignedBigInteger('fk_personal_data_id');
+            $table->foreign('fk_personal_data_id')->references('personal_data_id')->on('personal_data');
             $table->string('academic_institution');
             $table->date('start_date');
             $table->date('end_date');

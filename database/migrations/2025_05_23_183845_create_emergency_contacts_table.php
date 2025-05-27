@@ -11,7 +11,9 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('emergency_contacts', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('emergency_contact_id', true);
+            $table->unsignedBigInteger('fk_personal_data_id');
+            $table->foreign('fk_personal_data_id')->references('personal_data_id')->on('personal_data');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('phone_number');

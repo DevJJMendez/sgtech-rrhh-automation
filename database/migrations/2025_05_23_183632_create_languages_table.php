@@ -11,7 +11,9 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('languages', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('language_id', true);
+            $table->unsignedBigInteger('fk_personal_data_id');
+            $table->foreign('fk_personal_data_id')->references('personal_data_id')->on('personal_data');
             $table->string('language');
             $table->string('level'); // basico - intermedio - avanzado
             $table->timestamps();

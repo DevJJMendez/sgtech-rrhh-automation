@@ -11,7 +11,9 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('health_data', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('health_data_id', true);
+            $table->unsignedBigInteger('fk_personal_data_id');
+            $table->foreign('fk_personal_data_id')->references('personal_data_id')->on('personal_data');
             $table->string('allergies');
             $table->string('diseases');
             $table->string('medications');

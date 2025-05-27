@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('health_data', function (Blueprint $table) {
             $table->id();
-            $table->string('allergy');
+            $table->string('allergies');
             $table->string('diseases');
             $table->string('medications');
             $table->string('additional_information');

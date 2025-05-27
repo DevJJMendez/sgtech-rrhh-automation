@@ -11,12 +11,12 @@
                 <legend>Datos Personales</legend>
                 <div class="input-row">
                     <div class="input-group input-medium">
-                        <label for="birthdate">Fecha de ingreso</label>
-                        <input type="date" id="birthdate" name="birthdate">
+                        <label for="hiring_date">Fecha de ingreso</label>
+                        <input type="date" id="hiring_date" name="hiring_date">
                     </div>
                     <div class="input-group input-medium">
-                        <label for="last_name">Cargo / Especialidad</label>
-                        <input type="text" id="last_name" name="last_name">
+                        <label for="job_position">Cargo / Especialidad</label>
+                        <input type="text" id="job_position" name="job_position">
                     </div>
                 </div>
                 <div class="input-row">
@@ -25,12 +25,12 @@
                         <input type="text" id="dni" name="dni">
                     </div>
                     <div class="input-group input-medium">
-                        <label for="dni">Fecha de expedición</label>
-                        <input type="date" id="dni" name="dni">
+                        <label for="date_of_issue">Fecha de expedición</label>
+                        <input type="date" id="date_of_issue" name="date_of_issue">
                     </div>
                     <div class="input-group input-medium">
-                        <label for="dni">Lugar de expedición</label>
-                        <input type="text" id="dni" name="dni">
+                        <label for="place_of_issue">Lugar de expedición</label>
+                        <input type="text" id="place_of_issue" name="place_of_issue">
                     </div>
                 </div>
                 <div class="input-row">
@@ -65,8 +65,8 @@
                         </select>
                     </div>
                     <div class="input-group input-small">
-                        <label for="gender">Grupo Sanguíneo y RH </label>
-                        <select id="gender" name="gender">
+                        <label for="blood_group">Grupo Sanguíneo y RH </label>
+                        <select id="blood_group" name="blood_group">
                             <option value="">Seleccione</option>
                             <option value="M">Masculino</option>
                             <option value="F">Femenino</option>
@@ -120,8 +120,8 @@
                 </div>
                 <div class="input-row">
                     <div class="input-group input-medium">
-                        <label for="bank_name">Entidad bancaria</label>
-                        <input type="text" id="bank_name" name="bank_name">
+                        <label for="banking_entity">Entidad bancaria</label>
+                        <input type="text" id="banking_entity" name="banking_entity">
                     </div>
                     <div class="input-group input-medium">
                         <label for="account_number">Número de cuenta</label>
@@ -163,13 +163,17 @@
                         <label for="last_name">Edad</label>
                         <input type="text" id="last_name" name="last_name">
                     </div>
-                    <div class="input-group input-medium">
-                        <label for="gender">genero</label>
-                        <input type="text" id="gender" name="gender">
+                    <div class="input-group input-small">
+                        <label for="gender">Sexo</label>
+                        <select id="gender" name="gender">
+                            <option value="">Seleccione</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
                     </div>
                     <div class="input-group input-medium">
                         <label for="birthdate">Fecha de nacimiento</label>
-                        <input type="text" id="birthdate" name="birthdate">
+                        <input type="date" id="birthdate" name="birthdate">
                     </div>
                     <div class="input-group input-medium">
                         <label for="dni">Número de cédula</label>
@@ -181,8 +185,8 @@
                 <legend>DATOS DE SALUD</legend>
                 <div class="input-row">
                     <div class="input-group input-medium">
-                        <label for="allergy">Alergias</label>
-                        <input type="text" id="allergy" name="allergy">
+                        <label for="allergies">Alergias</label>
+                        <input type="text" id="allergies" name="allergies">
                     </div>
                     <div class="input-group input-medium">
                         <label for="diseases">Enfermedades</label>
@@ -203,16 +207,23 @@
                     <legend>EN CASO DE EMERGENCIA LLAMAR A: </legend>
                     <div class="input-row">
                         <div class="input-group input-medium">
-                            <label for="last_name">Nombre y Apellido</label>
-                            <input type="text" id="last_name" name="last_name">
+                            <label for="first_name">Nombre</label>
+                            <input type="text" id="first_name" name="first_name">
                         </div>
                         <div class="input-group input-medium">
-                            <label for="last_name">Telefono / Celular</label>
+                            <label for="last_name">Apellido</label>
                             <input type="text" id="last_name" name="last_name">
                         </div>
+
+                    </div>
+                    <div class="input-row">
                         <div class="input-group input-medium">
-                            <label for="last_name">Parentesco</label>
-                            <input type="text" id="last_name" name="last_name">
+                            <label for="phone_number">Telefono / Celular</label>
+                            <input type="text" id="phone_number" name="phone_number">
+                        </div>
+                        <div class="input-group input-medium">
+                            <label for="relationship">Parentesco</label>
+                            <input type="text" id="relationship" name="relationship">
                         </div>
                     </div>
                 </fieldset>

@@ -37,7 +37,4 @@ Route::prefix('hiring')->group(function () {
 
     Route::get('step/academic-data', [HiringFormController::class, 'showAcademicData'])->name('step.academic');
     Route::post('step/academic-data', [HiringFormController::class, 'storeAcademicData'])->name('step.academic.store');
-
-    Route::get('step/health-data', [HiringFormController::class, 'showHealthData'])->name('step.health');
-    Route::post('step/health-data', [HiringFormController::class, 'storeHealthData'])->name('step.health.store');
 });

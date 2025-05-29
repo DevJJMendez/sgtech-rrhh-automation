@@ -5,11 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    /**
-     * Run the migrations.
-     $table->unsignedBigInteger('fk_personal_data_id');
-     $table->foreign('fk_personal_data_id')->references('personal_data_id')->on('personal_data');
-     */
     public function up(): void
     {
         Schema::create('personal_data', function (Blueprint $table) {
@@ -42,10 +37,6 @@ return new class extends Migration {
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('personal_data');

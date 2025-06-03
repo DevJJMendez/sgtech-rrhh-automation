@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePersonalDataRequest;
 use App\Models\InvitationLink;
+use App\Models\PersonalData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class HiringFormController extends Controller
@@ -15,51 +17,54 @@ class HiringFormController extends Controller
         if ($invitation->expires_at->isPast()) {
             abort(410, 'Este enlace ha expirado.');
         }
-
         return view('layouts.register', );
     }
     public function index(Request $request)
     {
         return view('layouts.register', );
     }
-
-    public function storePersonalData(Request $request)
+    public function storePersonalData(StorePersonalDataRequest $storePersonalDataRequest)
     {
-        $validatedData = $request->validate([
-            'hiring_date' => ['required', 'date'],
-            'job_position' => ['required', 'string'],
-            'first_name' => ['required', 'string'],
-            'middle_name' => ['required', 'string'],
-            'last_name' => ['required', 'string'],
-            'second_last_name' => ['required', 'string'],
-            'gender' => ['required', 'string'],
-            'marital_status' => ['required', 'string'],
-            'birthdate' => ['required', 'date'],
-            'place_of_birth' => ['required', 'string'],
-            'blood_group' => ['required', 'string'],
-            'dni' => ['required', 'numeric'],
-            'date_of_issue' => ['required', 'string'],
-            'place_of_issue' => ['required', 'string'],
-            'nationality' => ['required', 'string'],
-            'address' => ['required', 'string'],
-            'phone_number' => ['required', 'string'],
-            'cell_phone' => ['required', 'string'],
-            'email' => ['required', 'email'],
-            'banking_entity' => ['required', 'string'],
-            'account_number' => ['required', 'string'],
-            'account_type' => ['required', 'string'],
-            'eps' => ['required', 'string'],
-            'pension_fund' => ['required', 'string'],
-            'severance_pay_found' => ['required', 'string'],
-        ]);
-        if (empty($request->session()->get('personal_data'))) {
-            $personalData = $validatedData;
-            $request->session()->put('personal_data', $personalData);
-        } else {
-            $personalData = $request->session()->get('personal_data');
-            $personalData = array_merge([$personalData, $validatedData]);
-            $request->session()->put('personal_data', $personalData);
+        try {
+            DB::beginTransaction();
+            $personalData = PersonalData::create([
+                'hiring_date' => $storePersonalDataRequest->hiring_date,
+                'job_position' => $storePersonalDataRequest->job_position,
+                'dni' => $storePersonalDataRequest->dni,
+                'date_of_issue' => $storePersonalDataRequest->date_of_issue,
+                'place_of_issue' => $storePersonalDataRequest->place_of_issue,
+                'first_name' => $storePersonalDataRequest->first_name,
+                'middle_name' => $storePersonalDataRequest->middle_name,
+                'last_name' => $storePersonalDataRequest->last_name,
+                'second_last_name' => $storePersonalDataRequest->second_last_name,
+                'blood_group' => $storePersonalDataRequest->blood_group,
+                'marital_status' => $storePersonalDataRequest->marital_status,
+                'gender' => $storePersonalDataRequest->gender,
+                'birthdate' => $storePersonalDataRequest->birthdate,
+                'place_of_birth' => $storePersonalDataRequest->place_of_birth,
+                'nationality' => $storePersonalDataRequest->nationality,
+                'address' => $storePersonalDataRequest->address,
+                'phone_number' => $storePersonalDataRequest->phone_number,
+                'cellphone_number' => $storePersonalDataRequest->cellphone_number,
+                'email' => $storePersonalDataRequest->email,
+                'banking_entity' => $storePersonalDataRequest->banking_entity,
+                'account_number' => $storePersonalDataRequest->account_number,
+                'account_type' => $storePersonalDataRequest->account_type,
+                'eps' => $storePersonalDataRequest->eps,
+                'pension_fund' => $storePersonalDataRequest->pension_fund,
+                'severance_pay_fund' => $storePersonalDataRequest->severance_pay_fund,
+                // '' => $storePersonalDataRequest,
+                // '' => $storePersonalDataRequest,
+                // '' => $storePersonalDataRequest,
+            ]);
+            DB::commit();
+            notify()->success('Datos registrados correctamente');
+            return redirect()->back();
+        } catch (\Exception $exception) {
+            // DB::rollBack();
+            dd($exception->getMessage());
+            notify()->error('Ocurrio un error');
+            return redirect()->back()->withInput();
         }
-        return redirect()->route('step.academic');
     }
 }

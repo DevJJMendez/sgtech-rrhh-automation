@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->string('place_of_birth');
             $table->string('blood_group');
             $table->string('dni');
-            $table->string('date_of_issue');
+            $table->date('date_of_issue');
             $table->string('place_of_issue');
             $table->string('nationality');
             $table->string('address');

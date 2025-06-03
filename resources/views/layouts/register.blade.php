@@ -6,66 +6,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     @vite('resources/css/register.css')
+    @notifyCss
 </head>
 
 <body>
     <div class="form-container">
-        <form action="{{ route('step.personal.store') }}" method="POST">
+        <form action="{{ route('hiring.post') }}" method="POST">
             @csrf
             <fieldset class="form-section">
                 <legend>Datos Personales</legend>
                 <div class="input-row">
                     <div class="input-group input-small">
                         <label for="hiring_date">Fecha de ingreso</label>
-                        <input type="date" id="hiring_date" name="hiring_date">
+                        <input type="date" id="hiring_date" name="hiring_date" value="{{ old('dni') }}">
+                        @error('hiring_date')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="job_position">Cargo / Especialidad</label>
-                        <input type="text" id="job_position" name="job_position">
+                        <input type="text" id="job_position" name="job_position" value="">
+                        @error('job_position')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
                     </div>
+                </div>
+                <div class="input-row">
                     <div class="input-group input-small">
                         <label for="dni">Número de cédula</label>
-                        <input type="text" id="dni" name="dni">
+                        <input type="number" id="dni" name="dni" value="">
+                        @error('dni')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="date_of_issue">Fecha de expedición</label>
-                        <input type="date" id="date_of_issue" name="date_of_issue">
+                        <input type="date" id="date_of_issue" name="date_of_issue" value="">
+                        @error('date_of_issue')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="place_of_issue">Lugar de expedición</label>
-                        <input type="text" id="place_of_issue" name="place_of_issue">
+                        <input type="text" id="place_of_issue" name="place_of_issue" value="">
+                        @error('place_of_issue')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
                     </div>
                 </div>
                 <div class="input-row">
-
                     <div class="input-group input-small">
                         <label for="first_name">Nombre</label>
-                        <input type="text" id="first_name" name="first_name" placeholder="Ej. Juan">
+                        <input type="text" id="first_name" name="first_name" placeholder="Ej. Juan" value="">
+                        @error('first_name')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="middle_name">Segundo Nombre</label>
-                        <input type="text" id="middle_name" name="middle_name" placeholder="Ej. Carlos">
+                        <input type="text" id="middle_name" name="middle_name" placeholder="Ej. Carlos"
+                            value="">
+                        @error('middle_name')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
                     </div>
+                </div>
+                <div class="input-row">
                     <div class="input-group input-small">
                         <label for="last_name">Apellido</label>
-                        <input type="text" id="last_name" name="last_name">
+                        <input type="text" id="last_name" name="last_name" value="">
+                        @error('last_name')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="second_last_name">Segundo Apellido</label>
-                        <input type="text" id="second_last_name" name="second_last_name">
-                    </div>
-                    <div class="input-group input-small">
-                        <label for="gender">Sexo</label>
-                        <select id="gender" name="gender">
-                            <option value="">Seleccione</option>
-                            <option value="M">Masculino</option>
-                            <option value="F">Femenino</option>
-                        </select>
+                        <input type="text" id="second_last_name" name="second_last_name" value="">
+                        @error('second_last_name')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
                     </div>
                 </div>
-
                 <div class="input-row">
-
                     <div class="input-group input-small">
                         <label for="blood_group">Grupo Sanguíneo y RH </label>
                         <select id="blood_group" name="blood_group">
@@ -73,6 +95,9 @@
                             <option value="M">Masculino</option>
                             <option value="F">Femenino</option>
                         </select>
+                        @error('blood_group')
+                            <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="marital_status">Estado Civil</label>
@@ -81,37 +106,73 @@
                             <option value="single">Soltero</option>
                             <option value="married">Casado</option>
                         </select>
+                        @error('marital_status')
+                            <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="birthdate">Fecha Nacimiento</label>
-                        <input type="date" id="birthdate" name="birthdate">
-                    </div>
-                    <div class="input-group input-small">
-                        <label for="place_of_birth">Lugar De Nacimiento</label>
-                        <input type="text" id="place_of_birth" name="place_of_birth">
-                    </div>
-                    <div class="input-group input-small">
-                        <label for="nacionality">Nacionalidad</label>
-                        <input type="text" id="nacionality" name="nacionality">
+                        <label for="gender">Sexo</label>
+                        <select id="gender" name="gender">
+                            <option value="">Seleccione</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
+                        @error('gender')
+                            <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="input-row">
-
+                    <div class="input-group input-small">
+                        <label for="birthdate">Fecha Nacimiento</label>
+                        <input type="date" id="birthdate" name="birthdate" value="">
+                        @error('birthdate')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="input-group input-small">
+                        <label for="place_of_birth">Lugar De Nacimiento</label>
+                        <input type="text" id="place_of_birth" name="place_of_birth" value="">
+                        @error('place_of_birth')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="input-group input-small">
+                        <label for="nationality">Nacionalidad</label>
+                        <input type="text" id="nationality" name="nationality" value="">
+                        @error('nationality')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
+                <div class="input-row">
                     <div class="input-group input-small">
                         <label for="address">Dirección</label>
-                        <input type="text" id="address" name="address">
+                        <input type="text" id="address" name="address" value="">
+                        @error('address')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="phone_number">Teléfono</label>
-                        <input type="text" id="phone_number" name="phone_number">
+                        <input type="text" id="phone_number" name="phone_number" value="">
+                        @error('phone_number')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="cellphone_number">Celular</label>
-                        <input type="text" id="cellphone_number" name="cellphone_number">
+                        <input type="text" id="cellphone_number" name="cellphone_number" value="">
+                        @error('cellphone_number')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="email">Correo electrónico</label>
-                        <input type="text" id="email" name="email">
+                        <input type="text" id="email" name="email" value="">
+                        @error('email')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
                     </div>
                 </div>
                 <fieldset class="form-section">
@@ -119,36 +180,57 @@
                     <div class="input-row">
                         <div class="input-group input-small">
                             <label for="banking_entity">Entidad bancaria</label>
-                            <input type="text" id="banking_entity" name="banking_entity">
+                            <input type="text" id="banking_entity" name="banking_entity" value="">
+                            @error('banking_entity')
+                                <small class="error-message">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="input-group input-small">
                             <label for="account_number">Número de cuenta</label>
-                            <input type="text" id="account_number" name="account_number">
+                            <input type="text" id="account_number" name="account_number" value="">
+                            @error('account_number')
+                                <small class="error-message">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="input-group input-small">
                             <label for="account_type">Tipo de cuenta</label>
-                            <select name="account_type" id="account_type"></select>
+                            <select name="account_type" id="account_type">
+                                <option value="">Seleccione</option>
+                                <option value="M">Ahorros</option>
+                                <option value="F">Corriente</option>
+                            </select>
+                            @error('account_type')
+                                <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                            @enderror
+
                         </div>
                     </div>
                     <div class="input-row">
                         <div class="input-group input-small">
                             <label for="eps">EPS</label>
-                            <input type="text" id="eps" name="eps">
+                            <input type="text" id="eps" name="eps" value="">
+                            @error('eps')
+                                <small class="error-message">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="input-group input-small">
                             <label for="pension_fund">Fondo de pensiones</label>
-                            <input type="text" id="birthdate" name="pension_fund">
+                            <input type="text" id="pension_fund" name="pension_fund" value="">
+                            @error('pension_fund')
+                                <small class="error-message">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="input-group input-small">
                             <label for="severance_pay_fund">Fondo de cesantías</label>
-                            <select name="severance_pay_fund" id="severance_pay_fund"></select>
+                            <input type="text" name="severance_pay_fund" value="">
+                            @error('severance_pay_fund')
+                                <small class="error-message">{{ $message }}</small>
+                            @enderror
                         </div>
                     </div>
                 </fieldset>
-
-
             </fieldset>
-            <fieldset class="form-section">
+            {{-- <fieldset class="form-section">
                 <legend>Datos familiares</legend>
                 <div class="input-row">
                     <div class="input-group input-small">
@@ -156,9 +238,15 @@
                         <input type="text" id="relationship" name="relationship">
                     </div>
                     <div class="input-group input-small">
+                        <label for="dni">Número de cédula</label>
+                        <input type="text" id="dni" name="dni">
+                    </div>
+                    <div class="input-group input-small">
                         <label for="first_name">Nombres</label>
                         <input type="text" id="first_name" name="first_name">
                     </div>
+                </div>
+                <div class="input-row">
                     <div class="input-group input-small">
                         <label for="last_name">Edad</label>
                         <input type="text" id="last_name" name="last_name">
@@ -175,15 +263,9 @@
                         <label for="birthdate">Fecha de nacimiento</label>
                         <input type="date" id="birthdate" name="birthdate">
                     </div>
-                    <div class="input-group input-small">
-                        <label for="dni">Número de cédula</label>
-                        <input type="text" id="dni" name="dni">
-                    </div>
                 </div>
-
-
-            </fieldset>
-            <fieldset class="form-section">
+            </fieldset> --}}
+            {{-- <fieldset class="form-section">
                 <legend>Datos médicos</legend>
                 <div class="input-row">
                     <div class="input-group input-small">
@@ -205,12 +287,11 @@
                             relación
                             con su salud:
                         </label>
-                        <textarea name="" id=""></textarea>
-                        {{-- <input type="text" id="additional_information" name="additional_information"> --}}
+                        <textarea name="additional_information" id="additional_information"></textarea>
                     </div>
                 </div>
-            </fieldset>
-            <fieldset class="form-section">
+            </fieldset> --}}
+            {{-- <fieldset class="form-section">
                 <legend>En caso de emergencia llamar a:</legend>
                 <div class="input-row">
                     <div class="input-group input-small">
@@ -221,6 +302,8 @@
                         <label for="last_name">Apellido</label>
                         <input type="text" id="last_name" name="last_name">
                     </div>
+                </div>
+                <div class="input-row">
                     <div class="input-group input-small">
                         <label for="phone_number">Telefono / Celular</label>
                         <input type="text" id="phone_number" name="phone_number">
@@ -230,8 +313,8 @@
                         <input type="text" id="relationship" name="relationship">
                     </div>
                 </div>
-            </fieldset>
-            <fieldset class="form-section">
+            </fieldset> --}}
+            {{-- <fieldset class="form-section">
                 <legend>Información Académica</legend>
                 <div class="input-row">
                     <div class="input-group input-small">
@@ -246,6 +329,8 @@
                         <label for="end_date">Fecha fin</label>
                         <input type="date" id="end_date" name="end_date">
                     </div>
+                </div>
+                <div class="input-row">
                     <div class="input-group input-small">
                         <label for="university_career">Carrera</label>
                         <input type="text" id="university_career" name="university_career">
@@ -269,8 +354,8 @@
                     <legend>Especialidad</legend>
                     <div class="input-row">
                         <div class="input-group input-small">
-                            <label for="course">Curso</label>
-                            <input type="text" id="course" name="course">
+                            <label for="academic_institution">Institución</label>
+                            <input type="text" id="academic_institution" name="academic_institution">
                         </div>
                         <div class="input-group input-small">
                             <label for="start_date">Fecha de inicio</label>
@@ -280,9 +365,11 @@
                             <label for="end_date">Fecha fin</label>
                             <input type="date" id="end_date" name="end_date">
                         </div>
+                    </div>
+                    <div class="input-row">
                         <div class="input-group input-small">
-                            <label for="academic_institution">Institución</label>
-                            <input type="text" id="academic_institution" name="academic_institution">
+                            <label for="course">Curso</label>
+                            <input type="text" id="course" name="course">
                         </div>
                         <div class="input-group input-small">
                             <label for="level">Nivel alcanzado</label>
@@ -313,10 +400,12 @@
                         </div>
                     </div>
                 </fieldset>
-            </fieldset>
-            <button type="submit" class="btn-submit">Siguiente</button>
+            </fieldset> --}}
+            <button type="submit" class="btn-submit-form">Enviar</button>
         </form>
     </div>
+    <x-notify::notify />
+    @notifyJs
 </body>
 
 </html>

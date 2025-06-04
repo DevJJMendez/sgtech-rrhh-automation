@@ -19,7 +19,6 @@ return new class extends Migration {
             $table->date('end_date');
             $table->string('university_career');
             $table->string('degree');
-            $table->string('professional_card');// si / no
             $table->string('card_number');
             $table->timestamps();
         });

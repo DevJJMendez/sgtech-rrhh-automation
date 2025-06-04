@@ -15,8 +15,9 @@ return new class extends Migration {
             $table->unsignedBigInteger('fk_personal_data_id');
             $table->foreign('fk_personal_data_id')->references('personal_data_id')->on('personal_data');
             $table->string('relationship');
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('full_name');
+            // $table->string('first_name');
+            // $table->string('last_name');
             $table->string('gender');
             $table->string('age');
             $table->date('birthdate');

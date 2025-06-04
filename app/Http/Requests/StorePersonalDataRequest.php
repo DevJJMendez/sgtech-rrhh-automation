@@ -28,34 +28,143 @@ class StorePersonalDataRequest extends FormRequest
             'middle_name' => ['required', 'string'],
             'last_name' => ['required', 'string'],
             'second_last_name' => ['required', 'string'],
-            'gender' => ['required', 'string'],
-            'marital_status' => ['required', 'string'],
-            'birthdate' => ['required', 'date'],
+            'gender' => ['required', 'string', 'in:male,female'],
+
+            'marital_status' => ['required', 'string', 'in:single,married,divorced,widowed,free union'],
+            'birthdate' => ['required', 'date', 'before_or_equal:today'],
             'place_of_birth' => ['required', 'string'],
             'blood_group' => ['required', 'string'],
             'dni' => ['required', 'numeric'],
-            'date_of_issue' => ['required', 'date'],
+            'date_of_issue' => ['required', 'date', 'before_or_equal:today'],
             'place_of_issue' => ['required', 'string'],
             'nationality' => ['required', 'string'],
             'address' => ['required', 'string'],
-            'phone_number' => ['required', 'string'],
-            'cellphone_number' => ['required', 'string'],
+            'phone_number' => ['required', 'numeric'],
+            'cellphone_number' => ['required', 'numeric'],
             'email' => ['required', 'email'],
             'banking_entity' => ['required', 'string'],
             'account_number' => ['required', 'string'],
-            'account_type' => ['required', 'string'],
+            'account_type' => ['required', 'string', 'in:current,savings,payroll'],
             'eps' => ['required', 'string'],
             'pension_fund' => ['required', 'string'],
-            'severance_pay_fund' => ['required', 'string']
+            'severance_pay_fund' => ['required', 'string'],
+
+            // family data
+            'relationship' => ['required', 'string'],
+            'family_data_dni' => ['required', 'numeric'],
+            'full_name' => ['required', 'string'],
+            'age' => ['required', 'string'],
+            'family_data_gender' => ['required', 'string', 'in:male,female'],
+            'family_data_birthdate' => ['required', 'string'],
+
+            // health data
+            'allergies' => ['required', 'string'],
+            'diseases' => ['required', 'string'],
+            'medications' => ['required', 'string'],
+            'additional_information' => ['required', 'string'],
+
+            'emergency_contact_full_name' => ['required', 'string'],
+            'emergency_contact_phone_number' => ['required', 'numeric'],
+            'emergency_contact_relationship' => ['required', 'string'],
+
+            'academic_institution' => ['required', 'string'],
+            'start_date' => ['required', 'date'],
+            'end_date' => ['required', 'date'],
+            'university_career' => ['required', 'string'],
+            'degree' => ['required', 'string'],
+            'card_number' => ['required', 'string'],
+
+            'languages' => ['required', 'string'],
+            'language_level' => ['required', 'string'],
+
+            'course' => ['required', 'string'],
+            'specialty_start_date' => ['required', 'date'],
+            'specialty_end_date' => ['required', 'date'],
+            'specialty_academic_institution' => ['required', 'string'],
+            'specialty_level' => ['required', 'string'],
+
+            'technology' => ['required', 'string'],
+            'knowledge_level' => ['required', 'string'],
         ];
     }
     public function messages(): array
     {
         return [
-            'hiring_date.required' => 'La fecha de contratación es obligatoria.',
-            'dni.required' => 'El DNI es obligatorio.',
-            'dni.digits' => 'El DNI debe tener 10 dígitos.',
-            'email.unique' => 'Ya existe un registro con este correo.',
+            'required' => ':attribute es obligatorio.',
+            'string' => 'Eattribute debe ser texto.',
+            'max' => ':attribute no debe exceder los :max caracteres.',
+            'date' => ':attribute debe ser una fecha válida.',
+            'before' => 'La fecha de :attribute debe ser anterior a hoy.',
+            'before_or_equal' => 'La fecha de :attribute debe ser hoy o una anterior.',
+            'email' => ':attribute debe ser un correo electrónico válido.',
+            'numeric' => ':attribute debe ser un número.',
+            'digits_between' => 'El :attribute debe tener entre :min y :max dígitos.',
+            'unique' => 'El valor de :attribute ya está registrado.',
+            'in' => ':attribute debe contener un valor válido.',
+            'regex' => ':attribute tiene un formato inválido.',
+        ];
+    }
+    public function attributes(): array
+    {
+        return [
+            'dni' => 'Número de cedula',
+            'hiring_date' => 'Fecha de contratación',
+            'job_position' => 'Cargo',
+            'first_name' => 'Primer nombre',
+            'middle_name' => 'Segundo nombre',
+            'last_name' => 'Primer apellido',
+            'second_last_name' => 'Segundo apellido',
+            'birthdate' => 'Fecha de nacimiento',
+            'gender' => 'Género',
+            'marital_status' => 'Estado civil',
+            'blood_group' => 'Grupo sanguíneo',
+            'date_of_issue' => 'Fecha de expedición',
+            'place_of_issue' => 'Lugar de expedición',
+            'place_of_birth' => 'Lugar de nacimiento',
+            'phone_number' => 'Teléfono fijo',
+            'cellphone_number' => 'Celular',
+            'email' => 'Correo electrónico',
+            'banking_entity' => 'Entidad bancaria',
+            'account_number' => 'Número de cuenta',
+            'account_type' => 'Tipo de cuenta',
+            'eps' => 'EPS',
+            'pension_fund' => 'Fondo de pensión',
+            'severance_pay_fund' => 'Fondo de cesantías',
+
+            'relationship' => 'Parentesco',
+            'family_data_dni' => 'Número de cedula',
+            'full_name' => 'Nombre',
+            'age' => 'Edad',
+            'famaly_data_gender' => 'Genero',
+            'family_data_birthdate' => 'Fecha de nacimiento',
+
+            'allergies' => 'Alergias',
+            'diseases' => 'Enfermedades',
+            'medications' => 'Medicamentos',
+            'additional_information' => 'Información adicional',
+
+            'emergency_contact_full_name' => 'Nombre',
+            'emergency_contact_phone_number' => 'Teléfono fijo',
+            'emergency_contact_relationship' => 'Parentesco',
+
+            'academic_institution' => 'Institución academica',
+            'start_date' => 'Fecha de inicio',
+            'end_date' => 'Fecha de fin',
+            'university_career' => 'Carrera universitaria',
+            'degree' => 'Grado',
+            'card_number' => 'Numero de tarjeta profesional',
+
+            'languages' => 'Lenguaje',
+            'language_level' => 'Nivel',
+
+            'course' => 'Curso',
+            'specialty_start_date' => 'Fecha de inicio',
+            'specialty_end_date' => 'Fecha de fin',
+            'specialty_academic_institution' => 'Institución academica',
+            'specialty_level' => 'Nivel',
+
+            'technology' => 'Tecnología',
+            'knowledge_level' => 'Nivel',
         ];
     }
 }

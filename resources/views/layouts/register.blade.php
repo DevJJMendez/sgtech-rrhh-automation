@@ -20,14 +20,14 @@
                 <div class="input-row">
                     <div class="input-group input-small">
                         <label for="hiring_date">Fecha de ingreso</label>
-                        <input type="date" id="hiring_date" name="hiring_date" value="{{ old('hiring_date') }}">
+                        <input type="date" name="hiring_date" value="{{ old('hiring_date') }}">
                         @error('hiring_date')
                             <span class="error-message">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="job_position">Cargo / Especialidad</label>
-                        <input type="text" id="job_position" name="job_position" value="{{ old('job_position') }}">
+                        <input type="text" name="job_position" value="{{ old('job_position') }}">
                         @error('job_position')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
@@ -37,15 +37,14 @@
                 <div class="input-row">
                     <div class="input-group input-small">
                         <label for="dni">Número de cédula</label>
-                        <input type="number" id="dni" name="dni" value="{{ old('dni') }}">
+                        <input type="number" name="dni" value="{{ old('dni') }}">
                         @error('dni')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="date_of_issue">Fecha de expedición</label>
-                        <input type="date" id="date_of_issue" name="date_of_issue"
-                            value="{{ old('date_of_issue') }}">
+                        <input type="date" name="date_of_issue" value="{{ old('date_of_issue') }}">
                         @error('date_of_issue')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
@@ -70,7 +69,7 @@
                     </div>
                     <div class="input-group input-small">
                         <label for="middle_name">Segundo Nombre</label>
-                        <input type="text" id="middle_name" name="middle_name" placeholder="Ej. Carlos"
+                        <input type="text" name="middle_name" placeholder="Ej. Carlos"
                             value="{{ old('middle_name') }}">
                         @error('middle_name')
                             <small class="error-message">{{ $message }}</small>
@@ -81,15 +80,14 @@
                 <div class="input-row">
                     <div class="input-group input-small">
                         <label for="last_name">Apellido</label>
-                        <input type="text" id="last_name" name="last_name" value="{{ old('last_name') }}">
+                        <input type="text" name="last_name" value="{{ old('last_name') }}">
                         @error('last_name')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="second_last_name">Segundo Apellido</label>
-                        <input type="text" id="second_last_name" name="second_last_name"
-                            value="{{ old('second_last_name') }}">
+                        <input type="text" name="second_last_name" value="{{ old('second_last_name') }}">
                         @error('second_last_name')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
@@ -99,7 +97,7 @@
                 <div class="input-row">
                     <div class="input-group input-small">
                         <label for="blood_group">Grupo Sanguíneo y RH </label>
-                        <select id="blood_group" name="blood_group">
+                        <select name="blood_group">
                             <option value="">Seleccione</option>
                             <option value="A+" {{ old('blood_group') === 'A+' ? 'selected' : '' }}>A+</option>
                             <option value="A-" {{ old('blood_group') === 'A-' ? 'selected' : '' }}>A-</option>
@@ -116,7 +114,7 @@
                     </div>
                     <div class="input-group input-small">
                         <label for="marital_status">Estado Civil</label>
-                        <select id="marital_status" name="marital_status">
+                        <select name="marital_status">
                             <option value="">Seleccione</option>
                             <option value="single" {{ old('marital_status') === 'single' ? 'selected' : '' }}>Soltero
                             </option>
@@ -151,22 +149,21 @@
                 <div class="input-row">
                     <div class="input-group input-small">
                         <label for="birthdate">Fecha Nacimiento</label>
-                        <input type="date" id="birthdate" name="birthdate" value="{{ old('birthdate') }}">
+                        <input type="date" name="birthdate" value="{{ old('birthdate') }}">
                         @error('birthdate')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="place_of_birth">Lugar De Nacimiento</label>
-                        <input type="text" id="place_of_birth" name="place_of_birth"
-                            value="{{ old('place_of_birth') }}">
+                        <input type="text" name="place_of_birth" value="{{ old('place_of_birth') }}">
                         @error('place_of_birth')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="nationality">Nacionalidad</label>
-                        <input type="text" id="nationality" name="nationality" value="{{ old('nationality') }}">
+                        <input type="text" name="nationality" value="{{ old('nationality') }}">
                         @error('nationality')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
@@ -176,30 +173,28 @@
                 <div class="input-row">
                     <div class="input-group input-small">
                         <label for="address">Dirección</label>
-                        <input type="text" id="address" name="address" value="{{ old('address') }}">
+                        <input type="text" name="address" value="{{ old('address') }}">
                         @error('address')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="phone_number">Teléfono</label>
-                        <input type="text" id="phone_number" name="phone_number"
-                            value="{{ old('phone_number') }}">
+                        <input type="text" name="phone_number" value="{{ old('phone_number') }}">
                         @error('phone_number')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="cellphone_number">Celular</label>
-                        <input type="text" id="cellphone_number" name="cellphone_number"
-                            value="{{ old('cellphone_number') }}">
+                        <input type="text" name="cellphone_number" value="{{ old('cellphone_number') }}">
                         @error('cellphone_number')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="email">Correo electrónico</label>
-                        <input type="text" id="email" name="email" value="{{ old('email') }}">
+                        <input type="text" name="email" value="{{ old('email') }}">
                         @error('email')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
@@ -211,16 +206,14 @@
                     <div class="input-row">
                         <div class="input-group input-small">
                             <label for="banking_entity">Entidad bancaria</label>
-                            <input type="text" id="banking_entity" name="banking_entity"
-                                value="{{ old('banking_entity') }}">
+                            <input type="text" name="banking_entity" value="{{ old('banking_entity') }}">
                             @error('banking_entity')
                                 <small class="error-message">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="input-group input-small">
                             <label for="account_number">Número de cuenta</label>
-                            <input type="text" id="account_number" name="account_number"
-                                value="{{ old('account_number') }}">
+                            <input type="text" name="account_number" value="{{ old('account_number') }}">
                             @error('account_number')
                                 <small class="error-message">{{ $message }}</small>
                             @enderror
@@ -276,8 +269,7 @@
                 <div class="input-row">
                     <div class="input-group input-small">
                         <label for="relationship">Parentesco</label>
-                        <input type="text" id="relationship" name="relationship"
-                            value="{{ old('relationship') }}">
+                        <input type="text" name="relationship" value="{{ old('relationship') }}">
                         @error('relationship')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
@@ -364,36 +356,36 @@
                         <textarea name="additional_information">{{ old('additional_information') }}</textarea>
                     </div>
                 </div>
-            </fieldset>
-            {{-- emergency contact --}}
-            <fieldset class="form-section">
-                <legend>En caso de emergencia llamar a:</legend>
-                <div class="input-row">
-                    <div class="input-group input-small">
-                        <label for="emergency_contact_full_name">Nombre y Apellido</label>
-                        <input type="text" name="emergency_contact_full_name"
-                            value="{{ old('emergency_contact_full_name') }}">
-                        @error('emergency_contact_full_name')
-                            <small class="error-message">{{ $message }}</small>
-                        @enderror
+                {{-- emergency contact --}}
+                <fieldset class="form-section">
+                    <legend>En caso de emergencia llamar a:</legend>
+                    <div class="input-row">
+                        <div class="input-group input-small">
+                            <label for="emergency_contact_full_name">Nombre y Apellido</label>
+                            <input type="text" name="emergency_contact_full_name"
+                                value="{{ old('emergency_contact_full_name') }}">
+                            @error('emergency_contact_full_name')
+                                <small class="error-message">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="input-group input-small">
+                            <label for="emergency_contact_phone_number">Telefono / Celular</label>
+                            <input type="text" name="emergency_contact_phone_number"
+                                value="{{ old('emergency_contact_phone_number') }}">
+                            @error('emergency_contact_phone_number')
+                                <small class="error-message">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="input-group input-small">
+                            <label for="emergency_contact_relationship">Parentesco</label>
+                            <input type="text" name="emergency_contact_relationship"
+                                value="{{ old('emergency_contact_relationship') }}">
+                            @error('emergency_contact_relationship')
+                                <small class="error-message">{{ $message }}</small>
+                            @enderror
+                        </div>
                     </div>
-                    <div class="input-group input-small">
-                        <label for="emergency_contact_phone_number">Telefono / Celular</label>
-                        <input type="text" name="emergency_contact_phone_number"
-                            value="{{ old('emergency_contact_phone_number') }}">
-                        @error('emergency_contact_phone_number')
-                            <small class="error-message">{{ $message }}</small>
-                        @enderror
-                    </div>
-                    <div class="input-group input-small">
-                        <label for="emergency_contact_relationship">Parentesco</label>
-                        <input type="text" name="emergency_contact_relationship"
-                            value="{{ old('emergency_contact_relationship') }}">
-                        @error('emergency_contact_relationship')
-                            <small class="error-message">{{ $message }}</small>
-                        @enderror
-                    </div>
-                </div>
+                </fieldset>
             </fieldset>
             {{-- additional information --}}
             <fieldset class="form-section">
@@ -401,22 +393,21 @@
                 <div class="input-row">
                     <div class="input-group input-small">
                         <label for="academic_institution">Institución</label>
-                        <input type="text" id="academic_institution" name="academic_institution"
-                            value="{{ old('academic_institution') }}">
+                        <input type="text" name="academic_institution" value="{{ old('academic_institution') }}">
                         @error('academic_institution')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="start_date">Fecha de inicio</label>
-                        <input type="date" id="start_date" name="start_date" value="{{ old('start_date') }}">
+                        <input type="date" name="start_date" value="{{ old('start_date') }}">
                         @error('start_date')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="end_date">Fecha fin</label>
-                        <input type="date" id="end_date" name="end_date" value="{{ old('end_date') }}">
+                        <input type="date" name="end_date" value="{{ old('end_date') }}">
                         @error('end_date')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
@@ -425,15 +416,14 @@
                 <div class="input-row">
                     <div class="input-group input-small">
                         <label for="university_career">Carrera</label>
-                        <input type="text" id="university_career" name="university_career"
-                            value="{{ old('university_career') }}">
+                        <input type="text" name="university_career" value="{{ old('university_career') }}">
                         @error('university_career')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
                         <label for="degree">Grado</label>
-                        <input type="text" id="degree" name="degree" value="{{ old('degree') }}">
+                        <input type="text" name="degree" value="{{ old('degree') }}">
                         @error('degree')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
@@ -452,21 +442,24 @@
                     <div class="input-row">
                         <div class="input-group input-small">
                             <label for="specialty_academic_institution">Institución</label>
-                            <input type="text" id="academic_institution" name="specialty_academic_institution">
+                            <input type="text" name="specialty_academic_institution"
+                                value="{{ old('specialty_academic_institution') }}">
                             @error('specialty_academic_institution')
                                 <small class="error-message">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="input-group input-small">
                             <label for="specialty_start_date">Fecha de inicio</label>
-                            <input type="date" id="start_date" name="specialty_start_date">
+                            <input type="date" name="specialty_start_date"
+                                value="{{ old('specialty_start_date') }}">
                             @error('specialty_start_date')
                                 <small class="error-message">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="input-group input-small">
                             <label for="specialty_end_date">Fecha fin</label>
-                            <input type="date" id="end_date" name="specialty_end_date">
+                            <input type="date" name="specialty_end_date"
+                                value="{{ old('specialty_end_date') }}">
                             @error('specialty_end_date')
                                 <small class="error-message">{{ $message }}</small>
                             @enderror
@@ -475,14 +468,15 @@
                     <div class="input-row">
                         <div class="input-group input-small">
                             <label for="course">Curso</label>
-                            <input type="text" id="course" name="course">
+                            <input type="text" name="course" value="{{ old('course') }}">
                             @error('course')
                                 <small class="error-message">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="input-group input-small">
                             <label for="specialty_level">Nivel alcanzado</label>
-                            <input type="text" id="level" name="specialty_level">
+                            <input type="text" id="level" name="specialty_level"
+                                value="{{ old('specialty_level') }}">
                             @error('specialty_level')
                                 <small class="error-message">{{ $message }}</small>
                             @enderror
@@ -494,16 +488,26 @@
                     <div class="input-row">
                         <div class="input-group input-small">
                             <label for="technology">Herramienta y/o tecnologia</label>
-                            <input type="text" id="technology" name="technology">
+                            <input type="text" id="technology" name="technology"
+                                value="{{ old('technology') }}">
                             @error('technology')
                                 <small class="error-message">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="input-group input-small">
                             <label for="knowledge_level">Nivel alcanzado</label>
-                            <select name="knowledge_level" id="">
-                                <option value="">Basico</option>
-                                <option value="">Basico</option>
+                            <select name="knowledge_level">
+                                <option value="">Seleccione</option>
+                                <option value="basic" {{ old('knowledge_level') === 'basic' ? 'selected' : '' }}>
+                                    Basico
+                                </option>
+                                <option value="intermediate"
+                                    {{ old('knowledge_level') === 'intermediate' ? 'selected' : '' }}>
+                                    Intermedio</option>
+                                <option value="advanced"
+                                    {{ old('knowledge_level') === 'advanced' ? 'selected' : '' }}>
+                                    Avanzado
+                                </option>
                             </select>
                             @error('knowledge_level')
                                 <small class="error-message">{{ $message }}</small>
@@ -513,14 +517,25 @@
                     <div class="input-row">
                         <div class="input-group input-small">
                             <label for="languages">Idioma</label>
-                            <input type="text" id="languages" name="languages">
+                            <input type="text" id="languages" name="languages" value="{{ old('languages') }}">
                             @error('languages')
                                 <small class="error-message">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="input-group input-small">
                             <label for="language_level">Nivel alcanzado</label>
-                            <select name="language_level" id="">Básico</select>
+                            <select name="language_level">
+                                <option value="">Seleccione</option>
+                                <option value="basic"{{ old('language_level') === 'basic' ? 'selected' : '' }}>
+                                    Basico</option>
+                                <option
+                                    value="intermediate"{{ old('language_level') === 'intermediate' ? 'selected' : '' }}>
+                                    Intermedio
+                                </option>
+                                <option value="advanced"{{ old('language_level') === 'advanced' ? 'selected' : '' }}>
+                                    Avanzado
+                                </option>
+                            </select>
                             @error('language_level')
                                 <small class="error-message">{{ $message }}</small>
                             @enderror

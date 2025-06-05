@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('fk_personal_data_id');
             $table->foreign('fk_personal_data_id')->references('personal_data_id')->on('personal_data');
             $table->string('technology');
-            $table->string('level'); // basico - intermedio - avanzado
+            $table->enum('level', ['basic', 'intermediate', 'advanced']); // basico - intermedio - avanzado
             $table->timestamps();
         });
     }

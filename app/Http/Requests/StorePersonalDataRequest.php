@@ -68,23 +68,23 @@ class StorePersonalDataRequest extends FormRequest
             'emergency_contact_relationship' => ['required', 'string'],
 
             'academic_institution' => ['required', 'string'],
-            'start_date' => ['required', 'date'],
+            'start_date' => ['required', 'date', 'before:today'],
             'end_date' => ['required', 'date'],
             'university_career' => ['required', 'string'],
             'degree' => ['required', 'string'],
             'card_number' => ['required', 'string'],
 
             'languages' => ['required', 'string'],
-            'language_level' => ['required', 'string'],
+            'language_level' => ['required', 'in:basic,intermediate,advanced'],
 
             'course' => ['required', 'string'],
-            'specialty_start_date' => ['required', 'date'],
+            'specialty_start_date' => ['required', 'date', 'before:today'],
             'specialty_end_date' => ['required', 'date'],
             'specialty_academic_institution' => ['required', 'string'],
             'specialty_level' => ['required', 'string'],
 
             'technology' => ['required', 'string'],
-            'knowledge_level' => ['required', 'string'],
+            'knowledge_level' => ['required', 'in:basic,intermediate,advanced'],
         ];
     }
     public function messages(): array
@@ -94,8 +94,8 @@ class StorePersonalDataRequest extends FormRequest
             'string' => 'Eattribute debe ser texto.',
             'max' => ':attribute no debe exceder los :max caracteres.',
             'date' => ':attribute debe ser una fecha válida.',
-            'before' => 'La fecha de :attribute debe ser anterior a hoy.',
-            'before_or_equal' => 'La fecha de :attribute debe ser hoy o una anterior.',
+            'before' => ':attribute debe ser anterior a hoy.',
+            'before_or_equal' => ':attribute debe ser hoy o una anterior.',
             'email' => ':attribute debe ser un correo electrónico válido.',
             'numeric' => ':attribute debe ser un número.',
             'digits_between' => 'El :attribute debe tener entre :min y :max dígitos.',
@@ -154,9 +154,6 @@ class StorePersonalDataRequest extends FormRequest
             'degree' => 'Grado',
             'card_number' => 'Numero de tarjeta profesional',
 
-            'languages' => 'Lenguaje',
-            'language_level' => 'Nivel',
-
             'course' => 'Curso',
             'specialty_start_date' => 'Fecha de inicio',
             'specialty_end_date' => 'Fecha de fin',
@@ -165,6 +162,9 @@ class StorePersonalDataRequest extends FormRequest
 
             'technology' => 'Tecnología',
             'knowledge_level' => 'Nivel',
+
+            'languages' => 'Lenguaje',
+            'language_level' => 'Nivel',
         ];
     }
 }

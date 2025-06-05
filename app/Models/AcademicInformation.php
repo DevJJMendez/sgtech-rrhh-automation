@@ -10,6 +10,7 @@ class AcademicInformation extends Model
 {
     use HasFactory;
     protected $primaryKey = 'academic_information_id';
+    protected $guarded = [];
     public function personaldata(): BelongsTo
     {
         return $this->belongsTo(PersonalData::class, 'fk_personal_data_id', 'personal_data_id');

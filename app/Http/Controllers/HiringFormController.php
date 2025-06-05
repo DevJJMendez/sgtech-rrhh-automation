@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePersonalDataRequest;
+use App\Models\AcademicInformation;
 use App\Models\EmergencyContact;
 use App\Models\FamilyData;
 use App\Models\HealthData;
 use App\Models\InvitationLink;
+use App\Models\ItKnowledge;
+use App\Models\Language;
 use App\Models\PersonalData;
+use App\Models\Specialty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -79,6 +83,33 @@ class HiringFormController extends Controller
                 'full_name' => $request->emergency_contact_full_name,
                 'phone_number' => $request->emergency_contact_phone_number,
                 'relationship' => $request->emergency_contact_relationship,
+            ]);
+            $academicInformation = AcademicInformation::create([
+                'fk_personal_data_id' => $personalData->personal_data_id,
+                'academic_institution' => $request->academic_institution,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'university_career' => $request->university_career,
+                'degree' => $request->degree,
+                'card_number' => $request->card_number,
+            ]);
+            $specialty = Specialty::create([
+                'fk_personal_data_id' => $personalData->personal_data_id,
+                'course' => $request->course,
+                'start_date' => $request->specialty_start_date,
+                'end_date' => $request->specialty_end_date,
+                'academic_institution' => $request->specialty_academic_institution,
+                'level' => $request->specialty_level,
+            ]);
+            $itKnowledge = ItKnowledge::create([
+                'fk_personal_data_id' => $personalData->personal_data_id,
+                'technology' => $request->technology,
+                'level' => $request->knowledge_level,
+            ]);
+            $language = Language::create([
+                'fk_personal_data_id' => $personalData->personal_data_id,
+                'language' => $request->languages,
+                'level' => $request->language_level,
             ]);
             DB::commit();
             // dd($request->all());

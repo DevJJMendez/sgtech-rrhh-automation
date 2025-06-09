@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <p>Hola 👋</p>
+    <p>Hola 👋 Aprendiz</p>
 
     <p>Bienvenido al proceso de contratación.</p>
 

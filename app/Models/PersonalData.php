@@ -17,19 +17,19 @@ class PersonalData extends Model
         'birthdate' => 'date',
         'date_of_issue' => 'date',
     ];
-    public function academicinformation(): HasOne
+    public function academicInformation(): HasOne
     {
         return $this->hasOne(AcademicInformation::class, 'fk_personal_data_id', 'personal_data_id');
     }
-    public function familydata(): HasMany
+    public function familyData(): HasMany
     {
         return $this->hasMany(FamilyData::class, 'fk_personal_data_id', 'personal_data_id');
     }
-    public function healthdata(): HasMany
+    public function healthData(): HasMany
     {
         return $this->hasMany(HealthData::class, 'fk_personal_data_id', 'personal_data_id');
     }
-    public function emergencycontact(): HasMany
+    public function emergencyContact(): HasMany
     {
         return $this->hasMany(EmergencyContact::class, 'fk_personal_data_id', 'personal_data_id');
     }

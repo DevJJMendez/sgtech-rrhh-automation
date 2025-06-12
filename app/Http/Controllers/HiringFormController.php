@@ -12,6 +12,7 @@ use App\Models\ItKnowledge;
 use App\Models\Language;
 use App\Models\PersonalData;
 use App\Models\Specialty;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -121,5 +122,19 @@ class HiringFormController extends Controller
             notify()->error('Ha ocurrido un error');
             return redirect()->back()->withInput();
         }
+    }
+    public function showTable()
+    {
+        $users = PersonalData::all();
+        // dd($users);
+        return view('components.employees-table', compact('users'));
+    }
+    public function getEmployee($id)
+    {
+        $user = PersonalData::find($id);
+        return response()->json([
+            'success' => true,
+            'data' => $user,
+        ]);
     }
 }

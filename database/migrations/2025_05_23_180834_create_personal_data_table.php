@@ -10,6 +10,7 @@ return new class extends Migration {
         Schema::create('personal_data', function (Blueprint $table) {
             $table->unsignedBigInteger('personal_data_id', true);
             $table->date('hiring_date');
+            $table->string('role', 50)->default('colaborador');
             $table->string('job_position', 50);
             $table->string('first_name', 30);
             $table->string('middle_name', 30)->nullable();

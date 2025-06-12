@@ -1,0 +1,92 @@
+.table-wrapper {
+    overflow-x: auto;
+    margin: 2rem 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.candidate-table {
+    width: 100%;
+    min-width: 1000px; /* Fuerza el scroll horizontal si hay muchas columnas */
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.candidate-table thead {
+    background-color: #1f2937;
+    color: #ffffff;
+}
+
+.candidate-table th,
+.candidate-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap; /* evita que el texto se divida verticalmente */
+}
+
+.candidate-table tbody tr:hover {
+    background-color: #f3f4f6;
+}
+
+.status {
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.status.completed {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status.pending {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.btn-view,
+.btn-delete {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 0.3rem;
+}
+
+.btn-view {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #ef4444;
+    color: white;
+}
+/* modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+}
+
+.hidden {
+  display: none;
+}

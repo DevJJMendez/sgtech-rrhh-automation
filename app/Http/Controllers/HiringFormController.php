@@ -131,7 +131,29 @@ class HiringFormController extends Controller
     }
     public function getEmployee($id)
     {
-        $user = PersonalData::find($id);
+        $user = PersonalData::with([
+            'academicInformation' => function ($query) {
+                $query->select('academic_information_id', 'fk_personal_data_id', 'academic_institution', 'start_date', 'end_date', 'university_career', 'degree', 'card_number');
+            },
+            'familyData' => function ($query) {
+                $query->select('family_data_id', 'fk_personal_data_id', 'relationship', 'full_name', 'gender', 'age', 'birthdate', 'dni');
+            },
+            'healthData' => function ($query) {
+                $query->select('health_data_id', 'fk_personal_data_id', 'allergies', 'diseases', 'medications', 'additional_information');
+            },
+            'emergencyContact' => function ($query) {
+                $query->select('emergency_contact_id', 'fk_personal_data_id', 'full_name', 'phone_number', 'relationship');
+            },
+            'languages' => function ($query) {
+                $query->select('language_id', 'fk_personal_data_id', 'language', 'level');
+            },
+            'itKnowledge' => function ($query) {
+                $query->select('itknowledge_id', 'fk_personal_data_id', 'technology', 'level');
+            },
+            'specialties' => function ($query) {
+                $query->select('specialty_id', 'fk_personal_data_id', 'course', 'start_date', 'end_date', 'academic_institution', 'level');
+            },
+        ])->findOrFail($id);
         return response()->json([
             'success' => true,
             'data' => $user,

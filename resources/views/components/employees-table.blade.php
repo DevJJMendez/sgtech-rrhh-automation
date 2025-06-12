@@ -73,8 +73,69 @@
                         if (data.success) {
                             const user = data.data;
                             const content = `
-                        <p><strong>Nombre:</strong> ${user.first_name}</p>                       
-                    `;
+                            <div class="modal-flex-container">
+                             <section class="modal-section">
+                              <h3>Información Personal</h3>
+                                <ul>
+                                    <li><strong>Nombre:</strong> ${user.first_name ?? 'No disponible'}</li>
+                                    <li><strong>Dirección:</strong> ${user.address ?? 'No disponible'}</li>
+                                    <li><strong>Teléfono:</strong> ${user.phone_number ?? 'No disponible'}</li>
+                                    <li><strong>Fecha de nacimiento:</strong> ${user.birthdate ?? 'No disponible'}</li>
+                                </ul>
+                              </section>
+                       
+                               <section class="modal-section">
+                                   <h3>Información Académica</h3>
+                                   <ul>
+                                       <li><strong>Institución:</strong> ${user.academic_information?.academic_institution ?? 'No disponible'}</li>
+                                       <li><strong>Carrera:</strong> ${user.academic_information?.university_career ?? 'No disponible'}</li>
+                                       <li><strong>Título:</strong> ${user.academic_information?.degree ?? 'No disponible'}</li>
+                                       <li><strong>Fecha de inicio:</strong> ${user.academic_information?.start_date ?? 'No disponible'}</li>
+                                       <li><strong>Fecha de fin:</strong> ${user.academic_information?.end_date ?? 'No disponible'}</li>
+                                   </ul>
+                               </section>
+                               <section class="modal-section">
+                                   <h3>Información Académica</h3>
+                                   <ul>
+                                       <li><strong>Institución:</strong> ${user.academic_information?.academic_institution ?? 'No disponible'}</li>
+                                       <li><strong>Carrera:</strong> ${user.academic_information?.university_career ?? 'No disponible'}</li>
+                                       <li><strong>Título:</strong> ${user.academic_information?.degree ?? 'No disponible'}</li>
+                                       <li><strong>Fecha de inicio:</strong> ${user.academic_information?.start_date ?? 'No disponible'}</li>
+                                       <li><strong>Fecha de fin:</strong> ${user.academic_information?.end_date ?? 'No disponible'}</li>
+                                   </ul>
+                               </section>
+                               <section class="modal-section">
+                                   <h3>Información Académica</h3>
+                                   <ul>
+                                       <li><strong>Institución:</strong> ${user.academic_information?.academic_institution ?? 'No disponible'}</li>
+                                       <li><strong>Carrera:</strong> ${user.academic_information?.university_career ?? 'No disponible'}</li>
+                                       <li><strong>Título:</strong> ${user.academic_information?.degree ?? 'No disponible'}</li>
+                                       <li><strong>Fecha de inicio:</strong> ${user.academic_information?.start_date ?? 'No disponible'}</li>
+                                       <li><strong>Fecha de fin:</strong> ${user.academic_information?.end_date ?? 'No disponible'}</li>
+                                   </ul>
+                               </section>
+                               <section class="modal-section">
+                                   <h3>Información Académica</h3>
+                                   <ul>
+                                       <li><strong>Institución:</strong> ${user.academic_information?.academic_institution ?? 'No disponible'}</li>
+                                       <li><strong>Carrera:</strong> ${user.academic_information?.university_career ?? 'No disponible'}</li>
+                                       <li><strong>Título:</strong> ${user.academic_information?.degree ?? 'No disponible'}</li>
+                                       <li><strong>Fecha de inicio:</strong> ${user.academic_information?.start_date ?? 'No disponible'}</li>
+                                       <li><strong>Fecha de fin:</strong> ${user.academic_information?.end_date ?? 'No disponible'}</li>
+                                   </ul>
+                               </section>
+                               <section class="modal-section">
+                                   <h3>Información Académica</h3>
+                                   <ul>
+                                       <li><strong>Institución:</strong> ${user.academic_information?.academic_institution ?? 'No disponible'}</li>
+                                       <li><strong>Carrera:</strong> ${user.academic_information?.university_career ?? 'No disponible'}</li>
+                                       <li><strong>Título:</strong> ${user.academic_information?.degree ?? 'No disponible'}</li>
+                                       <li><strong>Fecha de inicio:</strong> ${user.academic_information?.start_date ?? 'No disponible'}</li>
+                                       <li><strong>Fecha de fin:</strong> ${user.academic_information?.end_date ?? 'No disponible'}</li>
+                                   </ul>
+                               </section>
+                             </div>
+                        `;
 
                             document.getElementById('user-detail-content').innerHTML = content;
                             document.getElementById('userDetailModal').classList.remove('hidden');

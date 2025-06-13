@@ -126,7 +126,6 @@ class HiringFormController extends Controller
     public function showTable()
     {
         $users = PersonalData::all();
-        // dd($users);
         return view('components.employees-table', compact('users'));
     }
     public function getEmployee($id)

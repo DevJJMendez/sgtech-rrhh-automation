@@ -21,28 +21,28 @@ class PersonalData extends Model
     {
         return $this->hasOne(AcademicInformation::class, 'fk_personal_data_id', 'personal_data_id');
     }
-    public function familyData(): HasMany
+    public function familyData(): HasOne
     {
-        return $this->hasMany(FamilyData::class, 'fk_personal_data_id', 'personal_data_id');
+        return $this->hasOne(FamilyData::class, 'fk_personal_data_id', 'personal_data_id');
     }
-    public function healthData(): HasMany
+    public function healthData(): HasOne
     {
-        return $this->hasMany(HealthData::class, 'fk_personal_data_id', 'personal_data_id');
+        return $this->hasOne(HealthData::class, 'fk_personal_data_id', 'personal_data_id');
     }
-    public function emergencyContact(): HasMany
+    public function emergencyContact(): HasOne
     {
-        return $this->hasMany(EmergencyContact::class, 'fk_personal_data_id', 'personal_data_id');
+        return $this->hasOne(EmergencyContact::class, 'fk_personal_data_id', 'personal_data_id');
     }
-    public function languages(): HasMany
+    public function languages(): HasOne
     {
-        return $this->hasMany(Language::class, 'fk_personal_data_id', 'personal_data_id');
+        return $this->hasOne(Language::class, 'fk_personal_data_id', 'personal_data_id');
     }
-    public function itKnowledge()
+    public function itKnowledge(): HasOne
     {
-        return $this->hasMany(ItKnowledge::class, 'fk_personal_data_id', 'personal_data_id');
+        return $this->hasOne(ItKnowledge::class, 'fk_personal_data_id', 'personal_data_id');
     }
-    public function specialties()
+    public function specialties(): HasOne
     {
-        return $this->hasMany(Specialty::class, 'fk_personal_data_id', 'personal_data_id');
+        return $this->hasOne(Specialty::class, 'fk_personal_data_id', 'personal_data_id');
     }
 }

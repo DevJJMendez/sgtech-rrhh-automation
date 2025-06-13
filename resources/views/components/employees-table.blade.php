@@ -17,8 +17,7 @@
             <tbody>
                 @foreach ($users as $user)
                     <tr>
-                        {{-- <td>{{ $user->dni }}</td> --}}
-                        <td>{{ $user->personal_data_id }}</td>
+                        <td>{{ $user->dni }}</td>
                         <td colspan="2">
                             {{ $user->first_name }}
                             {{ $user->last_name }}

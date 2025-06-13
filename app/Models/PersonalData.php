@@ -12,11 +12,11 @@ class PersonalData extends Model
     use HasFactory;
     protected $primaryKey = 'personal_data_id';
     protected $guarded = [];
-    protected $casts = [
-        'hiring_date' => 'date',
-        'birthdate' => 'date',
-        'date_of_issue' => 'date',
-    ];
+    // protected $casts = [
+    //     'hiring_date' => 'date',
+    //     'birthdate' => 'date',
+    //     'date_of_issue' => 'date',
+    // ];
     public function academicInformation(): HasOne
     {
         return $this->hasOne(AcademicInformation::class, 'fk_personal_data_id', 'personal_data_id');

@@ -44,7 +44,6 @@ class SendWelcomeEmailController extends Controller
             Log::error("Error al enviar correo de bienvenida: {$exception->getMessage()}");
             notify()->error("Ocurrió un error al enviar el correo. {$exception->getMessage()}", 'Error');
             return redirect()->back()->withInput();
-
         }
     }
 }

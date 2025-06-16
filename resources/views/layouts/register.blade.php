@@ -11,6 +11,9 @@
 </head>
 
 <body>
+    {{-- @if ($inviat)
+        
+    @endif --}}
     <div class="form-container">
         <form action="{{ route('hiring.post') }}" method="POST">
             @csrf

@@ -8,7 +8,7 @@
                 </li>
             </div>
             <li><a href="{{ route('employees.table') }}" style="color:white;">Empleados</a></li>
-            <li><a href="#" style="color:white;">Documentos</a></li>
+            <li><a href="{{ route('files.form') }}" style="color:white;">Files Form</a></li>
             <li><a href="{{ route('register.form') }}" style="color:white;">Formulario de contratacion</a></li>
         </ul>
     </nav>

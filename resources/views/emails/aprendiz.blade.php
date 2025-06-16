@@ -7,7 +7,11 @@
 </head>
 
 <body>
-    <p>Hola 👋 Aprendiz</p>
+    <p>Hola 👋 {{ $invitationLink->id }}</p>
+    <p>Hola 👋 {{ $invitationLink->fk_collaborator_role_id }}</p>
+
+    <p>Hola 👋 {{ $invitationLink->collaboratorRole->name }}</p>
+    <p>Hola 👋 {{ $invitationLink->collaboratorRole->collaborator_role_id }}</p>
 
     <p>Bienvenido al proceso de contratación.</p>
 

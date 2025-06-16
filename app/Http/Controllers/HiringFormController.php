@@ -25,11 +25,7 @@ class HiringFormController extends Controller
         if ($invitation->expires_at->isPast()) {
             abort(410, 'Este enlace ha expirado.');
         }
-        return view('layouts.register', );
-    }
-    public function index()
-    {
-        return view('layouts.register', );
+        return view('layouts.register', compact('invitation'));
     }
     public function storePersonalData(StorePersonalDataRequest $request)
     {

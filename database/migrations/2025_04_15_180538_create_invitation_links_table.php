@@ -8,7 +8,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('invitation_links', function (Blueprint $table) {
-            $table->uuid();
+            $table->unsignedBigInteger('id', true);
+            $table->uuid('uuid')->unique();
             $table->string('email');
             $table->unsignedTinyInteger('fk_collaborator_role_id');
             $table->foreign('fk_collaborator_role_id')->references('collaborator_role_id')->on('collaborator_roles');

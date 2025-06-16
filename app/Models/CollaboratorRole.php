@@ -12,6 +12,6 @@ class CollaboratorRole extends Model
     protected $guarded = [];
     public function invitationLink()
     {
-        return $this->hasOne(InvitationLink::class, 'fk_collaborator_role_id');
+        return $this->hasOne(InvitationLink::class, 'fk_collaborator_role_id', 'collaborator_role_id');
     }
 }

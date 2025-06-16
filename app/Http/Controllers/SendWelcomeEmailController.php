@@ -33,11 +33,12 @@ class SendWelcomeEmailController extends Controller
                 'expires_at' => $expiresAt
             ]);
             $signedURL = URL::temporarySignedRoute(
-                'register.form',
+                'hiring.form',
                 now()->addDays(2),
                 ['invitation' => $uuid]
             );
-            Mail::to($email)->queue(new WelcomeEmail($invitationLink->fk_collaborator_role_id, $signedURL));
+            $invitationLink->load('collaboratorRole');
+            Mail::to($email)->queue(new WelcomeEmail($invitationLink, $signedURL));
             notify()->success('El correo fue enviado correctamente.', 'Éxito');
             return redirect()->back();
         } catch (\Throwable $exception) {

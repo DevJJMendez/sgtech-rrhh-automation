@@ -15,10 +15,12 @@ class WelcomeEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
     public $invitationLink;
+    public $role_id;
     public $signedURL;
-    public function __construct($invitationLink, $signedURL)
+    public function __construct(InvitationLink $invitationLink, $signedURL)
     {
         $this->invitationLink = $invitationLink;
+        $this->role_id = $invitationLink->fk_collaborator_role_id;
         $this->signedURL = $signedURL;
     }
 
@@ -30,7 +32,7 @@ class WelcomeEmail extends Mailable implements ShouldQueue
     }
     public function content(): Content
     {
-        $roleView = match ($this->invitationLink) {
+        $roleView = match ($this->role_id) {
             '1' => 'emails.colaborador',
             '2' => 'emails.aprendiz',
             '3' => 'emails.freelancer',

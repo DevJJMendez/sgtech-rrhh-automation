@@ -11,9 +11,13 @@
 </head>
 
 <body>
-    {{-- @if ($inviat)
-        
-    @endif --}}
+    @if ($invitation->collaboratorRole->name === 'Freelancer')
+        {{ $invitation->collaboratorRole->name }}
+    @elseif ($invitation->collaboratorRole->name === 'Aprendiz')
+        {{ $invitation->collaboratorRole->name }}
+    @elseif ($invitation->collaboratorRole->name === 'Colaborador')
+        {{ $invitation->collaboratorRole->name }}
+    @endif
     <div class="form-container">
         <form action="{{ route('hiring.post') }}" method="POST">
             @csrf

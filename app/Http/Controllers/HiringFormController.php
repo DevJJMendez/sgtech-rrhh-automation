@@ -12,10 +12,8 @@ use App\Models\ItKnowledge;
 use App\Models\Language;
 use App\Models\PersonalData;
 use App\Models\Specialty;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
+
 
 class HiringFormController extends Controller
 {

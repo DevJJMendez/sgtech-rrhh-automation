@@ -106,6 +106,17 @@ class HiringFormController extends Controller
                 'language' => $request->languages,
                 'level' => $request->language_level,
             ]);
+            if ($request->hasFile('documents')) {
+                # code...
+                foreach ($request->file('documents') as $documentName => $file) {
+                    # code...
+                    $path = $file->storeAs(
+                        "documents/{$personalData->first_name}", // Carpeta por usuario
+                        "{$documentName}." . $file->getClientOriginalExtension(), // Renombra
+                        'public' // Usa el disco "public"
+                    );
+                }
+            }
             DB::commit();
             // dd($request->all());
             notify()->success('Datos registrados correctamente');

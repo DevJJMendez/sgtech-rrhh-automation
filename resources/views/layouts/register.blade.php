@@ -12,7 +12,7 @@
 
 <body>
     <div class="form-container">
-        <form action="{{ route('hiring.post') }}" method="POST">
+        <form action="{{ route('hiring.post') }}" enctype="multipart/form-data" method="POST">
             @csrf
             <fieldset class="form-section">
                 <legend>Datos Personales</legend>

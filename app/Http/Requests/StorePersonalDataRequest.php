@@ -39,8 +39,8 @@ class StorePersonalDataRequest extends FormRequest
             'place_of_issue' => ['required', 'string'],
             'nationality' => ['required', 'string'],
             'address' => ['required', 'string'],
-            'phone_number' => ['required', 'numeric'],
-            'cellphone_number' => ['required', 'numeric'],
+            'phone_number' => ['required', 'string'],
+            'cellphone_number' => ['required', 'string'],
             'email' => ['required', 'email'],
             'banking_entity' => ['required', 'string'],
             'account_number' => ['required', 'string'],
@@ -64,7 +64,7 @@ class StorePersonalDataRequest extends FormRequest
             'additional_information' => ['required', 'string'],
 
             'emergency_contact_full_name' => ['required', 'string'],
-            'emergency_contact_phone_number' => ['required', 'numeric'],
+            'emergency_contact_phone_number' => ['required', 'string'],
             'emergency_contact_relationship' => ['required', 'string'],
 
             'academic_institution' => ['required', 'string'],

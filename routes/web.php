@@ -24,3 +24,7 @@ Route::group(
         Route::get('/enviar-email', [SendWelcomeEmailController::class, 'index'])->name('send');
     }
 );
+Route::get('documents', function () {
+    $documents = PersonalData::with('uploadedDocuments')->get();
+    return response()->json(['data' => $documents]);
+});

@@ -12,6 +12,7 @@ use App\Models\ItKnowledge;
 use App\Models\Language;
 use App\Models\PersonalData;
 use App\Models\Specialty;
+use App\Models\UploadedDocument;
 use Illuminate\Support\Facades\DB;
 
 
@@ -115,6 +116,12 @@ class HiringFormController extends Controller
                         "{$personalData->first_name}.{$documentName}." . $file->getClientOriginalExtension(), // Renombra
                         'public' // Usa el disco "public"
                     );
+                    UploadedDocument::create([
+                        'fk_personal_data_id' => $personalData->personal_data_id, // o $candidate->id
+                        'label' => 'Documento sin nombre',
+                        'original_name' => $file->getClientOriginalName(),
+                        'path' => $path,
+                    ]);
                 }
             }
             DB::commit();

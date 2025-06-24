@@ -14,7 +14,7 @@ use App\Models\PersonalData;
 use App\Models\Specialty;
 use App\Models\UploadedDocument;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Storage;
 
 class HiringFormController extends Controller
 {
@@ -113,7 +113,7 @@ class HiringFormController extends Controller
                     # code...
                     $path = $file->storeAs(
                         "documents/{$personalData->first_name}", // Carpeta por usuario
-                        "{$personalData->first_name}.{$documentName}." . $file->getClientOriginalExtension(), // Renombra
+                        "{$personalData->first_name}-{$personalData->last_name}-{$documentName}." . $file->getClientOriginalExtension(), // Renombra
                         'public' // Usa el disco "public"
                     );
                     UploadedDocument::create([
@@ -139,6 +139,14 @@ class HiringFormController extends Controller
     {
         $users = PersonalData::all();
         return view('components.employees-table', compact('users'));
+    }
+    public function show(UploadedDocument $document)
+    {
+        $documentId = UploadedDocument::findOrFail($document);
+        if (!Storage::exists($documentId->path)) {
+            abort(404, 'Archivo no encontrado');
+        }
+        return Storage::response($documentId->path, $documentId->original_name);
     }
     public function getEmployee($id)
     {

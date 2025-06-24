@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class UploadedDocument extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'updloaded_document_id';
+    protected $primaryKey = 'uploaded_document_id';
+    protected $keyType = 'int';
     protected $guarded = [];
     public function personalData(): BelongsTo
     {

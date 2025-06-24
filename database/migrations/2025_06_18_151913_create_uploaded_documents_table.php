@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('uploaded_documents', function (Blueprint $table) {
-            $table->unsignedBigInteger('updloaded_document_id', true);
+            $table->unsignedBigInteger('uploaded_document_id', true);
             $table->unsignedBigInteger('fk_personal_data_id');
             $table->foreign('fk_personal_data_id')->references('personal_data_id')->on('personal_data');
             $table->string('label');

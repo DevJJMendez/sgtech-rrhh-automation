@@ -1,5 +1,6 @@
 export function sidebarNavigation(){
 document.addEventListener('DOMContentLoaded', () => {
+    setActiveLink(location.pathname);
     document.querySelectorAll('.sidebar a').forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
@@ -15,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (newContent) {
                         document.querySelector('#content').innerHTML = newContent;
                         history.pushState(null, '', url);
+                        // setActiveLink(new URL(url).pathname);
+                        
                         // actualizar clase "active" en el sidebar
                         document.querySelectorAll('.sidebar a').forEach(link => {
                             link.classList.remove('active');
@@ -52,4 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     });
 });
+}
+export function setActiveLink(pathname) {
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.classList.remove('active');
+
+        const linkPath = new URL(link.href, location.origin).pathname;
+
+        // Solo activa si coincide exactamente
+        if (linkPath === pathname) {
+            link.classList.add('active');
+        }
+    });
 }

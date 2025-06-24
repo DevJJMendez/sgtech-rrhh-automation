@@ -5,11 +5,13 @@
     <nav class="sidebar-nav">
         <ul class="sidebar-menu">
             <li>
-                <a href="{{ route('send') }}" class="sidebar-link">Enviar
-                    Email</a>
+                <a href="{{ route('send') }}" class="sidebar-link">Enviar Email</a>
             </li>
             <li>
                 <a href="{{ route('employees.table') }}" class="sidebar-link">Empleados</a>
+            </li>
+            <li>
+                <a href="{{ route('employees.table') }}" class="sidebar-link">nueva ruta</a>
             </li>
         </ul>
     </nav>

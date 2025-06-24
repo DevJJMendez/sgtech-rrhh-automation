@@ -1,13 +1,14 @@
-// import toastr from 'toastr';
-// import 'toastr/build/toastr.min.css';
+import toastr from 'toastr';
+import 'toastr/build/toastr.min.css';
 
-// toastr.options = {
-//   "closeButton": true,
-//   "progressBar": true,
-//   "positionClass": "toast-top-right",
-//   "timeOut": "3000",
-// };
+toastr.options = {
+  "closeButton": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "timeOut": "3000",
+};
 
+export function sendEmail(){
 document.getElementById('emailForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -40,3 +41,5 @@ document.getElementById('emailForm').addEventListener('submit', function (e) {
         toastr.error("Error inesperado. Intenta nuevamente.");
     });
 });
+
+}

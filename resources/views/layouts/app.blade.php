@@ -8,7 +8,6 @@
     <title>Document</title>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
-    @notifyCss
 </head>
 
 <body>
@@ -18,8 +17,6 @@
             @yield('content')
         </main>
     </div>
-    <x-notify::notify />
-    @notifyJs
 </body>
 
 </html>

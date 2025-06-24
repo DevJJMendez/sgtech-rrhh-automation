@@ -1,39 +1,42 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('emailForm');
+import toastr from 'toastr';
+import 'toastr/build/toastr.min.css';
+
+toastr.options = {
+  "closeButton": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "timeOut": "3000",
+};
+
+document.getElementById('emailForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
     const spinner = document.getElementById('spinner');
+    spinner.classList.remove('hidden');
 
-    form.addEventListener('submit', function (e) {
-        e.preventDefault(); // evita recarga
-        spinner.classList.remove('hidden');
-
-        const formData = new FormData(form);
-
-        fetch(form.action, {
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-                'Accept': 'application/json',
-            },
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            spinner.classList.add('hidden');
-
-            if (data.success) {
-                notify('El correo fue enviado correctamente.', 'success');
-                form.reset();
-            } else {
-                notify(data.message || 'Ocurrió un error.', 'error');
-            }
-        })
-        .catch(error => {
-            spinner.classList.add('hidden');
-            notify('Error del servidor: ' + error.message, 'error');
-        });
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'Accept': 'application/json',
+        },
+    })
+    .then(res => res.json())
+    .then(data => {
+        spinner.classList.add('hidden');
+        if (data.success) {
+            toastr.success("Correo enviado correctamente");
+            form.reset();
+        } else {
+            toastr.error("Hubo un error al enviar el correo.");
+        }
+    })
+    .catch(error => {
+        spinner.classList.add('hidden');
+        console.error(error);
+        toastr.error("Error inesperado. Intenta nuevamente.");
     });
-
-    function notify(message, type = 'info') {
-        window.Notify[type]?.(message, 'Notificación') || alert(message);
-    }
 });

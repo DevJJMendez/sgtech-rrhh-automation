@@ -39,23 +39,16 @@ class SendWelcomeEmailController extends Controller
             );
             $invitationLink->load('collaboratorRole');
             Mail::to($email)->queue(new WelcomeEmail($invitationLink, $signedURL));
-            notify()->success('El correo fue enviado correctamente.', 'Éxito');
-            if ($sendWelcomeEmailRequest->ajax()) {
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Correo enviado correctamente'
-                ]);
-            }
-            return redirect()->back();
+            return response()->json([
+                'success' => true,
+                'message' => 'Correo enviado correctamente.',
+            ]);
         } catch (\Throwable $exception) {
             Log::error("Error al enviar correo de bienvenida: {$exception->getMessage()}");
-            notify()->error("Ocurrió un error al enviar el correo. {$exception->getMessage()}", 'Error');
-            if ($sendWelcomeEmailRequest->ajax()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Error: ' . $exception->getMessage(),
-                ], 500);
-            }
+            return response()->json([
+                'success' => false,
+                'message' => 'Ocurrió un error al enviar el correo.',
+            ], 500);
         }
     }
 }

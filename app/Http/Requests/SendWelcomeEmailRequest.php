@@ -22,14 +22,14 @@ class SendWelcomeEmailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required'
+            'email' => ['required', 'email']
         ];
     }
     public function messages()
     {
         return [
 
-            // 'email.email' => 'debe ser un correo valido',
+            'email.email' => 'debe ser un correo valido',
             'email.required' => 'debe proporcionar un correo electronico',
         ];
     }

@@ -45,4 +45,8 @@ class PersonalData extends Model
     {
         return $this->hasOne(Specialty::class, 'fk_personal_data_id', 'personal_data_id');
     }
+    public function uploadedDocuments(): HasMany
+    {
+        return $this->hasMany(UploadedDocument::class, 'fk_personal_data_id', 'personal_data_id');
+    }
 }

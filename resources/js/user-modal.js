@@ -24,6 +24,13 @@ document.addEventListener('keydown', (e) => {
                             const user = data.data;
                             const content = `
                             <div class="modal-flex-container">
+                            <section class="modal-section">
+                                   <h3>Documentos</h3>
+                                   <ul>
+                                       <li><strong>Label:</strong> ${user.uploaded_documents?.label ?? 'No disponible'}</li>
+                                       
+                                   </ul>
+                               </section>
                              <section class="modal-section">
                               <h3>Información Personal</h3>
                                 <ul>

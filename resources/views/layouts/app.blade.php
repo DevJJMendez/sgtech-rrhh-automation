@@ -14,7 +14,7 @@
 <body>
     <div class="layout">
         @include('components.sidebar')
-        <main class="content-area">
+        <main class="content-area" id="content">
             @yield('content')
         </main>
     </div>

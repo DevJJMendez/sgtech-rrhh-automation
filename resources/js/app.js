@@ -7,7 +7,9 @@ import 'toastr/build/toastr.min.css';
 import { setupUserModal } from './user-modal';
 import { sidebarNavigation } from './sidebar-navigation';
 
-setupUserModal();
+if (document.getElementById('userDetailModal')) {
+  setupUserModal();
+}
 sidebarNavigation();
 
 toastr.options = {

@@ -1,4 +1,5 @@
 export function setupUserModal(){
+    
 document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 document.getElementById('userDetailModal').classList.add('hidden');

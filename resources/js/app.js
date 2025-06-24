@@ -1,8 +1,8 @@
 import './bootstrap';
-// import './sidebar-navigation';
+import './email-form';
 
 import { setupUserModal } from './user-modal';
-import { setActiveLink, sidebarNavigation } from './sidebar-navigation';
+import { sidebarNavigation } from './sidebar-navigation';
 
 setupUserModal();
 sidebarNavigation();

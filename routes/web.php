@@ -17,12 +17,13 @@ Route::post('/register', [HiringFormController::class, 'storePersonalData'])->na
 Route::get('/employees/', [HiringFormController::class, 'showTable'])->name('employees.table');
 Route::get('/employees/{id}', [HiringFormController::class, 'getEmployee'])->name('get.employee.data');
 
-Route::post('welcome-email', [SendWelcomeEmailController::class, 'sendWelcomeEmail'])->name('welcome-email');
+
 
 Route::group(
     ['prefix' => 'views'],
     function () {
         Route::get('/enviar-email', [SendWelcomeEmailController::class, 'index'])->name('send');
+        Route::post('welcome-email', [SendWelcomeEmailController::class, 'sendWelcomeEmail'])->name('welcome-email');
     }
 );
 Route::get('documents', function () {

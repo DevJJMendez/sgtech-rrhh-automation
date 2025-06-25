@@ -29,8 +29,8 @@ class SendWelcomeEmailRequest extends FormRequest
     {
         return [
 
-            'email.email' => 'debe ser un correo valido',
-            'email.required' => 'debe proporcionar un correo electronico',
+            'email.email' => 'Ingresa un correo valido',
+            'email.required' => 'Debes proporcionar un correo electronico',
         ];
     }
 }

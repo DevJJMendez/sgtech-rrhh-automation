@@ -15,8 +15,10 @@
                 @endforelse
             </select>
             <button class="button-confirm" type="submit">
-                Enviar →
-                <span id="spinner" class="spinner hidden"></span>
+                Enviar
+                <div>
+                    <span id="spinner" class="spinner hidden"></span>
+                </div>
             </button>
         </form>
     </div>

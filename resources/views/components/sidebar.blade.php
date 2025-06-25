@@ -5,13 +5,12 @@
     <nav class="sidebar-nav">
         <ul class="sidebar-menu">
             <li>
-                <a href="{{ route('send') }}" class="sidebar-link">Enviar Email</a>
+                <a href="{{ route('send') }}" class="sidebar-link {{ Route::is('send') ? 'active' : '' }}">Enviar
+                    Email</a>
             </li>
             <li>
-                <a href="{{ route('employees.table') }}" class="sidebar-link">Empleados</a>
-            </li>
-            <li>
-                <a href="{{ route('employees.table') }}" class="sidebar-link">nueva ruta</a>
+                <a href="{{ route('employees.table') }}"
+                    class="sidebar-link {{ Route::is('employees.table') ? 'active' : '' }}"">Empleados</a>
             </li>
         </ul>
     </nav>

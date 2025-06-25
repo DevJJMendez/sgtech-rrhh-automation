@@ -1,12 +1,7 @@
-import './bootstrap';
-import { sidebarNavigation } from './sidebar-navigation';
-sidebarNavigation();
-
-import { setupUserModal } from './user-modal';
-setupUserModal();
-// if (document.getElementById('userDetailModal')) {
-  
-// }
-
 import { sendEmail } from './email-form';
+import { sidebarNavigation } from './sidebar-navigation';
+import { setupUserModal } from './user-modal';
+
 sendEmail();
+setupUserModal();
+// sidebarNavigation();

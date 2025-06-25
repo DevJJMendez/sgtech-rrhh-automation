@@ -4,4 +4,3 @@ import { setupUserModal } from './user-modal';
 
 sendEmail();
 setupUserModal();
-// sidebarNavigation();

@@ -10,7 +10,7 @@
             </li>
             <li>
                 <a href="{{ route('employees.table') }}"
-                    class="sidebar-link {{ Route::is('employees.table') ? 'active' : '' }}"">Empleados</a>
+                    class="sidebar-link {{ Route::is('employees.table') ? 'active' : '' }}">Empleados</a>
             </li>
         </ul>
     </nav>

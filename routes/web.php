@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.app');
 });
+
 Route::get('/register/{invitation}', [HiringFormController::class, 'showForm'])->name('hiring.form')->middleware('signed');
 Route::post('/register', [HiringFormController::class, 'storePersonalData'])->name('hiring.post');
 
@@ -26,11 +27,9 @@ Route::group(
         Route::post('welcome-email', [SendWelcomeEmailController::class, 'sendWelcomeEmail'])->name('welcome-email');
     }
 );
-Route::get('documents', function () {
-    $personalDataWithDocuments = PersonalData::with('uploadedDocuments')->get();
-    $uploadedDocuments = UploadedDocument::all();
-    $documentId = UploadedDocument::findOrFail(2);
-    // return response()->json(['Personal Data With Documents' => $personalDataWithDocuments, 'Uploaded Documents' => $uploadedDocuments, 'document' => $documentId]);
-    return response()->json(['document' => $documentId]);
+Route::get('invitations', function () {
+    $invitations = InvitationLink::all();
+    return response()->json([
+        'data' => $invitations
+    ]);
 });
-Route::get('documents/{document}', [HiringFormController::class, 'show'])->name('documents');

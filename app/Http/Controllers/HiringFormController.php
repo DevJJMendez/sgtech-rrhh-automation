@@ -126,12 +126,10 @@ class HiringFormController extends Controller
             }
             DB::commit();
             // dd($request->all());
-            notify()->success('Datos registrados correctamente');
             return redirect()->back();
         } catch (\Exception $exception) {
             // DB::rollBack();
             dd($exception->getMessage());
-            notify()->error('Ha ocurrido un error');
             return redirect()->back()->withInput();
         }
     }

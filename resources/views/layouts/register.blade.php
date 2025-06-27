@@ -17,6 +17,7 @@
                 <legend>Datos Personales</legend>
                 {{-- Hiring Date - Job Position --}}
                 <div class="input-row">
+                    <input type="hidden" name="invitation_uuid" value="{{ $invitation->uuid }}">
                     <div class="input-group input-small">
                         <label for="hiring_date">Fecha de ingreso</label>
                         <input type="date" name="hiring_date" value="{{ old('hiring_date') }}">

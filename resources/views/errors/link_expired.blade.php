@@ -9,8 +9,7 @@
 </head>
 
 <body>
-    <h2>Este enlace ya fue utilizado</h2>
-    <p>Si necesitas volver a acceder, solicita uno nuevo a Recursos Humanos.</p>
+    <h2>Enlace no expirado</h2>
 </body>
 
 </html>

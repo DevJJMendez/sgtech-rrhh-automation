@@ -22,10 +22,13 @@ class HiringFormController extends Controller
     {
         $invitation = InvitationLink::where('uuid', $uuid)->firstOrFail();
         if (!$invitation) {
-            return view('errors.link-already-used');
+            return response()->view('errors.link_not_found', [], 404);
+        }
+        if ($invitation->status === 'used') {
+            return response()->view('errors.link_already_used', [], 403);
         }
         if ($invitation->expires_at->isPast()) {
-            abort(410, 'Este enlace ha expirado.');
+            return response()->view('errors.link_expired', [], 410);
         }
         return view('layouts.register', compact('invitation'));
     }

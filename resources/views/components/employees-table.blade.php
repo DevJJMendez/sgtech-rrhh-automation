@@ -15,7 +15,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user)
+                @forelse ($users as $user)
                     <tr>
                         <td>{{ $user->dni }}</td>
                         <td colspan="2">
@@ -32,7 +32,13 @@
                             </button>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td>
+                            <span>No hay datos</span>
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

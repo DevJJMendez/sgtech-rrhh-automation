@@ -28,8 +28,11 @@ Route::group(
     }
 );
 Route::get('invitations', function () {
-    $invitations = InvitationLink::all();
+    $invitations = InvitationLink::with('personalData')->get();
+    $invitationWithPersonalData = PersonalData::with('invitationLink')->get();
     return response()->json([
-        'data' => $invitations
+        'invitations' => $invitations,
+        'invitationWithPersonalData' => $invitationWithPersonalData
     ]);
-});
+
+})->name('invitations');

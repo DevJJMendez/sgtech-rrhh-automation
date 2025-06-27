@@ -21,6 +21,9 @@ class HiringFormController extends Controller
     public function showForm($uuid)
     {
         $invitation = InvitationLink::where('uuid', $uuid)->firstOrFail();
+        if (!$invitation) {
+            return view('errors.link-already-used');
+        }
         if ($invitation->expires_at->isPast()) {
             abort(410, 'Este enlace ha expirado.');
         }
@@ -28,10 +31,12 @@ class HiringFormController extends Controller
     }
     public function storePersonalData(StorePersonalDataRequest $request)
     {
+        $invitation = InvitationLink::where('uuid', $request->invitation_uuid)->firstOrFail();
         try {
             DB::beginTransaction();
             $personalData = PersonalData::create([
                 'hiring_date' => $request->hiring_date,
+                'fk_invitation_link_id' => $invitation->id,
                 'job_position' => $request->job_position,
                 'dni' => $request->dni,
                 'date_of_issue' => $request->date_of_issue,
@@ -124,8 +129,12 @@ class HiringFormController extends Controller
                     ]);
                 }
             }
+            $invitation = InvitationLink::where('uuid', $request->invitation_uuid)->firstOrFail();
+            $invitation->update([
+                'status' => 'used',
+                'used_at' => now(),
+            ]);
             DB::commit();
-            // dd($request->all());
             return redirect()->back();
         } catch (\Exception $exception) {
             // DB::rollBack();

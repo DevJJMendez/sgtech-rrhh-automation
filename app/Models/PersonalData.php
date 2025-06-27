@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -48,5 +49,9 @@ class PersonalData extends Model
     public function uploadedDocuments(): HasMany
     {
         return $this->hasMany(UploadedDocument::class, 'fk_personal_data_id', 'personal_data_id');
+    }
+    public function invitationLink(): BelongsTo
+    {
+        return $this->belongsTo(InvitationLink::class, 'fk_invitation_link_id');
     }
 }

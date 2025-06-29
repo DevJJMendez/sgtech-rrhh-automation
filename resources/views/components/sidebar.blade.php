@@ -5,7 +5,8 @@
     <nav class="sidebar-nav">
         <ul class="sidebar-menu">
             <li>
-                <a href="{{ route('send') }}" class="sidebar-link {{ Route::is('send') ? 'active' : '' }}">Enviar
+                <a href="{{ route('send.email') }}"
+                    class="sidebar-link {{ Route::is('send.email') ? 'active' : '' }}">Enviar
                     Email</a>
             </li>
             <li>

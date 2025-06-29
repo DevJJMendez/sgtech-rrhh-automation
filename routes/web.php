@@ -23,7 +23,7 @@ Route::get('/employees/{id}', [HiringFormController::class, 'getEmployee'])->nam
 Route::group(
     ['prefix' => 'views'],
     function () {
-        Route::get('/enviar-email', [SendWelcomeEmailController::class, 'index'])->name('send');
+        Route::get('/enviar-email', [SendWelcomeEmailController::class, 'index'])->name('send.email');
         Route::post('welcome-email', [SendWelcomeEmailController::class, 'sendWelcomeEmail'])->name('welcome-email');
     }
 );

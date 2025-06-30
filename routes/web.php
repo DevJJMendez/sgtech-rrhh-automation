@@ -13,6 +13,7 @@ Route::get('/', function () {
 });
 
 Route::get('/register/{invitation}', [HiringFormController::class, 'showForm'])->name('hiring.form')->middleware('signed');
+// Route::get('/register/{invitation}', [HiringFormController::class, 'showForm'])->name('hiring.form');
 Route::post('/register', [HiringFormController::class, 'storePersonalData'])->name('hiring.post');
 
 Route::get('/employees/', [HiringFormController::class, 'showTable'])->name('employees.table');

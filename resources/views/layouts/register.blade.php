@@ -200,68 +200,69 @@
                         @enderror
                     </div>
                 </div>
-                {{-- bank data --}}
-                <fieldset class="form-section">
-                    <legend>Datos Bancarios</legend>
-                    <div class="input-row">
-                        <div class="input-group input-small">
-                            <label for="banking_entity">Entidad bancaria</label>
-                            <input type="text" name="banking_entity" value="{{ old('banking_entity') }}">
-                            @error('banking_entity')
-                                <small class="error-message">{{ $message }}</small>
-                            @enderror
-                        </div>
-                        <div class="input-group input-small">
-                            <label for="account_number">Número de cuenta</label>
-                            <input type="text" name="account_number" value="{{ old('account_number') }}">
-                            @error('account_number')
-                                <small class="error-message">{{ $message }}</small>
-                            @enderror
-                        </div>
-                        <div class="input-group input-small">
-                            <label for="account_type">Tipo de cuenta</label>
-                            <select name="account_type" id="account_type">
-                                <option value="">Seleccione</option>
-                                <option value="current" {{ old('account_type') === 'current' ? 'selected' : '' }}>
-                                    Corriente
-                                </option>
-                                <option value="savings" {{ old('account_type') === 'savings' ? 'selected' : '' }}>
-                                    Ahorros
-                                </option>
-                                <option value="payroll" {{ old('account_type') === 'payroll' ? 'selected' : '' }}>
-                                    Nómina
-                                </option>
-                            </select>
-                            @error('account_type')
-                                <span class="error-message">{{ $message }}</span>
-                            @enderror
-                        </div>
+            </fieldset>
+            <fieldset class="form-section">
+                <legend>Datos Bancarios</legend>
+                <div class="input-row">
+                    <div class="input-group input-small">
+                        <label for="banking_entity">Entidad bancaria</label>
+                        <input type="text" name="banking_entity" value="{{ old('banking_entity') }}">
+                        @error('banking_entity')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
                     </div>
-                    <div class="input-row">
-                        <div class="input-group input-small">
-                            <label for="eps">EPS</label>
-                            <input type="text" id="eps" name="eps" value="{{ old('eps') }}">
-                            @error('eps')
-                                <small class="error-message">{{ $message }}</small>
-                            @enderror
-                        </div>
-                        <div class="input-group input-small">
-                            <label for="pension_fund">Fondo de pensiones</label>
-                            <input type="text" id="pension_fund" name="pension_fund"
-                                value="{{ old('pension_fund') }}">
-                            @error('pension_fund')
-                                <small class="error-message">{{ $message }}</small>
-                            @enderror
-                        </div>
-                        <div class="input-group input-small">
-                            <label for="severance_pay_fund">Fondo de cesantías</label>
-                            <input type="text" name="severance_pay_fund" value="{{ old('severance_pay_fund') }}">
-                            @error('severance_pay_fund')
-                                <small class="error-message">{{ $message }}</small>
-                            @enderror
-                        </div>
+                    <div class="input-group input-small">
+                        <label for="account_number">Número de cuenta</label>
+                        <input type="text" name="account_number" value="{{ old('account_number') }}">
+                        @error('account_number')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
                     </div>
-                </fieldset>
+                    <div class="input-group input-small">
+                        <label for="account_type">Tipo de cuenta</label>
+                        <select name="account_type" id="account_type">
+                            <option value="">Seleccione</option>
+                            <option value="current" {{ old('account_type') === 'current' ? 'selected' : '' }}>
+                                Corriente
+                            </option>
+                            <option value="savings" {{ old('account_type') === 'savings' ? 'selected' : '' }}>
+                                Ahorros
+                            </option>
+                            <option value="payroll" {{ old('account_type') === 'payroll' ? 'selected' : '' }}>
+                                Nómina
+                            </option>
+                        </select>
+                        @error('account_type')
+                            <span class="error-message">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-section">
+                <div class="input-row">
+                    <div class="input-group input-small">
+                        <label for="eps">EPS</label>
+                        <input type="text" id="eps" name="eps" value="{{ old('eps') }}">
+                        @error('eps')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="input-group input-small">
+                        <label for="pension_fund">Fondo de pensiones</label>
+                        <input type="text" id="pension_fund" name="pension_fund"
+                            value="{{ old('pension_fund') }}">
+                        @error('pension_fund')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="input-group input-small">
+                        <label for="severance_pay_fund">Fondo de cesantías</label>
+                        <input type="text" name="severance_pay_fund" value="{{ old('severance_pay_fund') }}">
+                        @error('severance_pay_fund')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
             </fieldset>
             {{-- family data --}}
             <fieldset class="form-section">
@@ -356,36 +357,36 @@
                         <textarea name="additional_information">{{ old('additional_information') }}</textarea>
                     </div>
                 </div>
-                {{-- emergency contact --}}
-                <fieldset class="form-section">
-                    <legend>En caso de emergencia llamar a:</legend>
-                    <div class="input-row">
-                        <div class="input-group input-small">
-                            <label for="emergency_contact_full_name">Nombre y Apellido</label>
-                            <input type="text" name="emergency_contact_full_name"
-                                value="{{ old('emergency_contact_full_name') }}">
-                            @error('emergency_contact_full_name')
-                                <small class="error-message">{{ $message }}</small>
-                            @enderror
-                        </div>
-                        <div class="input-group input-small">
-                            <label for="emergency_contact_phone_number">Telefono / Celular</label>
-                            <input type="text" name="emergency_contact_phone_number"
-                                value="{{ old('emergency_contact_phone_number') }}">
-                            @error('emergency_contact_phone_number')
-                                <small class="error-message">{{ $message }}</small>
-                            @enderror
-                        </div>
-                        <div class="input-group input-small">
-                            <label for="emergency_contact_relationship">Parentesco</label>
-                            <input type="text" name="emergency_contact_relationship"
-                                value="{{ old('emergency_contact_relationship') }}">
-                            @error('emergency_contact_relationship')
-                                <small class="error-message">{{ $message }}</small>
-                            @enderror
-                        </div>
+            </fieldset>
+            {{-- emergency contact --}}
+            <fieldset class="form-section">
+                <legend>En caso de emergencia llamar a:</legend>
+                <div class="input-row">
+                    <div class="input-group input-small">
+                        <label for="emergency_contact_full_name">Nombre y Apellido</label>
+                        <input type="text" name="emergency_contact_full_name"
+                            value="{{ old('emergency_contact_full_name') }}">
+                        @error('emergency_contact_full_name')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
                     </div>
-                </fieldset>
+                    <div class="input-group input-small">
+                        <label for="emergency_contact_phone_number">Telefono / Celular</label>
+                        <input type="text" name="emergency_contact_phone_number"
+                            value="{{ old('emergency_contact_phone_number') }}">
+                        @error('emergency_contact_phone_number')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="input-group input-small">
+                        <label for="emergency_contact_relationship">Parentesco</label>
+                        <input type="text" name="emergency_contact_relationship"
+                            value="{{ old('emergency_contact_relationship') }}">
+                        @error('emergency_contact_relationship')
+                            <small class="error-message">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
             </fieldset>
             {{-- additional information --}}
             <fieldset class="form-section">

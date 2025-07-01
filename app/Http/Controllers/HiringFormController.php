@@ -40,6 +40,7 @@ class HiringFormController extends Controller
             DB::beginTransaction();
             $personalData = PersonalData::create([
                 'hiring_date' => $request->hiring_date,
+                'role' => $request->role,
                 'fk_invitation_link_id' => $invitation->id,
                 'job_position' => $request->job_position,
                 'dni' => $request->dni,
@@ -116,6 +117,7 @@ class HiringFormController extends Controller
                 'language' => $request->languages,
                 'level' => $request->language_level,
             ]);
+            // dd($request);
             if ($request->hasFile('documents')) {
                 # code...
                 foreach ($request->file('documents') as $documentName => $file) {
@@ -142,7 +144,7 @@ class HiringFormController extends Controller
             return redirect()->back();
         } catch (\Exception $exception) {
             // DB::rollBack();
-            dd($exception->getMessage());
+            // dd($exception->getMessage());
             return redirect()->back()->withInput();
         }
     }
@@ -180,28 +182,6 @@ class HiringFormController extends Controller
             'success' => true,
             'data' => $user,
         ]);
-    }
-
-    public function showDocuments(UploadedDocument $document)
-    {
-        if (!Storage::exists($document->path)) {
-            abort(404, 'Archivo no encontrado');
-        }
-        return Storage::response($document->path, $document->original_name);
-    }
-    public function show(UploadedDocument $document)
-    {
-        if (!Storage::disk('public')->exists($document->path)) {
-            abort(404, 'Archivo no encontrado');
-        }
-        // return Storage::disk('public')->download($document->path, $document->original_name);
-        return Storage::download("public/{$document->path}", $document->original_name);
-
-    }
-    public function showDetail($id)
-    {
-        $user = PersonalData::with('uploadedDocuments')->findOrFail($id);
-        return view('layouts.employee-documents', compact('user'));
     }
     public function downloadAllDocuments($id)
     {

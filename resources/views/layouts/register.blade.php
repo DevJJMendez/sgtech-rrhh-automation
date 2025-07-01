@@ -543,11 +543,14 @@
                     </div>
                 </fieldset>
                 @if ($invitation->collaboratorRole->name === 'Freelancer')
+                    <input type="hidden" name="role" value="{{ $invitation->collaboratorRole->name }}">
                     @include('components.freelancer-files-form')
                 @elseif ($invitation->collaboratorRole->name === 'Aprendiz')
+                    <input type="hidden" name="role" value="{{ $invitation->collaboratorRole->name }}">
                     {{ $invitation->collaboratorRole->name }}
                     @include('components.aprendiz-files-form')
                 @elseif ($invitation->collaboratorRole->name === 'Colaborador')
+                    <input type="hidden" name="role" value="{{ $invitation->collaboratorRole->name }}">
                     {{ $invitation->collaboratorRole->name }}
                     @include('components.colaborador-files-form')
                 @endif

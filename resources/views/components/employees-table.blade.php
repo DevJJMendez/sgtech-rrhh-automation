@@ -33,9 +33,6 @@
                                     Descargar documentos
                                 </a>
                             @else
-                                <button class="btn-detail">
-                                    No tiene documentos
-                                </button>
                             @endif
 
                         </td>

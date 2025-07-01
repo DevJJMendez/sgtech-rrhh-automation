@@ -13,6 +13,7 @@ Route::get('/', function () {
 });
 
 Route::get('/register/{invitation}', [HiringFormController::class, 'showForm'])->name('hiring.form')->middleware('signed');
+// Route::get('/register/{invitation}', [HiringFormController::class, 'showForm'])->name('hiring.form');
 Route::post('/register', [HiringFormController::class, 'storePersonalData'])->name('hiring.post');
 
 Route::get('/employees/', [HiringFormController::class, 'showTable'])->name('employees.table');
@@ -23,7 +24,7 @@ Route::get('/employees/{id}', [HiringFormController::class, 'getEmployee'])->nam
 Route::group(
     ['prefix' => 'views'],
     function () {
-        Route::get('/enviar-email', [SendWelcomeEmailController::class, 'index'])->name('send');
+        Route::get('/enviar-email', [SendWelcomeEmailController::class, 'index'])->name('send.email');
         Route::post('welcome-email', [SendWelcomeEmailController::class, 'sendWelcomeEmail'])->name('welcome-email');
     }
 );

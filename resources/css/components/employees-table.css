@@ -64,6 +64,63 @@
     background-color: #ef4444;
     color: white;
 }
+.btn-detail {
+    background-color: #2563eb; /* Azul fuerte, accesible */
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.375rem; /* Bordes redondeados suaves */
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-detail:hover {
+    background-color: #1d4ed8; /* Azul un poco más oscuro */
+    transform: scale(1.02);
+}
+
+.btn-detail:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4); /* Azul claro */
+}
+
+.btn-detail:active {
+    background-color: #1e40af; /* Azul aún más oscuro */
+    transform: scale(0.98);
+}
+
+.btn-document {
+    display: inline-block;
+    background-color: #10b981; /* Verde moderno */
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-document:hover {
+    background-color: #059669; /* Verde más oscuro */
+    transform: scale(1.02);
+}
+
+.btn-document:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.4); /* Verde claro */
+}
+
+.btn-document:active {
+    background-color: #047857;
+    transform: scale(0.98);
+}
+
+
 /* modal */
 .modal {
   position: fixed;

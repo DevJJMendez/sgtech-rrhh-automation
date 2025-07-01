@@ -22,6 +22,16 @@
                     </li>
                 @endforeach
             </ul>
+            <br>
+            <ul>
+                @foreach ($user->uploadedDocuments as $document)
+                    <li>
+                        <a href="{{ route('documents.show', $document->uploaded_document_id) }}" target="_blank">
+                            {{ $document->path }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
         @else
             <p>No hay documentos cargados.</p>
         @endif

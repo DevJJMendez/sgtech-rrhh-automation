@@ -4,40 +4,34 @@
         <table class="candidate-table">
             <thead>
                 <tr>
-                    {{-- <th>id</th> --}}
-                    <th>DNI</th>
                     <th colspan="2">Nombre</th>
-                    <th>Puesto</th>
+                    <th>Rol</th>
+                    <th>Posicion</th>
                     <th>Correo</th>
                     <th>Teléfono</th>
-                    <th>EPS</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($users as $user)
                     <tr>
-                        <td>{{ $user->dni }}</td>
                         <td colspan="2">
                             {{ $user->first_name }}
                             {{ $user->last_name }}
                         </td>
+                        <td>{{ $user->role }}</td>
                         <td>{{ $user->job_position }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone_number }}</td>
-                        <td>{{ $user->eps }}</td>
                         <td colspan="2">
                             <button class="btn-detail" data-id="{{ $user->personal_data_id }}">
-                                Ver detalles
-                            </button>
-                            <button>
-                                <a href="{{ route('employees.detail', $user->personal_data_id) }}" class="">
-                                    Ver documentos
-                                </a>
+                                Detalles
                             </button>
 
+                            <a href="{{ route('employees.detail', $user->personal_data_id) }}" class="btn-document">
+                                Ver documentos
+                            </a>
                         </td>
-
                     </tr>
                 @empty
                     <tr>

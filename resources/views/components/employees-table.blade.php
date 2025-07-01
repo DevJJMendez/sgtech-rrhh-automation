@@ -28,9 +28,16 @@
                                 Detalles
                             </button>
 
-                            <a href="{{ route('employees.detail', $user->personal_data_id) }}" class="btn-document">
-                                Ver documentos
-                            </a>
+                            @if ($user->uploadedDocuments->isNotEmpty())
+                                <a href="{{ route('employees.download.all', $user->personal_data_id) }}" class="btn-document">
+                                    Descargar documentos
+                                </a>
+                            @else
+                                <button class="btn-detail">
+                                    No tiene documentos
+                                </button>
+                            @endif
+
                         </td>
                     </tr>
                 @empty

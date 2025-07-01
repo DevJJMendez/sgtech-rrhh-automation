@@ -31,6 +31,11 @@
                                 Ver detalles
                             </button>
                         </td>
+                        <td>
+                            <a href="{{ route('employees.detail', $user->personal_data_id) }}" class="">
+                                Ver detalles
+                            </a>
+                        </td>
                     </tr>
                 @empty
                     <tr>

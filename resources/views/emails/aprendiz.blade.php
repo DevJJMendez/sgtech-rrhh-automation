@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <p>Buen día estimado <b>aprendiz</b></p>
+    <p>Buen día estimado aprendiz</p>
 
     <p>En primer lugar, quiero felicitarle y darle la bienvenida a <b>SERVIGUIDE BPO SAS</b>. Es una gran empresa y
         estoy

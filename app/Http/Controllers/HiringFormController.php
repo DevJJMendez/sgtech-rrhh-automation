@@ -148,15 +148,7 @@ class HiringFormController extends Controller
     public function showTable()
     {
         $users = PersonalData::all();
-        return view('components.employees-table', compact('users'));
-    }
-    public function show(UploadedDocument $document)
-    {
-        $documentId = UploadedDocument::findOrFail($document);
-        if (!Storage::exists($documentId->path)) {
-            abort(404, 'Archivo no encontrado');
-        }
-        return Storage::response($documentId->path, $documentId->original_name);
+        return view('components.employees-table', compact(['users']));
     }
     public function getEmployee($id)
     {
@@ -187,5 +179,24 @@ class HiringFormController extends Controller
             'success' => true,
             'data' => $user,
         ]);
+    }
+    public function show(UploadedDocument $document)
+    {
+        if (!Storage::disk('public')->exists($document->path)) {
+            abort(404, 'Archivo no encontrado');
+        }
+        return Storage::disk('public')->response($document->path, $document->original_name);
+    }
+    public function showDetail($id)
+    {
+        $user = PersonalData::with('uploadedDocuments')->findOrFail($id);
+        return view('layouts.employee-documents', compact('user'));
+    }
+    public function showDocuments(UploadedDocument $document)
+    {
+        if (!Storage::exists($document->path)) {
+            abort(404, 'Archivo no encontrado');
+        }
+        return Storage::response($document->path, $document->original_name);
     }
 }

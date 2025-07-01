@@ -21,6 +21,11 @@
                 <a href="{{ route('invitations') }}"
                     class="sidebar-link {{ Route::is('invitations') ? 'active' : '' }}">Invitaciones</a>
             </li>
+            <li>
+                <a href="{{ route('documents') }}"
+                    class="sidebar-link {{ Route::is('invitations') ? 'active' : 'documents' }}">JSON Documents</a>
+            </li>
+
         </ul>
     </nav>
 </aside>

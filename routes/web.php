@@ -17,6 +17,7 @@ Route::get('/register/{invitation}', [HiringFormController::class, 'showForm'])-
 Route::post('/register', [HiringFormController::class, 'storePersonalData'])->name('hiring.post');
 
 Route::get('/employees/', [HiringFormController::class, 'showTable'])->name('employees.table');
+Route::get('/employees/{id}/documents', [HiringFormController::class, 'showEmployeeDocuments'])->name('employee.documents');
 Route::get('/employees/{id}', [HiringFormController::class, 'getEmployee'])->name('get.employee.data');
 
 
@@ -37,3 +38,12 @@ Route::get('invitations', function () {
     ]);
 
 })->name('invitations');
+Route::get('documents', function () {
+    $userWithDocuments = PersonalData::withWhereHas('uploadedDocuments')->get();
+    return response()->json([
+        'data' => $userWithDocuments
+    ]);
+})->name('documents');
+
+Route::get('/documentos/{document}', [HiringFormController::class, 'show'])->name('documents.show');
+Route::get('/employees/{id}/detalle', [HiringFormController::class, 'showDetail'])->name('employees.detail');

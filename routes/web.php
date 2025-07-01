@@ -38,6 +38,7 @@ Route::get('invitations', function () {
     ]);
 
 })->name('invitations');
+
 Route::get('documents', function () {
     $userWithDocuments = PersonalData::withWhereHas('uploadedDocuments')->get();
     return response()->json([
@@ -46,4 +47,7 @@ Route::get('documents', function () {
 })->name('documents');
 
 Route::get('/documentos/{document}', [HiringFormController::class, 'show'])->name('documents.show');
+
 Route::get('/employees/{id}/detalle', [HiringFormController::class, 'showDetail'])->name('employees.detail');
+
+Route::get('/employees/{id}/download-all', [HiringFormController::class, 'downloadAllDocuments'])->name('employees.download.all');

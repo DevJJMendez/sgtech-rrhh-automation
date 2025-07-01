@@ -15,6 +15,7 @@ use App\Models\Specialty;
 use App\Models\UploadedDocument;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use ZipArchive;
 
 class HiringFormController extends Controller
 {
@@ -120,7 +121,7 @@ class HiringFormController extends Controller
                 foreach ($request->file('documents') as $documentName => $file) {
                     # code...
                     $path = $file->storeAs(
-                        "documents/{$personalData->first_name}", // Carpeta por usuario
+                        "documents/{$personalData->first_name}{$personalData->last_name}", // Carpeta por usuario
                         "{$personalData->first_name}-{$personalData->last_name}-{$documentName}." . $file->getClientOriginalExtension(), // Renombra
                         'public' // Usa el disco "public"
                     );
@@ -180,23 +181,56 @@ class HiringFormController extends Controller
             'data' => $user,
         ]);
     }
-    public function show(UploadedDocument $document)
-    {
-        if (!Storage::disk('public')->exists($document->path)) {
-            abort(404, 'Archivo no encontrado');
-        }
-        return Storage::disk('public')->response($document->path, $document->original_name);
-    }
-    public function showDetail($id)
-    {
-        $user = PersonalData::with('uploadedDocuments')->findOrFail($id);
-        return view('layouts.employee-documents', compact('user'));
-    }
+
     public function showDocuments(UploadedDocument $document)
     {
         if (!Storage::exists($document->path)) {
             abort(404, 'Archivo no encontrado');
         }
         return Storage::response($document->path, $document->original_name);
+    }
+    public function show(UploadedDocument $document)
+    {
+        if (!Storage::disk('public')->exists($document->path)) {
+            abort(404, 'Archivo no encontrado');
+        }
+        // return Storage::disk('public')->download($document->path, $document->original_name);
+        return Storage::download("public/{$document->path}", $document->original_name);
+
+    }
+    public function showDetail($id)
+    {
+        $user = PersonalData::with('uploadedDocuments')->findOrFail($id);
+        return view('layouts.employee-documents', compact('user'));
+    }
+    public function downloadAllDocuments($id)
+    {
+        $user = PersonalData::with('uploadedDocuments')->findOrFail($id);
+
+        if ($user->uploadedDocuments->isEmpty()) {
+            return back()->with('error', 'Este usuario no tiene documentos para descargar.');
+        }
+
+        $zipFileName = "{$user->first_name}{$user->last_name}.zip";
+        $zipPath = storage_path("app/temp/{$zipFileName}");
+
+        if (!file_exists(storage_path('app/temp'))) {
+            mkdir(storage_path('app/temp'), 0755, true);
+        }
+
+        $zip = new ZipArchive;
+        if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
+            foreach ($user->uploadedDocuments as $document) {
+                $filePath = storage_path("app/public/{$document->path}");
+                if (file_exists($filePath)) {
+                    $zip->addFile($filePath, basename($filePath));
+                }
+            }
+            $zip->close();
+
+            return response()->download($zipPath)->deleteFileAfterSend(true);
+        }
+
+        return back()->with('error', 'No se pudo generar el archivo ZIP.');
     }
 }

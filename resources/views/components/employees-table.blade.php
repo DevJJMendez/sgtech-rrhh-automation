@@ -26,16 +26,18 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone_number }}</td>
                         <td>{{ $user->eps }}</td>
-                        <td>
+                        <td colspan="2">
                             <button class="btn-detail" data-id="{{ $user->personal_data_id }}">
                                 Ver detalles
                             </button>
+                            <button>
+                                <a href="{{ route('employees.detail', $user->personal_data_id) }}" class="">
+                                    Ver documentos
+                                </a>
+                            </button>
+
                         </td>
-                        <td>
-                            <a href="{{ route('employees.detail', $user->personal_data_id) }}" class="">
-                                Ver detalles
-                            </a>
-                        </td>
+
                     </tr>
                 @empty
                     <tr>

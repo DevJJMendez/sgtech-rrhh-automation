@@ -17,7 +17,7 @@
                 @foreach ($user->uploadedDocuments as $document)
                     <li>
                         <a href="{{ route('documents.show', $document->uploaded_document_id) }}" target="_blank">
-                            {{ $document->original_name }}
+                            {{ $document->path }}
                         </a>
                     </li>
                 @endforeach
@@ -28,4 +28,10 @@
 
         <a href="{{ route('employees.table') }}" class="btn-back">Volver a la tabla</a>
     </div>
+    @if ($user->uploadedDocuments->isNotEmpty())
+        <a href="{{ route('employees.download.all', $user->personal_data_id) }}" class="btn btn-primary">
+            Descargar todos como ZIP
+        </a>
+    @endif
+
 @endsection

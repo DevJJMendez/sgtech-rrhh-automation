@@ -124,7 +124,7 @@ class HiringFormController extends Controller
                     # code...
                     $path = $file->storeAs(
                         "documents/{$personalData->first_name}{$personalData->last_name}", // Carpeta por usuario
-                        "{$personalData->first_name}-{$personalData->last_name}-{$documentName}." . $file->getClientOriginalExtension(), // Renombra
+                        "{$personalData->first_name}{$personalData->last_name}-{$documentName}." . $file->getClientOriginalExtension(), // Renombra
                         'public' // Usa el disco "public"
                     );
                     UploadedDocument::create([

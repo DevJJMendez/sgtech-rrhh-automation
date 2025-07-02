@@ -23,7 +23,7 @@ class SendWelcomeEmailController extends Controller
         $uuid = Str::uuid()->toString();
         $email = $sendWelcomeEmailRequest->email;
         $role = $sendWelcomeEmailRequest->role;
-        $expiresAt = now()->addDays(2);
+        $expiresAt = now()->addDays(3);
 
         try {
             $invitationLink = InvitationLink::create([
@@ -34,7 +34,7 @@ class SendWelcomeEmailController extends Controller
             ]);
             $signedURL = URL::temporarySignedRoute(
                 'hiring.form',
-                now()->addDays(2),
+                now()->addDays(3),
                 ['invitation' => $uuid]
             );
             $invitationLink->load('collaboratorRole');

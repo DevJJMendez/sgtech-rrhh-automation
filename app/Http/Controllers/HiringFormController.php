@@ -22,6 +22,7 @@ class HiringFormController extends Controller
     public function showForm($uuid)
     {
         $invitation = InvitationLink::where('uuid', $uuid)->firstOrFail();
+
         if (!$invitation) {
             return response()->view('errors.link_not_found', [], 404);
         }

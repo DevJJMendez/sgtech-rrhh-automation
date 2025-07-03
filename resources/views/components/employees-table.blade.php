@@ -46,6 +46,9 @@
                 @endforelse
             </tbody>
         </table>
+        <div class="pagination-wrapper">
+            {{ $users->links() }}
+        </div>
     </div>
     {{-- modal --}}
     <div class="modal hidden" id="userDetailModal">

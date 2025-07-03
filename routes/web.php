@@ -27,6 +27,6 @@ Route::group(
 );
 Route::get('/employees/{id}/download-all', [HiringFormController::class, 'downloadAllDocuments'])->name('employees.download.all');
 Route::get('invitations', function () {
-    $invitations = InvitationLink::with('collaboratorRole')->paginate(2);
+    $invitations = InvitationLink::with('collaboratorRole')->paginate(10);
     return view('components.invitations-table', compact('invitations'));
 })->name('invitations');

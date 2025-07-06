@@ -1,6 +1,4 @@
-@import './base/base.css';
-@import './components/sidebar.css';
-@import './components/form.css';
-@import './components/employees-table.css';
-@import './components/invitations-table.css';
-@import './components/layout.css';
+@import './modal.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

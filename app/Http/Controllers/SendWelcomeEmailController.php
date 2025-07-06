@@ -16,7 +16,7 @@ class SendWelcomeEmailController extends Controller
     public function index()
     {
         $collaboratorRoles = CollaboratorRole::select(['collaborator_role_id', 'name'])->get();
-        return view('emails.form', compact('collaboratorRoles'));
+        return view('partials.form', compact('collaboratorRoles'));
     }
     public function sendWelcomeEmail(SendWelcomeEmailRequest $sendWelcomeEmailRequest)
     {
@@ -33,7 +33,7 @@ class SendWelcomeEmailController extends Controller
                 'expires_at' => $expiresAt
             ]);
             $signedURL = URL::temporarySignedRoute(
-                'hiring.form',
+                'hiring.form.view',
                 now()->addDays(3),
                 ['invitation' => $uuid]
             );
@@ -44,6 +44,7 @@ class SendWelcomeEmailController extends Controller
                 'message' => 'Correo enviado correctamente.',
             ]);
         } catch (\Throwable $exception) {
+            dd($exception->getMessage());
             Log::error("Error al enviar correo de bienvenida: {$exception->getMessage()}");
             return response()->json([
                 'success' => false,

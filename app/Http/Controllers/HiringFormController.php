@@ -32,7 +32,7 @@ class HiringFormController extends Controller
         if ($invitation->expires_at->isPast()) {
             return response()->view('errors.link_expired', [], 410);
         }
-        return view('layouts.register', compact('invitation'));
+        return view('hiring-form.register', compact('invitation'));
     }
     public function storePersonalData(StorePersonalDataRequest $request)
     {
@@ -144,14 +144,14 @@ class HiringFormController extends Controller
             DB::commit();
             return redirect()->back();
         } catch (\Exception $exception) {
-            // DB::rollBack();
+            DB::rollBack();
             // dd($exception->getMessage());
             return redirect()->back()->withInput();
         }
     }
     public function showTable()
     {
-        $users = PersonalData::paginate(10);
+        $users = PersonalData::paginate(5);
         return view('components.employees-table', compact(['users']));
     }
     public function getEmployee($id)

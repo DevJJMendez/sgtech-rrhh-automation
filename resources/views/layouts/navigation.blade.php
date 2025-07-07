@@ -1,12 +1,12 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-18">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img src="{{ asset('images/logo-sg-tech-1x.png') }}" alt="SGTech Logo" class="logo">
+                        <img src="{{ asset('images/logo-sgtecj-bgw.png') }}" alt="SGTech Logo" class="logo">
                     </a>
                 </div>
 
@@ -17,13 +17,18 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('employees')" :active="request()->routeIs('employees')">
-                        Empleados
+                    <x-nav-link :href="route('send.email.view')" :active="request()->routeIs('send.email.view')">
+                        Enviar Invitación
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('send.email.view')" :active="request()->routeIs('send.email.view')">
-                        Enviar Invitación
+                    <x-nav-link :href="route('employees')" :active="request()->routeIs('employees')">
+                        Fichas de contratación
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('invitations')" :active="request()->routeIs('invitations')">
+                        Invitaciónes enviadas
                     </x-nav-link>
                 </div>
             </div>
@@ -86,7 +91,16 @@
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                Inicio
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('send.email.view')" :active="request()->routeIs('send.email.view')">
+                Enviar Invitación
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('employees')" :active="request()->routeIs('employees')">
+                Fichas de contratación
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('invitations')" :active="request()->routeIs('invitations')">
+                Invitaciónes enviadas
             </x-responsive-nav-link>
         </div>
 

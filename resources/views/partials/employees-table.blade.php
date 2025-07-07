@@ -29,7 +29,9 @@
                         <td class="px-4 py-3 whitespace-nowrap">{{ $user->email }}</td>
                         <td class="px-4 py-3 whitespace-nowrap">{{ $user->phone_number }}</td>
                         <td class="px-4 py-3 whitespace-nowrap flex gap-2">
-                            <button class="btn-detail" data-id="{{ $user->personal_data_id }}">
+                            <button
+                                class="btn-detail bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded-md text-sm font-semibold shadow focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1 transition"
+                                data-id="{{ $user->personal_data_id }}">
                                 Detalles
                             </button>
                             {{-- <button
@@ -44,7 +46,6 @@
                                     Descargar documentos
                                 </a>
                             @endif
-
                         </td>
                     </tr>
                 @empty

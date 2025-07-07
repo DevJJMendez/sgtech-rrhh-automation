@@ -3,11 +3,12 @@
 use App\Http\Controllers\HiringFormController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SendWelcomeEmailController;
+use App\Models\InvitationLink;
 use App\Models\PersonalData;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('employees', function () {
@@ -42,4 +43,8 @@ Route::group(['prefix' => 'hiring-form'], function () {
 
 Route::get('/employees/{id}/download-all', [HiringFormController::class, 'downloadAllDocuments'])->name('employees.download.all');
 
+Route::get('invitations', function () {
+    $invitations = InvitationLink::with('collaboratorRole')->paginate(10);
+    return view('invitations', compact('invitations'));
+})->name('invitations');
 require __DIR__ . '/auth.php';

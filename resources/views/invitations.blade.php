@@ -1,4 +1,9 @@
 <x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
+            Lista de invitaciones enviadas
+        </h2>
+    </x-slot>
     <div class="overflow-x-auto my-8 border border-gray-200 rounded-lg shadow">
         <table class="w-full min-w-[800px] border-collapse text-sm">
             <thead class="bg-gray-800 text-white">

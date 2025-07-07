@@ -8,7 +8,7 @@
                     </h1>
 
                     <p class="text-gray-700">
-                        Bienvenido al panel de RRHH. Has iniciado sesión como
+                        Bienvenido/a al panel de RRHH. Has iniciado sesión como
                         <span class="font-medium text-blue-600">
                             @if (Auth::user()->getRoleNames()->first() === 'rrhh')
                                 Recursos Humanos

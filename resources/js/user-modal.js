@@ -6,28 +6,23 @@ export function setupUserModal() {
     if (!modal || !modalClose || detailButtons.length === 0) {
         return; // No hacer nada si no está presente en la vista actual
     }
-
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             modal.classList.add('hidden');
         }
     });
-
     modal.addEventListener('click', (e) => {
         if (e.target === e.currentTarget) {
             modal.classList.add('hidden');
         }
     });
-
     detailButtons.forEach(button => {
         button.addEventListener('click', () => {
             modalClose.addEventListener('click', () => {
                 modal.classList.add('hidden');
             });
-
             const userId = button.getAttribute('data-id');
-
-            fetch(`/employees/${userId}`)
+            fetch(`/employee/${userId}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {

@@ -23,7 +23,7 @@
                     </p>
 
                     <div class="mt-4">
-                        <a href="{{ route('employees') }}"
+                        <a href="{{ route('registered.users') }}"
                             class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md shadow transition">
                             Ver fichas de contratación
                         </a>

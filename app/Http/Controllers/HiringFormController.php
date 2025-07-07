@@ -19,7 +19,7 @@ use ZipArchive;
 
 class HiringFormController extends Controller
 {
-    public function showForm($uuid)
+    public function showHiringForm($uuid)
     {
         $invitation = InvitationLink::where('uuid', $uuid)->firstOrFail();
 
@@ -149,12 +149,17 @@ class HiringFormController extends Controller
             return redirect()->back()->withInput();
         }
     }
-    public function showTable()
+    public function getUsers()
     {
         $users = PersonalData::paginate(5);
-        return view('components.employees-table', compact(['users']));
+        return view('partials.employees-table', compact(['users']));
     }
-    public function getEmployee($id)
+    public function getInvitations()
+    {
+        $invitations = InvitationLink::with('collaboratorRole')->paginate(10);
+        return view('invitations', compact('invitations'));
+    }
+    public function getEmployeeInformationForModal($id)
     {
         $user = PersonalData::with([
             'academicInformation' => function ($query) {

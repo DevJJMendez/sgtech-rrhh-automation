@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\HiringFormController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SendWelcomeEmailController;
@@ -47,4 +48,7 @@ Route::get('invitations', function () {
     $invitations = InvitationLink::with('collaboratorRole')->paginate(10);
     return view('invitations', compact('invitations'));
 })->name('invitations');
+
+
 require __DIR__ . '/auth.php';
+

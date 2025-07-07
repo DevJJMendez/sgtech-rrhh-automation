@@ -15,9 +15,10 @@ class InvitationLink extends Model
     {
         return $this->belongsTo(CollaboratorRole::class, 'fk_collaborator_role_id', 'collaborator_role_id');
     }
-    protected $casts = ['expires_at' => 'datetime'];
+
     public function personalData(): HasOne
     {
         return $this->hasOne(PersonalData::class, 'fk_invitation_link_id');
     }
+    protected $casts = ['expires_at' => 'datetime'];
 }

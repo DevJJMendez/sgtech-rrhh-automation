@@ -44,7 +44,6 @@ class SendWelcomeEmailController extends Controller
                 'message' => 'Correo enviado correctamente.',
             ]);
         } catch (\Throwable $exception) {
-            dd($exception->getMessage());
             Log::error("Error al enviar correo de bienvenida: {$exception->getMessage()}");
             return response()->json([
                 'success' => false,

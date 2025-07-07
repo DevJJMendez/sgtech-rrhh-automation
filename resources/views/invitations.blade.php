@@ -36,10 +36,11 @@
                             </span>
                         </td>
                         <td class="px-4 py-3 whitespace-nowrap">
-                            {{ $invitation->created_at }}
+                            {{ $invitation->created_at->setTimezone('America/Bogota')->format('Y-m-d H:i:s') }}
+
                         </td>
                         <td class="px-4 py-3 whitespace-nowrap">
-                            {{ $invitation->used_at ?? '—' }}
+                            {{ $invitation->used_at ? \Carbon\Carbon::parse($invitation->used_at)->setTimezone('America/Bogota')->format('Y-m-d H:i') : '—' }}
                         </td>
                     </tr>
                 @empty

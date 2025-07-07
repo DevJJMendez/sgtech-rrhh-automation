@@ -23,17 +23,22 @@ class HiringFormController extends Controller
     {
         $invitation = InvitationLink::where('uuid', $uuid)->firstOrFail();
 
-        if (!$invitation) {
-            return response()->view('errors.link_not_found', [], 404);
-        }
         if ($invitation->status === 'used') {
             return response()->view('errors.link_already_used', [], 403);
         }
+
         if ($invitation->expires_at->isPast()) {
             return response()->view('errors.link_expired', [], 410);
         }
-        return view('hiring-form.register', compact('invitation'));
+
+        // Evitar caché para que no se vuelva a mostrar el formulario
+        return response()
+            ->view('hiring-form.register', compact('invitation'))
+            ->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
+            ->header('Pragma', 'no-cache')
+            ->header('Expires', 'Sat, 01 Jan 2000 00:00:00 GMT');
     }
+
     public function storePersonalData(StorePersonalDataRequest $request)
     {
         $invitation = InvitationLink::where('uuid', $request->invitation_uuid)->firstOrFail();
@@ -145,18 +150,17 @@ class HiringFormController extends Controller
             return redirect()->back();
         } catch (\Exception $exception) {
             DB::rollBack();
-            // dd($exception->getMessage());
             return redirect()->back()->withInput();
         }
     }
     public function getUsers()
     {
-        $users = PersonalData::paginate(5);
+        $users = PersonalData::paginate(12);
         return view('partials.employees-table', compact(['users']));
     }
     public function getInvitations()
     {
-        $invitations = InvitationLink::with('collaboratorRole')->paginate(10);
+        $invitations = InvitationLink::with('collaboratorRole')->paginate(12);
         return view('invitations', compact('invitations'));
     }
     public function getEmployeeInformationForModal($id)

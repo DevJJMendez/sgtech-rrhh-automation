@@ -23,7 +23,7 @@
     <div class="input-row">
         <div class="input-group input-small">
             <label for="">Fotografía para la firma de correo</label>
-            <input type="file" name="documents[5-Fotografía-para-la-firma-de-correo]" accept=".pdf">
+            <input type="file" name="documents[5-Fotografía-para-la-firma-de-correo]">
         </div>
     </div>
 </fieldset>

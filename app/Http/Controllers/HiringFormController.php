@@ -123,7 +123,6 @@ class HiringFormController extends Controller
                 'language' => $request->languages,
                 'level' => $request->language_level,
             ]);
-            // dd($request);
             if ($request->hasFile('documents')) {
                 # code...
                 foreach ($request->file('documents') as $documentName => $file) {
@@ -141,11 +140,13 @@ class HiringFormController extends Controller
                     ]);
                 }
             }
+            // dd($request);
             $invitation = InvitationLink::where('uuid', $request->invitation_uuid)->firstOrFail();
             $invitation->update([
                 'status' => 'used',
                 'used_at' => now(),
             ]);
+
             DB::commit();
             return redirect()->back();
         } catch (\Exception $exception) {

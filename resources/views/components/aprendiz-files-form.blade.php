@@ -32,8 +32,7 @@
 
         <div class="input-group input-small">
             <label for="">Fotografía para la firma de correo</label>
-            <input type="file" name="documents[9-Fotografía-para-la-firma-de-correo]"
-                accept=".pdf,image/png, image/png">
+            <input type="file" name="documents[9-Fotografía-para-la-firma-de-correo]">
         </div>
     </div>
 </fieldset>

@@ -2,12 +2,10 @@ version: '3.8'
 
 services:
   app:
-    build:
-      context: .
-      dockerfile: .docker/php/Dockerfile
+    image: jjmendez/sgtech-rrhh:latest
     container_name: app
-    volumes:
-      - .:/var/www/html
+    ports:
+      - "9000:9000"
     depends_on:
       - db
     environment:

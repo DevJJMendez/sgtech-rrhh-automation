@@ -3,19 +3,20 @@
     <div class="input-row">
         <div class="input-group input-small">
             <label for="">Fotocopia de la cédula de ciudadanía ampliada al 150%</label>
-            <input type="file" name="documents[1-Fotocopia-de-la-cédula-de-ciudadanía-ampliada-al-150%]">
+            <input type="file" name="documents[1-Fotocopia-de-la-cédula-de-ciudadanía-ampliada-al-150%]"
+                accept=".pdf, image/jpg, image/png">
         </div>
     </div>
     <div class="input-row">
         <div class="input-group input-small">
             <label for="">Certificación de afiliación a EPS</label>
-            <input type="file" name="documents[2-Certificación-de-afiliación-a-EPS]">
+            <input type="file" name="documents[2-Certificación-de-afiliación-a-EPS]" accept=".pdf">
         </div>
     </div>
     <div class="input-row">
         <div class="input-group input-small">
             <label for="">Certificación bancaria</label>
-            <input type="file" name="documents[6-Certificación-bancaria]">
+            <input type="file" name="documents[6-Certificación-bancaria]" accept=".pdf">
         </div>
     </div>
     <div class="input-row">
@@ -24,14 +25,15 @@
     <div class="input-row">
         <div class="input-group input-small">
             <label for="">Antecedentes policía, procuraduría y contraloría</label>
-            <input type="file" name="documents[7-Antecedentes-policía-procuraduría-y-contraloría]">
+            <input type="file" name="documents[7-Antecedentes-policía-procuraduría-y-contraloría]" accept=".pdf">
         </div>
     </div>
     <div class="input-row">
 
         <div class="input-group input-small">
             <label for="">Fotografía para la firma de correo</label>
-            <input type="file" name="documents[9-Fotografía-para-la-firma-de-correo]">
+            <input type="file" name="documents[9-Fotografía-para-la-firma-de-correo]"
+                accept=".pdf,image/png, image/png">
         </div>
     </div>
 </fieldset>

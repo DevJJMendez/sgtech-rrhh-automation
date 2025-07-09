@@ -86,11 +86,11 @@ class StorePersonalDataRequest extends FormRequest
             'technology' => ['required', 'string'],
             'knowledge_level' => ['required', 'in:basic,intermediate,advanced'],
 
-            'documents.1-Fotocopia-de-la-cédula-de-ciudadanía-ampliada-al-150%' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
-            'documents.2-Certificación-de-afiliación-a-EPS' => 'required|file|mimes:pdf|max:2048',
-            'documents.6-Certificación-bancaria' => 'required|file|mimes:pdf|max:2048',
-            'documents.7-Antecedentes-policía-procuraduría-y-contraloría' => 'required|file|mimes:pdf|max:2048',
-            'documents.9-Fotografía-para-la-firma-de-correo' => 'required|file|mimes:pdf|max:2048'
+            // 'documents.1-Fotocopia-de-la-cédula-de-ciudadanía-ampliada-al-150%' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            // 'documents.2-Certificación-de-afiliación-a-EPS' => 'required|file|mimes:pdf|max:2048',
+            // 'documents.6-Certificación-bancaria' => 'required|file|mimes:pdf|max:2048',
+            // 'documents.7-Antecedentes-policía-procuraduría-y-contraloría' => 'required|file|mimes:pdf|max:2048',
+            // 'documents.9-Fotografía-para-la-firma-de-correo' => 'required|file|mimes:pdf|max:2048'
         ];
     }
     public function messages(): array
@@ -172,11 +172,11 @@ class StorePersonalDataRequest extends FormRequest
             'languages' => 'Lenguaje',
             'language_level' => 'Nivel',
 
-            'documents.1-Fotocopia-de-la-cédula-de-ciudadanía-ampliada-al-150%' => 'Debes cargar el archivo',
-            'documents.2-Certificación-de-afiliación-a-EPS' => 'Debes cargar el archivo',
-            'documents.6-Certificación-bancaria' => 'Debes cargar el archivo',
-            'documents.7-Antecedentes-policía-procuraduría-y-contraloría' => 'Debes cargar el archivo',
-            'documents.9-Fotografía-para-la-firma-de-correo' => 'Debes cargar la imagen'
+            // 'documents.1-Fotocopia-de-la-cédula-de-ciudadanía-ampliada-al-150%' => 'Debes cargar el archivo',
+            // 'documents.2-Certificación-de-afiliación-a-EPS' => 'Debes cargar el archivo',
+            // 'documents.6-Certificación-bancaria' => 'Debes cargar el archivo',
+            // 'documents.7-Antecedentes-policía-procuraduría-y-contraloría' => 'Debes cargar el archivo',
+            // 'documents.9-Fotografía-para-la-firma-de-correo' => 'Debes cargar la imagen'
         ];
     }
 }

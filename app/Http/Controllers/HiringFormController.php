@@ -146,9 +146,8 @@ class HiringFormController extends Controller
                 'status' => 'used',
                 'used_at' => now(),
             ]);
-
             DB::commit();
-            return redirect()->back();
+            return redirect()->route('hiring.form.thank_you');
         } catch (\Exception $exception) {
             DB::rollBack();
             return redirect()->back()->withInput();

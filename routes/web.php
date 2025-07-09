@@ -33,9 +33,14 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::group(['prefix' => 'hiring-form'], function () {
-    Route::get('/register/{invitation}', [HiringFormController::class, 'showHiringForm'])->name('hiring.form.view')->middleware('signed');
-    Route::post('/register', [HiringFormController::class, 'storePersonalData'])->name('hiring.post')->middleware('auth', 'verified');
+    Route::get('/register/{invitation}', [HiringFormController::class, 'showHiringForm'])->name('hiring.form.view');
+    Route::post('/register', [HiringFormController::class, 'storePersonalData'])->name('hiring.post');
+    Route::get('thank-you', function () {
+        return view('errors.thank_you');
+    })->name('hiring.form.thank_you');
 });
+
+
 Route::get('/employees/{id}/download-all', [HiringFormController::class, 'downloadAllDocuments'])->name('employees.download.all')->middleware('auth', 'verified');
 
 require __DIR__ . '/auth.php';

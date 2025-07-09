@@ -4,12 +4,16 @@
         <div class="input-group input-small">
             <label for="">Fotocopia de la cédula de ciudadanía ampliada al 150%</label>
             <input type="file" name="documents[1-Fotocopia-de-la-cédula-de-ciudadanía-ampliada-al-150%]">
+            @error('documents.1-Fotocopia-de-la-cédula-de-ciudadanía-ampliada-al-150%')
+                <span class="error-message">{{ $message }}</span>
+            @enderror
         </div>
     </div>
     <div class="input-row">
         <div class="input-group input-small">
             <label for="">Fotografía para la firma de correo</label>
             <input type="file" name="documents[9-Fotografía-para-la-firma-de-correo]">
+
         </div>
     </div>
     <div class="input-row">

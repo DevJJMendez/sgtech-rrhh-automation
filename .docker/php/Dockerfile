@@ -5,23 +5,21 @@ RUN apt-get update && apt-get install -y \
     zip unzip git curl libpng-dev libonig-dev libxml2-dev libzip-dev \
     libcurl4-openssl-dev pkg-config libssl-dev libicu-dev libjpeg-dev \
     default-mysql-client \
-    && docker-php-ext-install pdo pdo_mysql zip intl
+    && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd zip intl
 
 # Instala Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 
-# Instala Node.js
+# Node y npm para compilar assets
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y nodejs
 
+# Directorio de trabajo
 WORKDIR /var/www/html
 
-COPY . .
+# Copia el entrypoint
+COPY .docker/php/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
-RUN composer install
-RUN npm install && npm run build
-
-# Genera la APP_KEY para evitar errores al iniciar
-RUN php artisan key:generate
-
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["php-fpm"]

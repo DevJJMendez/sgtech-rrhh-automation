@@ -1,50 +1,57 @@
 version: '3.8'
 
 services:
-  app:
-    image: jjmendez/sgtech-rrhh:latest
-    container_name: app
+  rrhh-backend:
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+    container_name: sgtech-rrhh-backend
     ports:
       - "9000:9000"
+    volumes:
+      - .:/var/www/html
     depends_on:
-      - db
+      - rrhh-mysql
     environment:
-      DB_HOST: db
+      DB_HOST: rrhh-mysql
       DB_DATABASE: sgtech_rrhh_app
       DB_USERNAME: sgtech_app_user
       DB_PASSWORD: SgTechP@ss2025
     networks:
-      - laravel
+      - sgtech-rrhh-network
 
-  web:
+  rrhh-nginx:
     image: nginx:latest
-    container_name: nginx
+    container_name: sgtech-rrhh-nginx
     ports:
       - "80:80"
     volumes:
       - .:/var/www/html
       - .docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
-      - app
+      - rrhh-backend
     networks:
-      - laravel
+      - sgtech-rrhh-network
 
-  db:
+  rrhh-mysql:
     image: mysql:8.0
-    container_name: mysql
+    container_name: sgtech-rrhh-mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sgtech_rrhh_app
+      MYSQL_USER: sgtech_app_user
+      MYSQL_PASSWORD: SgTechP@ss2025
     ports:
       - "3306:3306"
     volumes:
       - dbdata:/var/lib/mysql
       - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
-      - laravel
+      - sgtech-rrhh-network
 
 volumes:
   dbdata:
 
 networks:
-  laravel:
+  sgtech-rrhh-network:

@@ -16,25 +16,31 @@
                         Inicio
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('send.email.view')" :active="request()->routeIs('send.email.view')">
-                        Enviar Invitación
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('registered.users')" :active="request()->routeIs('registered.users')">
-                        Fichas de contratación
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('invitations')" :active="request()->routeIs('invitations')">
-                        Invitaciónes enviadas
-                    </x-nav-link>
-                </div>
                 @if (Auth::user()->getRoleNames()->first() === 'admin')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
                             Crear usuario
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('all.registered.users')" :active="request()->routeIs('all.registered.users')">
+                            Usuarios
+                        </x-nav-link>
+                    </div>
+                @else
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('send.email.view')" :active="request()->routeIs('send.email.view')">
+                            Enviar Invitación
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('registered.users')" :active="request()->routeIs('registered.users')">
+                            Fichas de contratación
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('invitations')" :active="request()->routeIs('invitations')">
+                            Invitaciónes enviadas
                         </x-nav-link>
                     </div>
                 @endif

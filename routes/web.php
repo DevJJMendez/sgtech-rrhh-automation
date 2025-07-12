@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\HiringFormController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SendWelcomeEmailController;
+use App\Http\Controllers\UserController;
 use App\Models\InvitationLink;
 use App\Models\PersonalData;
 use Illuminate\Support\Facades\Route;
@@ -39,7 +40,12 @@ Route::group(['prefix' => 'hiring-form'], function () {
         return view('errors.thank_you');
     })->name('hiring.form.thank_you');
 });
-
+Route::group(['prefix' => 'users'], function () {
+    Route::get('/registered-users', [UserController::class, 'registeredUsers'])->name('all.registered.users');
+    Route::delete('/user/{user}', [UserController::class, 'deleteRegisteredUser'])->name('delete.registered.user');
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+})->middleware(['auth', 'verified']);
 
 Route::get('/employees/{id}/download-all', [HiringFormController::class, 'downloadAllDocuments'])->name('employees.download.all')->middleware('auth', 'verified');
 

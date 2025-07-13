@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StorePersonalDataRequest extends FormRequest
 {
@@ -28,9 +29,9 @@ class StorePersonalDataRequest extends FormRequest
             'middle_name' => ['required', 'string'],
             'last_name' => ['required', 'string'],
             'second_last_name' => ['required', 'string'],
-            'gender' => ['required', 'string', 'in:male,female'],
+            'gender' => ['required', 'string', 'in:masculino,femenino'],
 
-            'marital_status' => ['required', 'string', 'in:single,married,divorced,widowed,free union'],
+            'marital_status' => ['required', 'string', Rule::in(['soltero', 'casado', 'divorciado', 'viudo'])],
             'birthdate' => ['required', 'date', 'before_or_equal:today'],
             'place_of_birth' => ['required', 'string'],
             'blood_group' => ['required', 'string'],
@@ -44,7 +45,7 @@ class StorePersonalDataRequest extends FormRequest
             'email' => ['required', 'email'],
             'banking_entity' => ['required', 'string'],
             'account_number' => ['required', 'string'],
-            'account_type' => ['required', 'string', 'in:current,savings,payroll'],
+            'account_type' => ['required', 'string', 'in:corriente,ahorros,nomina'],
             'eps' => ['required', 'string'],
             'pension_fund' => ['required', 'string'],
             'severance_pay_fund' => ['required', 'string'],
@@ -54,7 +55,7 @@ class StorePersonalDataRequest extends FormRequest
             'family_data_dni' => ['required', 'numeric'],
             'full_name' => ['required', 'string'],
             'age' => ['required', 'string'],
-            'family_data_gender' => ['required', 'string', 'in:male,female'],
+            'family_data_gender' => ['required', 'string', 'in:masculino,femenino'],
             'family_data_birthdate' => ['required', 'string'],
 
             // health data
@@ -75,7 +76,7 @@ class StorePersonalDataRequest extends FormRequest
             'card_number' => ['required', 'string'],
 
             'languages' => ['required', 'string'],
-            'language_level' => ['required', 'in:basic,intermediate,advanced'],
+            'language_level' => ['required', 'in:A1,A2,B1,B2,C1,C2'],
 
             'course' => ['required', 'string'],
             'specialty_start_date' => ['required', 'date', 'before:today'],
@@ -84,20 +85,14 @@ class StorePersonalDataRequest extends FormRequest
             'specialty_level' => ['required', 'string'],
 
             'technology' => ['required', 'string'],
-            'knowledge_level' => ['required', 'in:basic,intermediate,advanced'],
-
-            // 'documents.1-Fotocopia-de-la-cédula-de-ciudadanía-ampliada-al-150%' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
-            // 'documents.2-Certificación-de-afiliación-a-EPS' => 'required|file|mimes:pdf|max:2048',
-            // 'documents.6-Certificación-bancaria' => 'required|file|mimes:pdf|max:2048',
-            // 'documents.7-Antecedentes-policía-procuraduría-y-contraloría' => 'required|file|mimes:pdf|max:2048',
-            // 'documents.9-Fotografía-para-la-firma-de-correo' => 'required|file|mimes:pdf|max:2048'
+            'knowledge_level' => ['required', 'in:basico,intermedio,avanzado'],
         ];
     }
     public function messages(): array
     {
         return [
             'required' => ':attribute es obligatorio.',
-            'string' => 'Eattribute debe ser texto.',
+            'string' => ':attribute debe ser texto.',
             'max' => ':attribute no debe exceder los :max caracteres.',
             'date' => ':attribute debe ser una fecha válida.',
             'before' => ':attribute debe ser anterior a hoy.',
@@ -171,12 +166,6 @@ class StorePersonalDataRequest extends FormRequest
 
             'languages' => 'Lenguaje',
             'language_level' => 'Nivel',
-
-            // 'documents.1-Fotocopia-de-la-cédula-de-ciudadanía-ampliada-al-150%' => 'Debes cargar el archivo',
-            // 'documents.2-Certificación-de-afiliación-a-EPS' => 'Debes cargar el archivo',
-            // 'documents.6-Certificación-bancaria' => 'Debes cargar el archivo',
-            // 'documents.7-Antecedentes-policía-procuraduría-y-contraloría' => 'Debes cargar el archivo',
-            // 'documents.9-Fotografía-para-la-firma-de-correo' => 'Debes cargar la imagen'
         ];
     }
 }

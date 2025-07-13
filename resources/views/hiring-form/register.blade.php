@@ -115,17 +115,15 @@
                         <label for="marital_status">Estado Civil</label>
                         <select name="marital_status">
                             <option value="">Seleccione</option>
-                            <option value="single" {{ old('marital_status') === 'single' ? 'selected' : '' }}>Soltero
+                            <option value="soltero" {{ old('marital_status') === 'soltero' ? 'selected' : '' }}>soltero
                             </option>
-                            <option value="married" {{ old('marital_status') === 'married' ? 'selected' : '' }}>Casado
+                            <option value="casado" {{ old('marital_status') === 'casado' ? 'selected' : '' }}>casado
                             </option>
-                            <option value="divorced" {{ old('marital_status') === 'divorced' ? 'selected' : '' }}>
-                                Divorciado
+                            <option value="divorciado" {{ old('marital_status') === 'divorciado' ? 'selected' : '' }}>
+                                divorciado
                             </option>
-                            <option value="widowed" {{ old('marital_status') === 'widowed' ? 'selected' : '' }}>Viudo
+                            <option value="viudo" {{ old('marital_status') === 'viudo' ? 'selected' : '' }}>viudo
                             </option>
-                            <option value="free union" {{ old('marital_status') === 'free union' ? 'selected' : '' }}>
-                                Unión Libre</option>
                         </select>
                         @error('marital_status')
                             <span class="error-message">{{ $message }}</span>
@@ -135,8 +133,9 @@
                         <label for="gender">Sexo</label>
                         <select id="gender" name="gender">
                             <option value="">Seleccione</option>
-                            <option value="male" {{ old('gender') === 'male' ? 'selected' : '' }}>Masculino</option>
-                            <option value="female" {{ old('gender') === 'female' ? 'selected' : '' }}>Femenino
+                            <option value="masculino" {{ old('gender') === 'masculino' ? 'selected' : '' }}>masculino
+                            </option>
+                            <option value="femenino" {{ old('gender') === 'femenino' ? 'selected' : '' }}>femenino
                             </option>
                         </select>
                         @error('gender')
@@ -221,14 +220,14 @@
                         <label for="account_type">Tipo de cuenta</label>
                         <select name="account_type" id="account_type">
                             <option value="">Seleccione</option>
-                            <option value="current" {{ old('account_type') === 'current' ? 'selected' : '' }}>
-                                Corriente
+                            <option value="corriente" {{ old('account_type') === 'corriente' ? 'selected' : '' }}>
+                                corriente
                             </option>
-                            <option value="savings" {{ old('account_type') === 'savings' ? 'selected' : '' }}>
-                                Ahorros
+                            <option value="ahorros" {{ old('account_type') === 'ahorros' ? 'selected' : '' }}>
+                                ahorros
                             </option>
-                            <option value="payroll" {{ old('account_type') === 'payroll' ? 'selected' : '' }}>
-                                Nómina
+                            <option value="nomina" {{ old('account_type') === 'nomina' ? 'selected' : '' }}>
+                                nómina
                             </option>
                         </select>
                         @error('account_type')
@@ -276,7 +275,7 @@
                     </div>
                     <div class="input-group input-small">
                         <label for="family_data_dni">Número de cédula</label>
-                        <input type="text" name="family_data_dni" value="{{ old('family_data_dni') }}">
+                        <input type="number" name="family_data_dni" value="{{ old('family_data_dni') }}">
                         @error('family_data_dni')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
@@ -301,10 +300,11 @@
                         <label for="family_data_gender">Sexo</label>
                         <select name="family_data_gender">
                             <option value="">Seleccione</option>
-                            <option value="male" {{ old('family_data_gender') === 'male' ? 'selected' : '' }}>
-                                Masculino</option>
-                            <option value="female" {{ old('family_data_gender') === 'female' ? 'selected' : '' }}>
-                                Femenino
+                            <option value="masculino"
+                                {{ old('family_data_gender') === 'masculino' ? 'selected' : '' }}>
+                                masculino</option>
+                            <option value="femenino" {{ old('family_data_gender') === 'femenino' ? 'selected' : '' }}>
+                                femenino
                             </option>
                         </select>
                         @error('gender')
@@ -498,15 +498,15 @@
                             <label for="knowledge_level">Nivel alcanzado</label>
                             <select name="knowledge_level">
                                 <option value="">Seleccione</option>
-                                <option value="basic" {{ old('knowledge_level') === 'basic' ? 'selected' : '' }}>
-                                    Basico
+                                <option value="basico" {{ old('knowledge_level') === 'basico' ? 'selected' : '' }}>
+                                    basico
                                 </option>
-                                <option value="intermediate"
-                                    {{ old('knowledge_level') === 'intermediate' ? 'selected' : '' }}>
-                                    Intermedio</option>
-                                <option value="advanced"
-                                    {{ old('knowledge_level') === 'advanced' ? 'selected' : '' }}>
-                                    Avanzado
+                                <option value="intermedio"
+                                    {{ old('knowledge_level') === 'intermedio' ? 'selected' : '' }}>
+                                    intermedio</option>
+                                <option value="avanzado"
+                                    {{ old('knowledge_level') === 'avanzado' ? 'selected' : '' }}>
+                                    avanzado
                                 </option>
                             </select>
                             @error('knowledge_level')
@@ -526,14 +526,22 @@
                             <label for="language_level">Nivel alcanzado</label>
                             <select name="language_level">
                                 <option value="">Seleccione</option>
-                                <option value="basic"{{ old('language_level') === 'basic' ? 'selected' : '' }}>
-                                    Basico</option>
-                                <option
-                                    value="intermediate"{{ old('language_level') === 'intermediate' ? 'selected' : '' }}>
-                                    Intermedio
+                                <option value="A1"{{ old('language_level') === 'A1' ? 'selected' : '' }}>
+                                    A1</option>
+                                <option value="A2"{{ old('language_level') === 'A2' ? 'selected' : '' }}>
+                                    A2
                                 </option>
-                                <option value="advanced"{{ old('language_level') === 'advanced' ? 'selected' : '' }}>
-                                    Avanzado
+                                <option value="B1"{{ old('language_level') === 'B1' ? 'selected' : '' }}>
+                                    B1
+                                </option>
+                                <option value="B2"{{ old('language_level') === 'B2' ? 'selected' : '' }}>
+                                    B2
+                                </option>
+                                <option value="C1"{{ old('language_level') === 'C1' ? 'selected' : '' }}>
+                                    C1
+                                </option>
+                                <option value="C2"{{ old('language_level') === 'C2' ? 'selected' : '' }}>
+                                    C2
                                 </option>
                             </select>
                             @error('language_level')

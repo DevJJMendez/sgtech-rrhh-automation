@@ -52,11 +52,6 @@
                 @endforelse
             </tbody>
         </table>
-
-        {{-- Paginación --}}
-        <div class="mt-4 px-4">
-            {{ $invitations->links() }}
-        </div>
     </div>
 
 </x-app-layout>

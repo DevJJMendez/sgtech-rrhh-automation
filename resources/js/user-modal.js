@@ -47,7 +47,7 @@ export function setupUserModal() {
                                     <li><strong>Fecha de nacimiento:</strong> ${user.birthdate ?? 'No disponible'}</li>
                                     <li><strong>Estado civil:</strong> ${user.marital_status ?? 'No disponible'}</li>
                                     <li><strong>Fecha de nacimiento:</strong> ${user.birthdate ?? 'No disponible'}</li>
-                                    <li><strong>Lugar de nacimiento:</strong> ${user.place_of_birthdate ?? 'No disponible'}</li>
+                                    <li><strong>Lugar de nacimiento:</strong> ${user.place_of_birth ?? 'No disponible'}</li>
                                     <li><strong>Grupo Sanguineo:</strong> ${user.blood_group ?? 'No disponible'}</li>
                                     <li><strong>Nacionalidad:</strong> ${user.nationality ?? 'No disponible'}</li>
                                     <li><strong>Entidad bancaria:</strong> ${user.banking_entity ?? 'No disponible'}</li>

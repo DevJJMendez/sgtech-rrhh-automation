@@ -18,8 +18,8 @@ return new class extends Migration {
             $table->string('middle_name', 30)->nullable();
             $table->string('last_name', 30);
             $table->string('second_last_name', 30)->nullable();
-            $table->enum('gender', ['male', 'female']);
-            $table->enum('marital_status', ['single', 'married', 'divorced', 'widowed', 'free union']);
+            $table->enum('gender', ['Masculino', 'Femenino']);
+            $table->enum('marital_status', ['soltero', 'casado', 'divorciado', 'viudo']);
             $table->date('birthdate');
             $table->string('place_of_birth', 50);
             $table->enum('blood_group', ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']);
@@ -33,7 +33,7 @@ return new class extends Migration {
             $table->string('email');
             $table->string('banking_entity', 30);
             $table->string('account_number', 30);
-            $table->enum('account_type', ['current', 'savings', 'payroll']);
+            $table->enum('account_type', ['corriente', 'ahorros', 'nomina']);
             $table->string('eps', 50);
             $table->string('pension_fund', 50);
             $table->string('severance_pay_fund', 50);

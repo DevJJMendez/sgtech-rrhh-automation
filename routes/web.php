@@ -19,7 +19,9 @@ Route::get('/dashboard', function () {
 
 Route::get('/invitation', [SendWelcomeEmailController::class, 'index'])->middleware('auth', 'verified')->name('send.email.view');
 Route::post('/send-invitation', [SendWelcomeEmailController::class, 'sendWelcomeEmail'])->name('send.welcome.email');
-Route::get('registered-users', [HiringFormController::class, 'getUsers'])->middleware(['auth', 'verified'])->name('registered.users');
+Route::get('hiring-sheets', [HiringFormController::class, 'getHiringSheets'])->middleware(['auth', 'verified'])->name('hiring.sheets');
+Route::delete('/hiring-sheets/{personal_data}', [HiringFormController::class, 'destroy'])->name('hiring.sheets.destroy');
+
 Route::get('invitations', [HiringFormController::class, 'getInvitations'])->name('invitations')->middleware('auth', 'verified');
 
 Route::get('modal', function () {

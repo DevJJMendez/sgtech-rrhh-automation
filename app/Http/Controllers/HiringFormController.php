@@ -14,6 +14,7 @@ use App\Models\PersonalData;
 use App\Models\Specialty;
 use App\Models\UploadedDocument;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use ZipArchive;
 
@@ -79,7 +80,7 @@ class HiringFormController extends Controller
                 'dni' => $request->family_data_dni,
                 'full_name' => $request->full_name,
                 'age' => $request->age,
-                'gender' => $request->full_name,
+                'family_data_gender' => $request->family_data_gender,
                 'birthdate' => $request->family_data_birthdate,
             ]);
             $healthData = HealthData::create([
@@ -140,7 +141,6 @@ class HiringFormController extends Controller
                     ]);
                 }
             }
-            // dd($request);
             $invitation = InvitationLink::where('uuid', $request->invitation_uuid)->firstOrFail();
             $invitation->update([
                 'status' => 'used',
@@ -153,14 +153,50 @@ class HiringFormController extends Controller
             return redirect()->back()->withInput();
         }
     }
-    public function getUsers()
+    public function getHiringSheets()
     {
-        $users = PersonalData::paginate(12);
-        return view('partials.employees-table', compact(['users']));
+        $hiringSheets = PersonalData::latest()->get();
+        return view('partials.hiring-sheets', compact(['hiringSheets']));
+    }
+    public function destroy(PersonalData $personalData)
+    {
+        try {
+            DB::beginTransaction();
+
+            // Eliminar relaciones hijas solo si existen
+            optional($personalData->academicInformation)->delete();
+            optional($personalData->familyData)->delete();
+            optional($personalData->healthData)->delete();
+            optional($personalData->emergencyContact)->delete();
+            optional($personalData->languages)->delete();
+            optional($personalData->itKnowledge)->delete();
+            optional($personalData->specialties)->delete();
+            $personalData->uploadedDocuments()->delete();
+            $personalData->delete();
+            // Eliminar invitación asociada si existe
+            if ($personalData->invitationLink) {
+                $personalData->invitationLink->delete();
+            }
+            DB::commit();
+
+            return redirect()->route('hiring.sheets')
+                ->with('success', 'Ficha eliminada correctamente.');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            Log::error('Error eliminando ficha de contratación', [
+                'personal_data_id' => $personalData->personal_data_id,
+                'error' => $e->getMessage(),
+            ]);
+
+            return redirect()->route('hiring.sheets')
+                ->with('error', 'Ocurrió un error al intentar eliminar la ficha.');
+        }
     }
     public function getInvitations()
     {
-        $invitations = InvitationLink::with('collaboratorRole')->paginate(12);
+        $invitations = InvitationLink::with('collaboratorRole')->latest()->get();
         return view('invitations', compact('invitations'));
     }
     public function getEmployeeInformationForModal($id)
@@ -170,7 +206,7 @@ class HiringFormController extends Controller
                 $query->select('academic_information_id', 'fk_personal_data_id', 'academic_institution', 'start_date', 'end_date', 'university_career', 'degree', 'card_number');
             },
             'familyData' => function ($query) {
-                $query->select('family_data_id', 'fk_personal_data_id', 'relationship', 'full_name', 'gender', 'age', 'birthdate', 'dni');
+                $query->select('family_data_id', 'fk_personal_data_id', 'relationship', 'full_name', 'family_data_gender', 'age', 'birthdate', 'dni');
             },
             'healthData' => function ($query) {
                 $query->select('health_data_id', 'fk_personal_data_id', 'allergies', 'diseases', 'medications', 'additional_information');

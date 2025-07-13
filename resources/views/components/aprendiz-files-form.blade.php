@@ -43,7 +43,7 @@
     <div class="input-row">
 
         <div class="input-group input-small">
-            <label for="">Fotografía para la firma de correo</label>
+            <label for="">Fotografía para la firma de contrato</label>
             <input type="file" name="documents[9-Fotografía-para-la-firma-de-correo]">
             @error('documents.9-Fotografía-para-la-firma-de-correo')
                 <span class="error-message">{{ $message }}</span>

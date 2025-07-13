@@ -17,10 +17,10 @@ class SendWelcomeEmailControllerTest extends TestCase
     {
         CollaboratorRole::factory()->count(3)->create();
 
-        $response = $this->get(route('send.email'));
+        $response = $this->get(route('send.email.view'));
 
         $response->assertStatus(200);
-        $response->assertViewIs('emails.form');
+        $response->assertViewIs('partials.form');
         $response->assertViewHas('collaboratorRoles');
     }
     /** @test */
@@ -29,7 +29,7 @@ class SendWelcomeEmailControllerTest extends TestCase
         Mail::fake();
         $role = CollaboratorRole::factory()->create();
 
-        $response = $this->postJson(route('welcome-email'), [
+        $response = $this->postJson(route('send.welcome.email'), [
             'email' => 'candidate@example.com',
             'role' => $role->collaborator_role_id,
         ]);
@@ -54,7 +54,7 @@ class SendWelcomeEmailControllerTest extends TestCase
     {
         $role = CollaboratorRole::factory()->create();
 
-        $response = $this->postJson(route('welcome-email'), [
+        $response = $this->postJson(route('send.welcome.email'), [
             'email' => 'invalid-email',
             'role' => $role->collaborator_role_id,
         ]);

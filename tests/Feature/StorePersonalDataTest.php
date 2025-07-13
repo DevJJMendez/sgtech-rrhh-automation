@@ -36,8 +36,8 @@ class StorePersonalDataTest extends TestCase
             'last_name' => 'Pérez',
             'second_last_name' => 'Gómez',
             'blood_group' => 'O+',
-            'marital_status' => 'single',
-            'gender' => 'male',
+            'marital_status' => 'Soltero',
+            'gender' => 'Femenino',
             'birthdate' => now()->subYears(25)->format('Y-m-d'),
             'place_of_birth' => 'Medellín',
             'nationality' => 'Colombiana',
@@ -47,7 +47,7 @@ class StorePersonalDataTest extends TestCase
             'email' => 'juan@example.com',
             'banking_entity' => 'Bancolombia',
             'account_number' => '00012345678',
-            'account_type' => 'savings',
+            'account_type' => 'Ahorros',
             'eps' => 'Sura',
             'pension_fund' => 'Protección',
             'severance_pay_fund' => 'Colfondos',
@@ -56,7 +56,8 @@ class StorePersonalDataTest extends TestCase
             'relationship' => 'Hermano',
             'family_data_dni' => '987654321',
             'full_name' => 'Pedro Pérez',
-            'age' => 30,
+            'family_data_gender' => 'Masculino',
+            'age' => '30',
             'family_data_birthdate' => now()->subYears(30)->format('Y-m-d'),
 
             // Salud
@@ -87,7 +88,7 @@ class StorePersonalDataTest extends TestCase
 
             // IT
             'technology' => 'Laravel',
-            'knowledge_level' => 'intermediate',
+            'knowledge_level' => 'Intermedio',
 
             // Idiomas
             'languages' => 'Inglés',

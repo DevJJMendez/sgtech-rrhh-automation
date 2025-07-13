@@ -17,9 +17,9 @@ class HiringFormAccessTest extends TestCase
             'status' => 'pending',
         ]);
 
-        $response = $this->get(route('hiring.form', $invitation->uuid));
+        $response = $this->get(route('hiring.form.view', $invitation->uuid));
         $response->assertStatus(200);
-        $response->assertViewIs('layouts.register');
+        $response->assertViewIs('hiring-form.register');
         $response->assertViewHas('invitation');
     }
     /** @test */
@@ -30,7 +30,7 @@ class HiringFormAccessTest extends TestCase
             'status' => 'pending',
         ]);
 
-        $response = $this->get(route('hiring.form', $invitation->uuid));
+        $response = $this->get(route('hiring.form.view', $invitation->uuid));
         $response->assertStatus(410);
         $response->assertViewIs('errors.link_expired');
     }
@@ -42,7 +42,7 @@ class HiringFormAccessTest extends TestCase
             'status' => 'used',
         ]);
 
-        $response = $this->get(route('hiring.form', $invitation->uuid));
+        $response = $this->get(route('hiring.form.view', $invitation->uuid));
         $response->assertStatus(403);
         $response->assertViewIs('errors.link_already_used');
     }

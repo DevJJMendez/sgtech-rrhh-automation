@@ -15,7 +15,7 @@ class SendWelcomeEmailTest extends TestCase
     public function tets_form_is_visible_to_human_resource_user()
     {
         // $response = $this->get('views/enviar-email');
-        $response = $this->get(route('send.email'));
+        $response = $this->get(route('send.email.view'));
         $response->assertStatus(200);
         $response->assertSee('Hola');
         $response->assertSee('Enviar');
@@ -23,7 +23,7 @@ class SendWelcomeEmailTest extends TestCase
     /** @test */
     public function email_must_be_valid_format()
     {
-        $response = $this->post(route('welcome-email'), [
+        $response = $this->post(route('send.welcome.email'), [
             'email' => 'test'
         ]);
         $response->assertSessionHasErrors('email');
@@ -32,7 +32,7 @@ class SendWelcomeEmailTest extends TestCase
     public function welcome_email_is_sent_successfully()
     {
         Mail::fake();
-        $response = $this->post(route('welcome-email'), [
+        $response = $this->post(route('send.welcome.email'), [
             'email' => 'newemployee@example.com',
             'role' => '3',
         ]);
@@ -53,7 +53,7 @@ class SendWelcomeEmailTest extends TestCase
         // Forzar error lanzando excepción falsa, simulando fallo en Mail::queue()
         Mail::shouldReceive('to->queue')->andThrow(new \Exception('SMTP down'));
 
-        $response = $this->post(route('welcome-email'), [
+        $response = $this->post(route('send.welcome.email'), [
             'email' => 'fail@example.com',
             'role' => '2',
         ]);

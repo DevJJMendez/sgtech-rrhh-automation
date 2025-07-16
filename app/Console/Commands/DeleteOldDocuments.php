@@ -21,7 +21,7 @@ class DeleteOldDocuments extends Command
      *
      * @var string
      */
-    protected $description = 'Elimina documentos subidos hace más de 7 días';
+    protected $description = 'Elimina documentos subidos hace más de 15 días';
 
     /**
      * Execute the console command.
@@ -30,7 +30,7 @@ class DeleteOldDocuments extends Command
     {
         $this->info("Buscando documentos a eliminar...");
 
-        $documents = UploadedDocument::where('created_at', '<', now()->subDays(7))->get();
+        $documents = UploadedDocument::where('created_at', '<', now()->subDays(15))->get();
 
         if ($documents->isEmpty()) {
             $this->info("No se encontraron documentos antiguos.");
@@ -43,7 +43,6 @@ class DeleteOldDocuments extends Command
             } else {
                 $this->warn("Archivo no encontrado: {$document->path}");
             }
-
             $document->delete();
         }
         $this->info("Documentos antiguos eliminados correctamente.");

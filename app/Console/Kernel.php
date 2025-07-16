@@ -12,8 +12,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
-        $schedule->command('documents:clean-old')->dailyAt('00:00');
+        $schedule->command('documents:clean-old-documents')->dailyAt('00:00');
     }
 
     /**

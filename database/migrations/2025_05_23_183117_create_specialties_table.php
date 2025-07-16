@@ -12,13 +12,13 @@ return new class extends Migration {
     {
         Schema::create('specialties', function (Blueprint $table) {
             $table->unsignedBigInteger('specialty_id', true);
-            $table->unsignedBigInteger('fk_personal_data_id');
+            $table->unsignedBigInteger('fk_personal_data_id')->nullable();
             $table->foreign('fk_personal_data_id')->references('personal_data_id')->on('personal_data');
-            $table->string('course');
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->string('academic_institution');
-            $table->string('level'); // basico - intermedio - avanzado
+            $table->string('course')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->string('academic_institution')->nullable();
+            $table->string('level')->nullable(); // basico - intermedio - avanzado
             $table->timestamps();
         });
     }

@@ -36,9 +36,9 @@ export function setupUserModal() {
                                     <li><strong>Lugar de expedición:</strong> ${user.place_of_issue ?? 'No disponible'}</li>
                                     <li><strong>Fecha de expedición:</strong> ${user.date_of_issue ?? 'No disponible'}</li>
                                     <li><strong>Primer nombre:</strong> ${user.first_name ?? 'No disponible'}</li>
-                                    <li><strong>Segundo nombre:</strong> ${user.last_name ?? 'No disponible'}</li>
-                                    <li><strong>Primer apellido:</strong> ${user.middle_name ?? 'No disponible'}</li>
-                                    <li><strong>Segundo apellido:</strong> ${user.last_name ?? 'No disponible'}</li>
+                                    <li><strong>Segundo nombre:</strong> ${user.middle_name ?? 'No disponible'}</li>
+                                    <li><strong>Primer apellido:</strong> ${user.last_name ?? 'No disponible'}</li>
+                                    <li><strong>Segundo apellido:</strong> ${user.second_last_name ?? 'No disponible'}</li>
                                     <li><strong>Sexo:</strong> ${user.gender ?? 'No disponible'}</li>
                                     <li><strong>Dirección:</strong> ${user.address ?? 'No disponible'}</li>
                                     <li><strong>Número telefónico:</strong> ${user.phone_number ?? 'No disponible'}</li>
@@ -51,6 +51,7 @@ export function setupUserModal() {
                                     <li><strong>Grupo Sanguineo:</strong> ${user.blood_group ?? 'No disponible'}</li>
                                     <li><strong>Nacionalidad:</strong> ${user.nationality ?? 'No disponible'}</li>
                                     <li><strong>Entidad bancaria:</strong> ${user.banking_entity ?? 'No disponible'}</li>
+                                    <li><strong>Tipo de cuenta:</strong> ${user.account_type ?? 'No disponible'}</li>
                                     <li><strong>Número de cuenta bancaria:</strong> ${user.account_number ?? 'No disponible'}</li>
                                     <li><strong>EPS:</strong> ${user.eps ?? 'No disponible'}</li>
                                     <li><strong>Fondo de pensiones:</strong> ${user.pension_fund ?? 'No disponible'}</li>
@@ -75,7 +76,7 @@ export function setupUserModal() {
                                    <ul>
                                        <li><strong>Parentesco:</strong> ${user.family_data?.relationship ?? 'No disponible'}</li>
                                        <li><strong>Nombre:</strong> ${user.family_data?.full_name ?? 'No disponible'}</li>
-                                       <li><strong>Sexo:</strong> ${user.family_data?.gender ?? 'No disponible'}</li>
+                                       <li><strong>Sexo:</strong> ${user.family_data?.family_data_gender ?? 'No disponible'}</li>
                                        <li><strong>Edad:</strong> ${user.family_data?.age ?? 'No disponible'}</li>
                                        <li><strong>Fecha de nacimiento:</strong> ${user.family_data?.birthdate ?? 'No disponible'}</li>
                                        <li><strong>Número de cedula:</strong> ${user.family_data?.dni ?? 'No disponible'}</li>

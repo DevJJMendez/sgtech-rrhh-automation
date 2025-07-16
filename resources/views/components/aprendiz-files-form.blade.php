@@ -4,7 +4,7 @@
         <div class="input-group input-small">
             <label for="">Fotocopia de la cédula de ciudadanía ampliada al 150%</label>
             <input type="file" name="documents[1-Fotocopia-de-la-cédula-de-ciudadanía-ampliada-al-150%]"
-                accept=".pdf, image/jpg, image/png">
+                accept=".pdf, image/jpg, image/png" required>
             @error('documents.1-Fotocopia-de-la-cédula-de-ciudadanía-ampliada-al-150%')
                 <span class="error-message">{{ $message }}</span>
             @enderror
@@ -13,7 +13,7 @@
     <div class="input-row">
         <div class="input-group input-small">
             <label for="">Certificación de afiliación a EPS</label>
-            <input type="file" name="documents[2-Certificación-de-afiliación-a-EPS]" accept=".pdf">
+            <input type="file" name="documents[2-Certificación-de-afiliación-a-EPS]" accept=".pdf" required>
             @error('documents.2-Certificación-de-afiliación-a-EPS')
                 <span class="error-message">{{ $message }}</span>
             @enderror
@@ -22,7 +22,7 @@
     <div class="input-row">
         <div class="input-group input-small">
             <label for="">Certificación bancaria</label>
-            <input type="file" name="documents[6-Certificación-bancaria]" accept=".pdf">
+            <input type="file" name="documents[6-Certificación-bancaria]" accept=".pdf" required>
             @error('documents.6-Certificación-bancaria')
                 <span class="error-message">{{ $message }}</span>
             @enderror
@@ -34,7 +34,8 @@
     <div class="input-row">
         <div class="input-group input-small">
             <label for="">Antecedentes policía, procuraduría y contraloría</label>
-            <input type="file" name="documents[7-Antecedentes-policía-procuraduría-y-contraloría]" accept=".pdf">
+            <input type="file" name="documents[7-Antecedentes-policía-procuraduría-y-contraloría]" accept=".pdf"
+                required>
             @error('documents.7-Antecedentes-policía-procuraduría-y-contraloría')
                 <span class="error-message">{{ $message }}</span>
             @enderror
@@ -44,7 +45,7 @@
 
         <div class="input-group input-small">
             <label for="">Fotografía para la firma de contrato</label>
-            <input type="file" name="documents[9-Fotografía-para-la-firma-de-correo]">
+            <input type="file" name="documents[9-Fotografía-para-la-firma-de-correo]" required>
             @error('documents.9-Fotografía-para-la-firma-de-correo')
                 <span class="error-message">{{ $message }}</span>
             @enderror

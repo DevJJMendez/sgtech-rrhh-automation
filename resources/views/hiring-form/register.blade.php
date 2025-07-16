@@ -10,6 +10,7 @@
 
 <body>
     <div class="form-container">
+        <p class="form-note"><span class="">*</span> Campos obligatorios</p>
         <form action="{{ route('hiring.post') }}" enctype="multipart/form-data" method="POST">
             @csrf
             <fieldset class="form-section">
@@ -18,14 +19,14 @@
                 <div class="input-row">
                     <input type="hidden" name="invitation_uuid" value="{{ $invitation->uuid }}">
                     <div class="input-group input-small">
-                        <label for="hiring_date">Fecha de ingreso</label>
+                        <label for="hiring_date">Fecha de ingreso <span>*</span></label>
                         <input type="date" name="hiring_date" value="{{ old('hiring_date') }}">
                         @error('hiring_date')
                             <span class="error-message">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="job_position">Cargo / Especialidad</label>
+                        <label for="job_position">Cargo / Especialidad <span>*</span></label>
                         <input type="text" name="job_position" value="{{ old('job_position') }}">
                         @error('job_position')
                             <small class="error-message">{{ $message }}</small>
@@ -35,21 +36,21 @@
                 {{-- DNI - Date of Issue - Place of Issue --}}
                 <div class="input-row">
                     <div class="input-group input-small">
-                        <label for="dni">Número de cédula</label>
+                        <label for="dni">Número de cédula <span>*</span></label>
                         <input type="number" name="dni" value="{{ old('dni') }}">
                         @error('dni')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="date_of_issue">Fecha de expedición</label>
+                        <label for="date_of_issue">Fecha de expedición <span>*</span></label>
                         <input type="date" name="date_of_issue" value="{{ old('date_of_issue') }}">
                         @error('date_of_issue')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="place_of_issue">Lugar de expedición</label>
+                        <label for="place_of_issue">Lugar de expedición <span>*</span></label>
                         <input type="text" id="place_of_issue" name="place_of_issue"
                             value="{{ old('place_of_issue') }}">
                         @error('place_of_issue')
@@ -60,7 +61,7 @@
                 {{-- First Name - Second Name --}}
                 <div class="input-row">
                     <div class="input-group input-small">
-                        <label for="first_name">Nombre</label>
+                        <label for="first_name">Nombre <span>*</span></label>
                         <input type="text" name="first_name" placeholder="Ej. Juan" value="{{ old('first_name') }}">
                         @error('first_name')
                             <small class="error-message">{{ $message }}</small>
@@ -78,7 +79,7 @@
                 {{-- Last Name - Second Last Name --}}
                 <div class="input-row">
                     <div class="input-group input-small">
-                        <label for="last_name">Apellido</label>
+                        <label for="last_name">Apellido <span>*</span></label>
                         <input type="text" name="last_name" value="{{ old('last_name') }}">
                         @error('last_name')
                             <small class="error-message">{{ $message }}</small>
@@ -95,7 +96,7 @@
                 {{-- Blood Group - Marital Status - Gender --}}
                 <div class="input-row">
                     <div class="input-group input-small">
-                        <label for="blood_group">Grupo Sanguíneo y RH </label>
+                        <label for="blood_group">Grupo Sanguíneo y RH <span>*</span></label>
                         <select name="blood_group">
                             <option value="">Seleccione</option>
                             <option value="A+" {{ old('blood_group') === 'A+' ? 'selected' : '' }}>A+</option>
@@ -112,17 +113,20 @@
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="marital_status">Estado Civil</label>
+                        <label for="marital_status">Estado Civil <span>*</span></label>
                         <select name="marital_status">
                             <option value="">Seleccione</option>
-                            <option value="soltero" {{ old('marital_status') === 'soltero' ? 'selected' : '' }}>soltero
+                            <option value="soltero" {{ old('marital_status') === 'soltero' ? 'selected' : '' }}>
+                                Soltero
                             </option>
-                            <option value="casado" {{ old('marital_status') === 'casado' ? 'selected' : '' }}>casado
+                            <option value="casado" {{ old('marital_status') === 'casado' ? 'selected' : '' }}>
+                                Casado
                             </option>
                             <option value="divorciado" {{ old('marital_status') === 'divorciado' ? 'selected' : '' }}>
-                                divorciado
+                                Divorciado
                             </option>
-                            <option value="viudo" {{ old('marital_status') === 'viudo' ? 'selected' : '' }}>viudo
+                            <option value="viudo" {{ old('marital_status') === 'viudo' ? 'selected' : '' }}>
+                                Viudo
                             </option>
                         </select>
                         @error('marital_status')
@@ -130,12 +134,14 @@
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="gender">Sexo</label>
+                        <label for="gender">Sexo <span>*</span></label>
                         <select id="gender" name="gender">
                             <option value="">Seleccione</option>
-                            <option value="masculino" {{ old('gender') === 'masculino' ? 'selected' : '' }}>masculino
+                            <option value="masculino" {{ old('gender') === 'masculino' ? 'selected' : '' }}>
+                                Masculino
                             </option>
-                            <option value="femenino" {{ old('gender') === 'femenino' ? 'selected' : '' }}>femenino
+                            <option value="femenino" {{ old('gender') === 'femenino' ? 'selected' : '' }}>
+                                Femenino
                             </option>
                         </select>
                         @error('gender')
@@ -221,13 +227,13 @@
                         <select name="account_type" id="account_type">
                             <option value="">Seleccione</option>
                             <option value="corriente" {{ old('account_type') === 'corriente' ? 'selected' : '' }}>
-                                corriente
+                                Corriente
                             </option>
                             <option value="ahorros" {{ old('account_type') === 'ahorros' ? 'selected' : '' }}>
-                                ahorros
+                                Ahorros
                             </option>
                             <option value="nomina" {{ old('account_type') === 'nomina' ? 'selected' : '' }}>
-                                nómina
+                                Nómina
                             </option>
                         </select>
                         @error('account_type')
@@ -302,9 +308,9 @@
                             <option value="">Seleccione</option>
                             <option value="masculino"
                                 {{ old('family_data_gender') === 'masculino' ? 'selected' : '' }}>
-                                masculino</option>
+                                Masculino</option>
                             <option value="femenino" {{ old('family_data_gender') === 'femenino' ? 'selected' : '' }}>
-                                femenino
+                                Femenino
                             </option>
                         </select>
                         @error('gender')
@@ -392,21 +398,22 @@
                 <legend>Información Académica</legend>
                 <div class="input-row">
                     <div class="input-group input-small">
-                        <label for="academic_institution">Institución</label>
-                        <input type="text" name="academic_institution" value="{{ old('academic_institution') }}">
+                        <label for="academic_institution">Institución <span>*</span></label>
+                        <input type="text" name="academic_institution" value="{{ old('academic_institution') }}"
+                            placeholder="SENA / Universidad">
                         @error('academic_institution')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="start_date">Fecha de inicio</label>
+                        <label for="start_date">Fecha de inicio <span>*</span></label>
                         <input type="date" name="start_date" value="{{ old('start_date') }}">
                         @error('start_date')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="end_date">Fecha fin</label>
+                        <label for="end_date">Fecha fin <span>*</span></label>
                         <input type="date" name="end_date" value="{{ old('end_date') }}">
                         @error('end_date')
                             <small class="error-message">{{ $message }}</small>
@@ -422,8 +429,9 @@
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="degree">Grado</label>
-                        <input type="text" name="degree" value="{{ old('degree') }}">
+                        <label for="degree">Grado <span>*</span></label>
+                        <input type="text" name="degree" value="{{ old('degree') }}"
+                            placeholder="Técnico / Tecnólogo / Profesional">
                         @error('degree')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
@@ -499,14 +507,14 @@
                             <select name="knowledge_level">
                                 <option value="">Seleccione</option>
                                 <option value="basico" {{ old('knowledge_level') === 'basico' ? 'selected' : '' }}>
-                                    basico
+                                    Básico
                                 </option>
                                 <option value="intermedio"
                                     {{ old('knowledge_level') === 'intermedio' ? 'selected' : '' }}>
-                                    intermedio</option>
+                                    Intermedio</option>
                                 <option value="avanzado"
                                     {{ old('knowledge_level') === 'avanzado' ? 'selected' : '' }}>
-                                    avanzado
+                                    Avanzado
                                 </option>
                             </select>
                             @error('knowledge_level')

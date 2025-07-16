@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('middle_name', 30)->nullable();
             $table->string('last_name', 30);
             $table->string('second_last_name', 30)->nullable();
-            $table->enum('gender', ['Masculino', 'Femenino']);
+            $table->enum('gender', ['masculino', 'femenino']);
             $table->enum('marital_status', ['soltero', 'casado', 'divorciado', 'viudo']);
             $table->date('birthdate');
             $table->string('place_of_birth', 50);

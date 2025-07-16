@@ -22,7 +22,7 @@
                         <td>{{ $user->role }}</td>
                         <td>{{ $user->job_position }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->phone_number }}</td>
+                        <td>{{ $user->cellphone_number }}</td>
                         <td colspan="2">
                             <button class="btn-detail" data-id="{{ $user->personal_data_id }}">
                                 Detalles

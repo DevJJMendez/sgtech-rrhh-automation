@@ -12,11 +12,11 @@ return new class extends Migration {
     {
         Schema::create('emergency_contacts', function (Blueprint $table) {
             $table->unsignedBigInteger('emergency_contact_id', true);
-            $table->unsignedBigInteger('fk_personal_data_id');
+            $table->unsignedBigInteger('fk_personal_data_id')->nullable();
             $table->foreign('fk_personal_data_id')->references('personal_data_id')->on('personal_data');
-            $table->string('full_name');
-            $table->string('phone_number');
-            $table->string('relationship');
+            $table->string('full_name')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('relationship')->nullable();
             $table->timestamps();
         });
     }

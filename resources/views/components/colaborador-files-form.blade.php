@@ -3,23 +3,19 @@
     <div class="input-row">
         <div class="input-group input-small">
             <label for="">Fotocopia de la cédula de ciudadanía ampliada al 150%</label>
-            <input type="file" name="documents[1-Fotocopia-de-la-cédula-de-ciudadanía-ampliada-al-150%]">
-            @error('documents.1-Fotocopia-de-la-cédula-de-ciudadanía-ampliada-al-150%')
-                <span class="error-message">{{ $message }}</span>
-            @enderror
+            <input type="file" name="documents[1-Fotocopia-de-la-cédula-de-ciudadanía-ampliada-al-150%]" required>
         </div>
     </div>
     <div class="input-row">
         <div class="input-group input-small">
             <label for="">Fotografía para la firma de contrato</label>
-            <input type="file" name="documents[9-Fotografía-para-la-firma-de-correo]">
-
+            <input type="file" name="documents[9-Fotografía-para-la-firma-de-correo]" required>
         </div>
     </div>
     <div class="input-row">
         <div class="input-group input-small">
             <label for="">Certificados de estudios realizados</label>
-            <input type="file" name="documents[2-Certificados-de-estudios-realizados]">
+            <input type="file" name="documents[2-Certificados-de-estudios-realizados]" re>
         </div>
         <div class="input-group input-small">
             <label for="">Dos últimas certificaciones laborales</label>
@@ -31,7 +27,7 @@
     <div class="input-row">
         <div class="input-group input-small">
             <label for="">Certificación de afiliación a EPS</label>
-            <input type="file" name="documents[4-Certificación-de-afiliación-a-EPS]">
+            <input type="file" name="documents[4-Certificación-de-afiliación-a-EPS]" required>
         </div>
         <div class="input-group input-small">
             <label for="">Certificación de afiliación a Fondo de Pensiones</label>
@@ -42,11 +38,11 @@
     <div class="input-row">
         <div class="input-group input-small">
             <label for="">Certificación bancaria</label>
-            <input type="file" name="documents[6-Certificación-bancaria]">
+            <input type="file" name="documents[6-Certificación-bancaria]" required>
         </div>
         <div class="input-group input-small">
             <label for="">Antecedentes policía, procuraduría y contraloría</label>
-            <input type="file" name="documents[7-Antecedentes-policía-procuraduría-y-contraloría]">
+            <input type="file" name="documents[7-Antecedentes-policía-procuraduría-y-contraloría]" required>
         </div>
     </div>
 </fieldset>

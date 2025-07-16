@@ -12,10 +12,10 @@ return new class extends Migration {
     {
         Schema::create('languages', function (Blueprint $table) {
             $table->unsignedBigInteger('language_id', true);
-            $table->unsignedBigInteger('fk_personal_data_id');
+            $table->unsignedBigInteger('fk_personal_data_id')->nullable();
             $table->foreign('fk_personal_data_id')->references('personal_data_id')->on('personal_data');
-            $table->string('language');
-            $table->enum('level', ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']); // basico - intermedio - avanzado
+            $table->string('language')->nullable();
+            $table->enum('level', ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'])->nullable(); // basico - intermedio - avanzado
             $table->timestamps();
         });
     }

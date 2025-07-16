@@ -12,10 +12,10 @@ return new class extends Migration {
     {
         Schema::create('it_knowledge', function (Blueprint $table) {
             $table->unsignedBigInteger('itknowledge_id', true);
-            $table->unsignedBigInteger('fk_personal_data_id');
+            $table->unsignedBigInteger('fk_personal_data_id')->nullable();
             $table->foreign('fk_personal_data_id')->references('personal_data_id')->on('personal_data');
-            $table->string('technology');
-            $table->enum('level', ['Basico', 'Intermedio', 'Avanzado']); // basico - intermedio - avanzado
+            $table->string('technology')->nullable();
+            $table->enum('level', ['Basico', 'Intermedio', 'Avanzado'])->nullable(); // basico - intermedio - avanzado
             $table->timestamps();
         });
     }

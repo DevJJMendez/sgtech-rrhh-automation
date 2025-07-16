@@ -12,12 +12,12 @@ return new class extends Migration {
     {
         Schema::create('health_data', function (Blueprint $table) {
             $table->unsignedBigInteger('health_data_id', true);
-            $table->unsignedBigInteger('fk_personal_data_id');
+            $table->unsignedBigInteger('fk_personal_data_id')->nullable();
             $table->foreign('fk_personal_data_id')->references('personal_data_id')->on('personal_data');
-            $table->string('allergies');
-            $table->string('diseases');
-            $table->string('medications');
-            $table->string('additional_information');
+            $table->string('allergies')->nullable();
+            $table->string('diseases')->nullable();
+            $table->string('medications')->nullable();
+            $table->string('additional_information')->nullable();
             $table->timestamps();
         });
     }

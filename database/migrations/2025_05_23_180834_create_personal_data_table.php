@@ -35,8 +35,8 @@ return new class extends Migration {
             $table->string('account_number', 30);
             $table->enum('account_type', ['corriente', 'ahorros', 'nomina']);
             $table->string('eps', 50);
-            $table->string('pension_fund', 50);
-            $table->string('severance_pay_fund', 50);
+            $table->string('pension_fund', 50)->nullable();
+            $table->string('severance_pay_fund', 50)->nullable();
             $table->timestamps();
         });
     }

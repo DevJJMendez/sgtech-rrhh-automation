@@ -71,8 +71,8 @@ class HiringFormController extends Controller
                 'account_number' => $request->account_number,
                 'account_type' => $request->account_type,
                 'eps' => $request->eps,
-                'pension_fund' => $request->pension_fund,
-                'severance_pay_fund' => $request->severance_pay_fund,
+                'pension_fund' => $request->pension_fund ?? null,
+                'severance_pay_fund' => $request->severance_pay_fund ?? null,
             ]);
             $familyData = FamilyData::create([
                 'fk_personal_data_id' => $personalData->personal_data_id,

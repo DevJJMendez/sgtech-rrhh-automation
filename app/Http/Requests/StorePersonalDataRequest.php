@@ -45,8 +45,8 @@ class StorePersonalDataRequest extends FormRequest
             'account_number' => ['required', 'string'],
             'account_type' => ['required', 'string', 'in:corriente,ahorros,nomina'],
             'eps' => ['required', 'string'],
-            'pension_fund' => ['required', 'string'],
-            'severance_pay_fund' => ['required', 'string'],
+            // 'pension_fund' => ['required', 'string'],
+            // 'severance_pay_fund' => ['required', 'string'],
 
             // family data
             'relationship' => ['required', 'string'],

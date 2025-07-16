@@ -152,21 +152,21 @@
                 {{-- Birthdate - Place of Birth - nationality --}}
                 <div class="input-row">
                     <div class="input-group input-small">
-                        <label for="birthdate">Fecha Nacimiento</label>
+                        <label for="birthdate">Fecha Nacimiento <span>*</span></label>
                         <input type="date" name="birthdate" value="{{ old('birthdate') }}">
                         @error('birthdate')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="place_of_birth">Lugar De Nacimiento</label>
+                        <label for="place_of_birth">Lugar De Nacimiento <span>*</span></label>
                         <input type="text" name="place_of_birth" value="{{ old('place_of_birth') }}">
                         @error('place_of_birth')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="nationality">Nacionalidad</label>
+                        <label for="nationality">Nacionalidad <span>*</span></label>
                         <input type="text" name="nationality" value="{{ old('nationality') }}">
                         @error('nationality')
                             <small class="error-message">{{ $message }}</small>
@@ -176,28 +176,28 @@
                 {{-- address - phone_number - cellphone_number - email --}}
                 <div class="input-row">
                     <div class="input-group input-small">
-                        <label for="address">Dirección</label>
+                        <label for="address">Dirección <span>*</span></label>
                         <input type="text" name="address" value="{{ old('address') }}">
                         @error('address')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="phone_number">Teléfono</label>
+                        <label for="phone_number">Teléfono <span>*</span></label>
                         <input type="text" name="phone_number" value="{{ old('phone_number') }}">
                         @error('phone_number')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="cellphone_number">Celular</label>
+                        <label for="cellphone_number">Celular <span>*</span></label>
                         <input type="text" name="cellphone_number" value="{{ old('cellphone_number') }}">
                         @error('cellphone_number')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="email">Correo electrónico</label>
+                        <label for="email">Correo electrónico <span>*</span></label>
                         <input type="text" name="email" value="{{ old('email') }}">
                         @error('email')
                             <small class="error-message">{{ $message }}</small>
@@ -209,21 +209,21 @@
                 <legend>Datos Bancarios</legend>
                 <div class="input-row">
                     <div class="input-group input-small">
-                        <label for="banking_entity">Entidad bancaria</label>
+                        <label for="banking_entity">Entidad bancaria <span>*</span></label>
                         <input type="text" name="banking_entity" value="{{ old('banking_entity') }}">
                         @error('banking_entity')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="account_number">Número de cuenta</label>
+                        <label for="account_number">Número de cuenta <span>*</span></label>
                         <input type="text" name="account_number" value="{{ old('account_number') }}">
                         @error('account_number')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="account_type">Tipo de cuenta</label>
+                        <label for="account_type">Tipo de cuenta <span>*</span></label>
                         <select name="account_type" id="account_type">
                             <option value="">Seleccione</option>
                             <option value="corriente" {{ old('account_type') === 'corriente' ? 'selected' : '' }}>
@@ -245,7 +245,7 @@
             <fieldset class="form-section">
                 <div class="input-row">
                     <div class="input-group input-small">
-                        <label for="eps">EPS</label>
+                        <label for="eps">EPS <span>*</span></label>
                         <input type="text" id="eps" name="eps" value="{{ old('eps') }}">
                         @error('eps')
                             <small class="error-message">{{ $message }}</small>
@@ -273,21 +273,21 @@
                 <legend>Datos familiares</legend>
                 <div class="input-row">
                     <div class="input-group input-small">
-                        <label for="relationship">Parentesco</label>
+                        <label for="relationship">Parentesco <span>*</span></label>
                         <input type="text" name="relationship" value="{{ old('relationship') }}">
                         @error('relationship')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="family_data_dni">Número de cédula</label>
+                        <label for="family_data_dni">Número de cédula <span>*</span></label>
                         <input type="number" name="family_data_dni" value="{{ old('family_data_dni') }}">
                         @error('family_data_dni')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="full_name">Nombre y Apellido</label>
+                        <label for="full_name">Nombre y Apellido <span>*</span></label>
                         <input type="text" name="full_name" value="{{ old('full_name') }}">
                         @error('full_name')
                             <small class="error-message">{{ $message }}</small>
@@ -296,14 +296,14 @@
                 </div>
                 <div class="input-row">
                     <div class="input-group input-small">
-                        <label for="age">Edad</label>
+                        <label for="age">Edad <span>*</span></label>
                         <input type="number" name="age" value="{{ old('age') }}">
                         @error('age')
                             <small class="error-message">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="family_data_gender">Sexo</label>
+                        <label for="family_data_gender">Sexo <span>*</span></label>
                         <select name="family_data_gender">
                             <option value="">Seleccione</option>
                             <option value="masculino"
@@ -318,7 +318,7 @@
                         @enderror
                     </div>
                     <div class="input-group input-small">
-                        <label for="family_data_birthdate">Fecha de nacimiento</label>
+                        <label for="family_data_birthdate">Fecha de nacimiento <span>*</span></label>
                         <input type="date" name="family_data_birthdate"
                             value="{{ old('family_data_birthdate') }}">
                         @error('family_data_birthdate')

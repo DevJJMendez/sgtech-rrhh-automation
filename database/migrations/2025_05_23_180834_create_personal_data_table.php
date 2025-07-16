@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('personal_data', function (Blueprint $table) {
             $table->unsignedBigInteger('personal_data_id', true);
             $table->unsignedBigInteger('fk_invitation_link_id')->nullable();
-            $table->foreign('fk_invitation_link_id')->references('id')->on('invitation_links');
+            $table->foreign('fk_invitation_link_id')->references('id')->on('invitation_links')->onDelete('set null');
             $table->date('hiring_date');
             $table->string('role', 50);
             $table->string('job_position', 50);

@@ -23,6 +23,7 @@ Route::get('hiring-sheets', [HiringFormController::class, 'getHiringSheets'])->m
 Route::delete('/hiring-sheets/{personal_data}', [HiringFormController::class, 'destroy'])->name('hiring.sheets.destroy');
 
 Route::get('invitations', [HiringFormController::class, 'getInvitations'])->name('invitations')->middleware('auth', 'verified');
+Route::delete('invitations/{invitation}', [HiringFormController::class, 'destroyInvitation'])->name('invitations.destroy');
 
 Route::get('modal', function () {
     return view('modal');

@@ -158,6 +158,15 @@ class HiringFormController extends Controller
         $hiringSheets = PersonalData::latest()->get();
         return view('partials.hiring-sheets', compact(['hiringSheets']));
     }
+    public function destroyInvitation(InvitationLink $invitation)
+    {
+        try {
+            $invitation->delete();
+            return redirect()->route('invitations')->with('success', 'Invitación eliminada correctamente.');
+        } catch (\Exception $e) {
+            return redirect()->route('invitations')->with('error', 'No se pudo eliminar la invitación.');
+        }
+    }
     public function destroy(PersonalData $personalData)
     {
         try {

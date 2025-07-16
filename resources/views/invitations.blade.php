@@ -1,4 +1,16 @@
 <x-app-layout>
+    @if (session('success'))
+        <div class="bg-green-100 text-green-800 px-4 py-2 rounded mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="bg-red-100 text-red-800 px-4 py-2 rounded mb-4">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
             Lista de invitaciones enviadas
@@ -13,6 +25,7 @@
                     <th class="px-4 py-3 text-left">Estado</th>
                     <th class="px-4 py-3 text-left">Fecha de envío</th>
                     <th class="px-4 py-3 text-left">Fecha de uso</th>
+                    <th class="px-4 py-3 text-left">Acciones</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
@@ -42,6 +55,16 @@
                         <td class="px-4 py-3 whitespace-nowrap">
                             {{ $invitation->used_at ? \Carbon\Carbon::parse($invitation->used_at)->setTimezone('America/Bogota')->format('Y-m-d H:i') : '—' }}
                         </td>
+                        <td class="px-4 py-3">
+                            <form action="{{ route('invitations.destroy', $invitation->id) }}" method="POST"
+                                onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta invitación?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-xs shadow">
+                                    Eliminar
+                                </button>
+                            </form>
                     </tr>
                 @empty
                     <tr>

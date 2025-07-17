@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->foreign('fk_collaborator_role_id')->references('collaborator_role_id')->on('collaborator_roles');
             $table->enum('status', ['pending', 'used', 'expired'])->default('pending');
             $table->timestamp('used_at')->nullable();
-            $table->timestamp('expires_at');
+            $table->timestamp('expires_at')->nullable();
             $table->timestamps();
         });
     }

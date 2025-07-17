@@ -49,37 +49,7 @@ class WelcomeEmail extends Mailable implements ShouldQueue
     public function attachments(): array
     {
         return [
-            Attachment::fromPath(storage_path('app/public/InternalRegulations/PERMISOS-LICENCIAS-E-INCAPACIDADES.pdf'))
-                ->as('Politica de permisos, licencias e incapacidades.pdf')
-                ->withMime('application/pdf'),
 
-            Attachment::fromPath(storage_path('app/public/InternalRegulations/POLÍTICA-DE-DESCONEXIÓN-LABORAL.pdf'))
-                ->as('Politica de desconexión laboral.pdf')
-                ->withMime('application/pdf'),
-
-            Attachment::fromPath(storage_path('app/public/InternalRegulations/POLÍTICA-DE-PREVENCIÓN-DE-CONSUMO-DE-TABACO-ALCOHOL-Y-DROGAS.pdf'))
-                ->as('Politica de prevención de consumo de tabaco, alcohol y drogas.pdf')
-                ->withMime('application/pdf.pdf'),
-
-            Attachment::fromPath(storage_path('app/public/InternalRegulations/POLÍTICA-DE-SEGURIDAD-Y-SALUD-EN-EL-TRABAJO.pdf'))
-                ->as('Politica de prevención de seguridad y salud en el trabajo.pdf')
-                ->withMime('application/pdf'),
-
-            Attachment::fromPath(storage_path('app/public/InternalRegulations/POLÍTICA-DE-TRABAJO-EN-CASA-TELETRABAJO-Y-TRABAJO-REMOTO.pdf'))
-                ->as('Politica de trabajo en casa, teletrabajo y trabajo remoto.pdf')
-                ->withMime('application/pdf'),
-
-            Attachment::fromPath(storage_path('app/public/InternalRegulations/POLÍTICA-DE-TRATAMIENTO-DE-DATOS-PERSONALES-SERVIGUIDE-BPO.pdf'))
-                ->as('Politica de tratamiento de datos personales.pdf')
-                ->withMime('application/pdf'),
-
-            Attachment::fromPath(storage_path('app/public/InternalRegulations/REGLAMENTO-DE-HIGIENE-INDUSTRIAL.pdf'))
-                ->as('Reglamento de higiene industrial.pdf')
-                ->withMime('application/pdf'),
-
-            Attachment::fromPath(storage_path('app/public/InternalRegulations/SERVIGUIDE-BPO-INFORMACIÓN-EMPRESARIAL.pdf'))
-                ->as('Informacion Empresarial.pdf')
-                ->withMime('application/pdf'),
         ];
     }
 }
